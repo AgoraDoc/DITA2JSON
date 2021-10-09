@@ -1,0 +1,11 @@
+{
+    "id": "api_onchannelmediarelayevent",
+    "name": "CHANNEL_MEDIA_RELAY_EVENT",
+    "description": "Reports events during the media stream relay.",
+    "parameters": [
+        {
+            "code": "The event code of channel media relay. See CHANNEL_MEDIA_RELAY_EVENT."
+        }
+    ],
+    "returns": ""
+}

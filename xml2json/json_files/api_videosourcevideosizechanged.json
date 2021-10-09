@@ -1,0 +1,20 @@
+{
+    "id": "api_videosourcevideosizechanged",
+    "name": "VIDEO_SOURCE_VIDEO_SIZE_CHANGED",
+    "description": "Occurs when the video size or rotation of a specified user changes.The callback for the second instance.",
+    "parameters": [
+        {
+            "uid": "The ID of the user whose video size or rotation changes. uid is 0 for the local user."
+        },
+        {
+            "width": "The width (pixels) of the video stream."
+        },
+        {
+            "height": "The height (pixels) of the video stream."
+        },
+        {
+            "rotation": "The rotation information. The value range is [0,360)."
+        }
+    ],
+    "returns": ""
+}

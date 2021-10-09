@@ -1,0 +1,11 @@
+{
+    "id": "api_ichannel_removeinjectstreamurl",
+    "name": "removeInjectStreamUrl",
+    "description": "Removes the voice or video stream URL address from the live streaming.After a successful method, the SDK triggers the USER_OFFLINE callback\n                with the uid of 666.",
+    "parameters": [
+        {
+            "url": "The URL address of the injected stream to be removed."
+        }
+    ],
+    "returns": "0: Success.\n       < 0: Failure."
+}

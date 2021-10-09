@@ -1,0 +1,20 @@
+{
+    "id": "api_onfirstremotevideodecoded",
+    "name": "FIRST_REMOTE_VIDEO_DECODED",
+    "description": "Occurs when the first remote video frame is received and decoded.Deprecated:\n  Deprecated as of v2.9.0, please use the REMOTE_VIDEO_STATE_CHANGED callback with the following parameters:\n      REMOTE_VIDEO_STATE_STARTING (1).\n      REMOTE_VIDEO_STATE_DECODING (2).\n  \n  \n       \n   \n   The SDK triggers this callback under one of the following circumstances:\n                    The remote user joins the channel and sends the video stream.\n                    The remote user stops sending the video stream and re-sends it after 15 seconds. Reasons for such an interruption include:\n                            The remote user leaves the channel.\n                            The remote user drops offline.\n                            The remote user calls muteLocalVideoStream to stop sending the video stream.\n                            The remote user calls disableVideo to disable video.",
+    "parameters": [
+        {
+            "uid": "The user ID of the remote user sending the video stream."
+        },
+        {
+            "width": "The width (px) of the video stream."
+        },
+        {
+            "height": "The height (px) of the video stream."
+        },
+        {
+            "elapsed": "Time elapsed (ms) from the local user calling joinChannel until the SDK triggers this callback."
+        }
+    ],
+    "returns": ""
+}

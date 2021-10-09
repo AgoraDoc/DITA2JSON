@@ -1,0 +1,35 @@
+{
+    "id": "class_windowinfo",
+    "name": "WindowInfo",
+    "description": "Information of the window to be\n        shared.",
+    "parameters": [
+        {
+            "windowId": "The Window ID that identifies the window."
+        },
+        {
+            "name": "The name of the window."
+        },
+        {
+            "ownerName": "The corresponding process of the window."
+        },
+        {
+            "isOnScreen": "Whether the window is shown on the screen."
+        },
+        {
+            "width": "The width of the window thumbnail (px)."
+        },
+        {
+            "height": "The height of the window thumbnail (px)."
+        },
+        {
+            "originWidth": "The original width of the window (px)."
+        },
+        {
+            "originHeight": "The original height of the window (px)."
+        },
+        {
+            "image": "The window thumbnail. See Uint8Array (https://microsoft.github.io/PowerBI-JavaScript/interfaces/_node_modules_typedoc_node_modules_typescript_lib_lib_es5_d_.uint8array.html)."
+        }
+    ],
+    "returns": ""
+}

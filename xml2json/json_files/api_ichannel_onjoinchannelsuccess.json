@@ -1,0 +1,17 @@
+{
+    "id": "api_ichannel_onjoinchannelsuccess",
+    "name": "JOIN_CHANNEL_SUCCESS",
+    "description": "Occurs when a user joins a channel.This callback notifies the application that a user joins a specified channel.",
+    "parameters": [
+        {
+            "channelId": "The channel ID."
+        },
+        {
+            "uid": "User ID. If you have specified a user ID in joinChannel, the ID will be returned here; otherwise, the SDK returns an ID automatically assigned by the Agora server."
+        },
+        {
+            "elapsed": "The time elapsed (in milliseconds) from the local user calling joinChannel till this event."
+        }
+    ],
+    "returns": ""
+}

@@ -1,0 +1,20 @@
+{
+    "id": "api_videosourceremoteaudiostatechanged",
+    "name": "VIDEO_SOURCE_REMOTE_AUDIO_STATE_CHANGED",
+    "description": "Occurs when the remote audio state changes.This callback does not work properly when the number of users (in the voice/video call channel) or hosts (in the live streaming channel) in the channel exceeds 17.\n          When the audio state of a remote user (in the voice/video call channel) or host (in the live streaming channel) changes, the SDK triggers this callback to report the current state of the remote audio stream.\n               The callback for the second instance.",
+    "parameters": [
+        {
+            "uid": "The ID of the remote user whose audio state changes."
+        },
+        {
+            "state": "The state of the remote audio, see REMOTE_AUDIO_STATE."
+        },
+        {
+            "reason": "The reason of the remote audio state change, see REMOTE_AUDIO_STATE_REASON."
+        },
+        {
+            "elapsed": "Time elapsed (ms) from the local user calling the videoSourceJoinChannel method until the SDK triggers this callback."
+        }
+    ],
+    "returns": ""
+}

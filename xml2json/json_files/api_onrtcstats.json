@@ -1,0 +1,11 @@
+{
+    "id": "api_onrtcstats",
+    "name": "RTC_STATS",
+    "description": "Reports the statistics of the current call.The SDK triggers this callback once every two seconds after the user joins the channel.",
+    "parameters": [
+        {
+            "stats": "\n      Statistics of the RTC engine, see RtcStats for details.\n  "
+        }
+    ],
+    "returns": ""
+}

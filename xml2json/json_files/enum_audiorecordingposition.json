@@ -1,0 +1,17 @@
+{
+    "id": "enum_audiorecordingposition",
+    "name": "AUDIO_RECORDING_POSITION",
+    "description": "Recording content. Set in startAudioRecordingWithConfig.",
+    "parameters": [
+        {
+            "AUDIO_RECORDING_POSITION_MIXED_RECORDING_AND_PLAYBACK": "0: (Default) Records the mixed audio of the local and all remote users."
+        },
+        {
+            "AUDIO_RECORDING_POSITION_RECORDING": "1: Only records the audio of the local user."
+        },
+        {
+            "AUDIO_RECORDING_POSITION_MIXED_PLAYBACK": "2: Only records the audio of all remote users."
+        }
+    ],
+    "returns": ""
+}

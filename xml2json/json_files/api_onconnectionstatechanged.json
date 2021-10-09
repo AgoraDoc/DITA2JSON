@@ -1,0 +1,14 @@
+{
+    "id": "api_onconnectionstatechanged",
+    "name": "CONNECTION_STATE_CHANGED",
+    "description": "Occurs when the network connection state changes.Since\n  v2.3.2\n       \n   \n   When the network connection state changes, the SDK triggers this callback and reports the current connection state and the reason for the change.",
+    "parameters": [
+        {
+            "state": "The current connection state. See CONNECTION_STATE_TYPE."
+        },
+        {
+            "reason": "The reason for a connection state change. See CONNECTION_CHANGED_REASON_TYPE."
+        }
+    ],
+    "returns": ""
+}

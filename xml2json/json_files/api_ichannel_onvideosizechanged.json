@@ -1,0 +1,23 @@
+{
+    "id": "api_ichannel_onvideosizechanged",
+    "name": "VIDEO_SIZE_CHANGED",
+    "description": "Occurs when the video size or rotation of a specified user changes.",
+    "parameters": [
+        {
+            "rotation": "The rotation information. The value range is [0,360)."
+        },
+        {
+            "height": "The height (pixels) of the video stream."
+        },
+        {
+            "width": "The width (pixels) of the video stream."
+        },
+        {
+            "uid": "The ID of the user whose video size or rotation changes. uid is 0 for the local user."
+        },
+        {
+            "rtcChannel": "AgoraRtcChannel."
+        }
+    ],
+    "returns": ""
+}

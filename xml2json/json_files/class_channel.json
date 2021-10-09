@@ -1,0 +1,7 @@
+{
+    "id": "class_channel",
+    "name": "Channel",
+    "description": "The channel information.The channel information. You can set it as one of the following values:\n                \"\".\n                A string.",
+    "parameters": [],
+    "returns": ""
+}

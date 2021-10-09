@@ -1,0 +1,14 @@
+{
+    "id": "api_getuserinfobyuid",
+    "name": "getUserInfoByUid",
+    "description": "Gets the user information by passing in the user ID.Since\n  v2.8.0\n       \n   \n   After a remote user joins the channel, the SDK gets the UID and user account of the remote user, caches them in a mapping table object, and triggers the USER_INFO_UPDATED callback on the local client. \n   After receiving the callback, you can call this method to get the user account of the remote user from the UserInfo object by passing in the user ID.",
+    "parameters": [
+        {
+            "uid": "User ID. It is mandatory."
+        },
+        {
+            "userInfo": "Identifiers of a user. See UserInfo for details."
+        }
+    ],
+    "returns": "0: Success.\n       < 0: Failure."
+}

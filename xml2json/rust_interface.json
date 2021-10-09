@@ -1,0 +1,746 @@
+[
+    {
+        "id": "api_disablevideo",
+        "description": "关闭视频模块。该方法可以在加入频道前或者通话中调用，在加入频道前调用，则自动开启纯音频模式，在通话中调用则由视频模式切换为纯音频频模式。 调用 enable_video 方法可开启视频模式。成功调用该方法后，远端会触发 onRemoteVideoStateChanged 回调。\n            \n                该方法在 leave_channel 后仍然有效。\n                该方法响应时间较慢，因此声网建议使用如下方法来控制视频模块：\n                    enable_local_video: 是否启动摄像头采集并创建本地视频流。\n                    mute_local_video_stream: 是否发布本地视频流。\n                    mute_remote_video_stream: 是否接收并播放远端视频流。\n                    mute_all_remote_video_streams: 是否接收并播放所有远端视频流。",
+        "parameters": [],
+        "returns": "0: 方法调用成功。\n                < 0: 方法调用失败。"
+    },
+    {
+        "id": "api_enablelocalvideo",
+        "description": "开关本地视频采集。该方法禁用或重新启用本地视频采集，不影响接收远端视频。\n            调用 enable_video 后，本地视频即默认开启。你可以调用 enableLocalVideo(false) 关闭本地视频采集。关闭后如果想要重新开启，则可调用 enableLocalVideo(true)。\n            成功禁用或启用本地视频采集后，远端会触发  回调。\n            \n                \n                    该方法在加入频道前后都能调用。\n                    该方法设置内部引擎为启用状态，在 leave_channel 后仍然有效。",
+        "parameters": [
+            {
+                "enabled": "是否开启本地视频采集。\n                        \n                            true: 开启本地视频采集和渲染 (默认)。\n                            false: 关闭使用本地摄像头设备。关闭后，远端用户会接收不到本地用户的视频流；但本地用户依然可以接收远端用户的视频流。设置为 false 时，该方法不需要本地有摄像头。"
+            }
+        ],
+        "returns": "0: 方法调用成功\n                < 0: 方法调用失败"
+    },
+    {
+        "id": "api_enablevideo",
+        "description": "启用视频模块。disable_video 方法可关闭视频模式。 成功调用该方法后，远端会触发 onRemoteVideoStateChanged 回调。\n        \n            该方法在 leave_channel 后仍然有效。\n            该方法响应时间较慢，因此声网建议使用如下方法来控制视频模块：\n                enable_local_video: 是否启动摄像头采集并创建本地视频流。\n                mute_local_video_stream: 是否发布本地视频流。\n                mute_remote_video_stream: 是否接收并播放远端视频流。\n                mute_all_remote_video_streams: 是否接收并播放所有远端视频流。",
+        "parameters": [],
+        "returns": "0: 方法调用成功。\n                < 0: 方法调用失败。"
+    },
+    {
+        "id": "api_joinchannel",
+        "description": "加入频道。该方法让用户加入通话频道，在同一个频道内的用户可以互相通话，多个用户加入同一个频道，可以群聊。使用不同 App ID 的 app\n                是不能互通的。如果已在通话中，用户必须调用 leave_channel 退出当前通话，才能进入下一个频道。\n            成功调用该方法加入频道后，本地会触发 \n                回调；通信场景下的用户和直播场景下的主播加入频道后，远端会触发 onUserJoined 回调。\n            在网络状况不理想的情况下，客户端可能会与 Agora 的服务器失去连接；SDK 会自动尝试重连，重连成功后，本地会触发  回调。\n            用户成功加入频道后，默认订阅频道内所有其他用户的音频流和视频流，因此产生用量并影响计费。如果想取消订阅，可以通过调用相应的 mute 方法实现。",
+        "parameters": [
+            {
+                "token": "动态秘钥。\n                                安全要求不高: 将值设为 NULL。\n                                安全要求高: 将值设置为 Token。如果你已经启用了 App Certificate, 请务必使用 Token。\n                            \n                            \n                                请务必确保用于生成 token 的 App ID 和 initialize 方法初始化引擎时用的是同一个 App ID，否则会造成旁路推流失败。"
+            },
+            {
+                "channel_id": "标识通话的频道名称，长度在 64 字节以内的字符串。以下为支持的字符集范围（共 89 个字符）:\n                                26 个小写英文字母 a~z\n                                26 个大写英文字母 A~Z\n                                10 个数字 0~9\n                                空格\n                                \"!\"、\"#\"、\"$\"、\"%\"、\"&\"、\"(\"、\")\"、\"+\"、\"-\"、\":\"、\";\"、\"<\"、\"=\"、\".\"、\">\"、\"?\"、\"@\"、\"[\"、\"]\"、\"^\"、\"_\"、\"{\"、\"}\"、\"|\"、\"~\"、\",\""
+            },
+            {
+                "info": "(非必选项) 开发者需加入的任何附加信息。一般可设置为空字符串，或频道相关信息。该信息不会传递给频道内的其他用户。"
+            },
+            {
+                "uid": "用户 ID，32 位无符号整数。建议设置范围：1到 232-1，并保证唯一性。如果不指定（即设为 0），SDK 会自动分配一个，并在 onJoinChannelSuccess 回调中返回，应用层必须记住该返回值并维护，SDK 不对该返回值进行维护。"
+            }
+        ],
+        "returns": "0(ERR_OK) 方法调用成功。\n                < 0 方法调用失败。 \n                        -2(ERR_INVALID_ARGUMENT): 参数无效。\n                        -3(ERR_NOT_READY): SDK 初始化失败，请尝试重新初始化 SDK。\n                        -5(ERR_REFUSED): 调用被拒绝。可能有如下两个原因： \n                                已经创建了一个同名的  频道。\n                            已经通过 AgoraRtcChannel 加入了一个频道，并在该 AgoraRtcChannel 频道中发布了音视频流。"
+    },
+    {
+        "id": "api_leavechannel",
+        "description": "离开频道。离开频道，即挂断或退出通话。该方法会把会话相关的所有资源释放掉。该方法是异步操作，调用返回时并没有真正退出频道。\n            调用 join_channel 后，必须调用 leave_channel 结束通话，否则无法开始下一次通话。\n            不管当前是否在通话中，都可以调用 leave_channel，没有副作用。\n            成功调用该方法离开频道后，本地会触发 onLeaveChannel 回调；通信场景下的用户和直播场景下的主播离开频道后，远端会触发 onUserOffline 回调。\n            \n                \n                    如果你调用了 leave_channel 后立即调用 release 方法，SDK 将无法触发 onLeaveChannel 回调。\n                    如果你在旁路推流过程中调用了 leave_channel 方法，SDK 将自动调用 remove_publish_stream_url 方法。",
+        "parameters": [],
+        "returns": "0(ERR_OK): 方法调用成功。\n                < 0: 方法调用失败。\n                \n                    -1(ERR_FAILED): 一般性的错误（未明确归类）。\n                    -2(ERR_INVALID_ARGUMENT): 参数无效。\n                    -3(ERR_NOT_INITIALIZED): SDK 尚未初始化。"
+    },
+    {
+        "id": "api_muteallremotevideostreams",
+        "description": "接收／停止接收所有远端视频流。",
+        "parameters": [
+            {
+                "mute": "true: 停止接收所有远端视频流；\n                                false: 允许接收所有远端视频流（默认）。"
+            }
+        ],
+        "returns": "0: 方法调用成功。\n                 < 0: 方法调用失败。"
+    },
+    {
+        "id": "api_mutelocalvideostream",
+        "description": "开关本地视频发送。成功调用该方法后，远端会触发 onUserMuteVideo 回调。 \n                    \n                        调用该方法时，SDK 不再发送本地视频流，但摄像头仍然处于工作状态。相比于 enableLocalVideo (false)\n                            用于控制本地视频流发送的方法，该方法响应速度更快。该方法不影响本地视频流获取，没有禁用摄像头。 \n                        该方法在加入频道前后都能调用。如果你在该方法后调用 set_channel_profile 方法，SDK\n                            会根据你设置的频道场景以及用户角色，重新设置是否停止发送本地视频。因此我们建议在 set_channel_profile 后调用该方法。",
+        "parameters": [
+            {
+                "mute": "true: 不发送本地视频流\n                                false: 发送本地视频流（默认）"
+            }
+        ],
+        "returns": "0:  方法调用成功\n                < 0: 方法调用失败"
+    },
+    {
+        "id": "api_muteremotevideostream",
+        "description": "接收／停止接收指定远端用户的视频流。",
+        "parameters": [
+            {
+                "userId": "指定用户的用户 ID。"
+            },
+            {
+                "mute": "true: 停止接收指定远端用户的视频流。\n                        false: 允许接收指定远端用户的视频流（默认）。"
+            }
+        ],
+        "returns": "0：方法调用成功。\n                < 0：方法调用失败。"
+    },
+    {
+        "id": "api_onclientrolechanged",
+        "description": "直播场景下用户角色已切换回调。用户角色切换后会触发该回调，如从观众切换为主播，反之亦然。\n            该回调是由本地用户在加入频道后调用 set_client_role 改变用户角色触发的。",
+        "parameters": [
+            {
+                "oldRole": "切换前的角色: CLIENT_ROLE_TYPE。"
+            },
+            {
+                "newRole": "切换后的角色: CLIENT_ROLE_TYPE。"
+            }
+        ],
+        "returns": ""
+    },
+    {
+        "id": "api_onfirstremotevideodecoded",
+        "description": "已接收到远端视频并完成解码回调。弃用：\n                    自 v2.9.0 起废弃，请改用 onRemoteVideoStateChanged 回调中的：\n                    \n                        \n        \n            \n                REMOTE_VIDEO_STATE_STARTING\n            \n        \n    \n                        \n        \n            \n                REMOTE_VIDEO_STATE_DECODING\n            \n        \n    \n                    \n                    \n                \n            \n            引擎收到第一帧远端视频流并解码成功时，触发此回调。 App 可在此回调中设置该用户的 view。有两种情况：\n            \n                远端用户首次上线后发送视频。\n                远端用户视频离线再上线后发送视频。出现这种中断的可能原因包括：\n                \n                    远端用户离开频道。\n                    远端用户掉线。\n                    远端用户调用 mute_local_video_stream 方法停止发送本地视频流。\n                    远端用户调用 disable_video 方法关闭视频模块。",
+        "parameters": [
+            {
+                "uid": "用户 ID，指定是哪个用户的视频流。"
+            },
+            {
+                "width": "视频流宽（px）。"
+            },
+            {
+                "height": "视频流高（px）。"
+            },
+            {
+                "elapsed": "从本地调用 join_channel 开始到该回调触发的延迟（毫秒)。"
+            }
+        ],
+        "returns": ""
+    },
+    {
+        "id": "api_onleavechannel",
+        "description": "离开频道回调。leave_channel 方法时，SDK 提示 App 离开频道成功。在该回调方法中，App 可以得到此次通话的总通话时长、SDK 收发数据的流量等信息。App 通过该回调获取通话时长以及 SDK 接收到或发送的数据统计信息。",
+        "parameters": [
+            {
+                "stats": "通话的统计数据: 。"
+            }
+        ],
+        "returns": ""
+    },
+    {
+        "id": "api_onremotevideostatechanged",
+        "description": "远端视频状态发生改变回调。频道内的用户（通信场景）或主播（直播场景）人数超过 17 人时，该回调不生效。",
+        "parameters": [
+            {
+                "uid": "发生视频状态改变的远端用户 ID。"
+            },
+            {
+                "state": "远端视频流状态。详见 REMOTE_VIDEO_STATE。"
+            },
+            {
+                "reason": "远端视频流状态改变的具体原因。详见 REMOTE_VIDEO_STATE_REASON 。"
+            },
+            {
+                "elapsed": "从本地用户调用 join_channel 方法到发生本事件经历的时间，单位为 ms。"
+            }
+        ],
+        "returns": ""
+    },
+    {
+        "id": "api_onuserjoined",
+        "description": "远端用户（通信场景）/主播（直播场景）加入当前频道回调。通信场景下，该回调提示有远端用户加入了频道，并返回新加入用户的\n                    ID；如果加入之前，已经有其他用户在频道中了，新加入的用户也会收到这些已有用户加入频道的回调。\n            直播场景下，该回调提示有主播加入了频道，并返回该主播的用户 ID。如果在加入之前，已经有主播在频道中了，新加入的用户也会收到已有主播加入频道的回调。Agora\n                    建议连麦主播不超过 17 人。\n        该回调在如下情况下会被触发：\n            远端用户/主播调用 join_channel 方法加入频道。\n            远端用户加入频道后调用 set_client_role 将用户角色改变为主播。\n            远端用户/主播网络中断后重新加入频道。\n            主播通过调用 add_inject_stream_url 方法成功输入在线媒体流。\n        \n                        \n                                直播场景下，\n                                \n                                        主播间能相互收到新主播加入频道的回调，并能获得该主播的 uid。\n                                        观众也能收到新主播加入频道的回调，并能获得该主播的 uid。\n                                        当 Web 端加入直播频道时，只要 Web 端有推流，SDK 会默认该 Web 端为主播，并触发该回调。",
+        "parameters": [
+            {
+                "uid": "新加入频道的远端用户/主播 ID。"
+            },
+            {
+                "elapsed": "从本地用户调用 join_channel 到该回调触发的延迟（毫秒)。"
+            }
+        ],
+        "returns": ""
+    },
+    {
+        "id": "api_onuseroffline",
+        "description": "远端用户（通信场景）/主播（直播场景）离开当前频道回调。",
+        "parameters": [
+            {
+                "uid": "离线用户或主播的用户 ID。"
+            },
+            {
+                "reason": "离线原因: USER_OFFLINE_REASON_TYPE 。"
+            }
+        ],
+        "returns": ""
+    },
+    {
+        "id": "api_release",
+        "description": "销毁 和  方法创建一个新的 AgoraRtcEngine 对象。\n            如需在销毁后再次创建 AgoraRtcEngine 对象，需要等待 release 方法执行结束后再创建实例。",
+        "parameters": [
+            {
+                "sync": "true: 该方法为同步调用。需要等待 AgoraRtcEngine 资源释放后才能执行其他操作，所以我们建议在子线程中调用该方法，避免主线程阻塞。此外，我们不建议在 SDK 的回调中调用 release，否则由于 SDK 要等待回调返回才能回收相关的对象资源，会造成死锁。SDK 会自动检测这种死锁并转为异步调用，但是检测本身会消耗额外的时间。\n                            false: 该方法为异步调用。不需要等待 AgoraRtcEngine 资源释放后就能执行其他操作。使用异步调用时要注意，不要在该调用后立即卸载 SDK 动态库，否则可能会因为 SDK 的清理线程还没有退出而崩溃。"
+            }
+        ],
+        "returns": ""
+    },
+    {
+        "id": "api_removepublishstreamurl",
+        "description": "调用该方法后，SDK 会在本地触发 onRtmpStreamingStateChanged 回调，报告删除旁路推流地址的状态。",
+        "parameters": [
+            {
+                "url": "待删除的旁路推流地址，格式为 RTMP。该字符长度不能超过 1024 字节。"
+            }
+        ],
+        "returns": ""
+    },
+    {
+        "id": "api_setaudioprofile",
+        "description": "设置音频编码属性。该方法需要在 join_channel 之前设置好， join_channel 之后设置不生效。\n                    通信和直播场景下，音质（码率）会有网络自适应的调整，通过该方法设置的是一个最高码率。\n                    在有高音质需求的场景（例如音乐教学场景）中，建议将 profile 设置为 AUDIO_PROFILE_MUSIC_HIGH_QUALITY(4)，scenario 设置为 AUDIO_SCENARIO_GAME_STREAMING(3)。",
+        "parameters": [
+            {
+                "profile": "设置采样率，码率，编码模式和声道数，详见 AUDIO_CODEC_PROFILE_TYPE。"
+            },
+            {
+                "scenario": "设置音频应用场景，详见 AUDIO_SCENARIO_TYPE。不同的音频场景下，设备的音量类型是不同的。详见如何区分媒体音量和通话音量。"
+            }
+        ],
+        "returns": "0: 方法调用成功\n                 < 0: 方法调用失败"
+    },
+    {
+        "id": "api_setchannelprofile",
+        "description": "设置频道场景。该方法用于设置 Agora 频道的使用场景。Agora SDK 会针对不同的使用场景采用不同的优化策略，如通信场景偏好流畅，直播场景偏好画质。\n            \n                \n                    为保证实时音视频质量，我们建议相同频道内的用户必须使用同一种频道场景。\n                    该方法必须在 join_channel 前调用和进行设置，进入频道后无法再设置。\n                    不同的频道场景下，SDK 的默认音频路由和默认视频编码码率是不同的，详见  和 set_video_encoder_configuration 中的说明。",
+        "parameters": [
+            {
+                "profile": "频道使用场景。详见 CHANNEL_PROFILE_TYPE。"
+            }
+        ],
+        "returns": "0(ERR_OK) 方法调用成功。\n                < 0 方法调用失败。 \n                        -2 (ERR_INVALID_ARGUMENT): 参数无效。\n                        -7(ERR_NOT_INITIALIZED): SDK 尚未初始化。"
+    },
+    {
+        "id": "api_setclientrole1",
+        "description": "设置直播场景下的用户角色。在加入频道前和加入频道后均可调用该方法设置用户角色。\n            如果你在加入频道后调用该方法切换用户角色，调用成功后，本地会触发 onClientRoleChanged 回调；远端会触发 onUserJoined 或 onUserOffline(USER_OFFLINE_BECOME_AUDIENCE) 回调。\n            该方法仅适用于直播场景。",
+        "parameters": [
+            {
+                "role": "直播场景里的用户角色。详见 CLIENT_ROLE_TYPE。"
+            }
+        ],
+        "returns": "0(ERR_OK): 方法调用成功。\n                < 0: 方法调用失败。\n                    \n                        -1(ERR_FAILED): 一般性的错误（未明确归类）。\n                            -2(ERR_INALID_ARGUMENT): 参数无效。\n                            -7(ERR_NOT_INITIALIZED): SDK 尚未初始化。"
+    },
+    {
+        "id": "api_setdefaultmuteallremotevideostreams",
+        "description": "设置是否默认停止接收视频流。setDefaultMuteAllRemoteVideoStreams (true)，会接收不到设置后加入频道的用户的视频流。\n            \n                停止接收视频流后，如果想要恢复接收，请调用 mute_remote_video_stream(false)，并指定你想要接收的远端用户 uid； 如果想恢复接收多个用户的视频流，则需要多次调用 mute_remote_video_stream。setDefaultMuteAllRemoteVideoStreams (false) 只能恢复接收后面加入频道的用户的视频流。",
+        "parameters": [
+            {
+                "mute": "true: 默认停止接收所有远端视频；\n                                false: 默认接收所有远端视频（默认）。"
+            }
+        ],
+        "returns": "0: 方法调用成功\n                < 0: 方法调用失败"
+    },
+    {
+        "id": "api_setlivetranscoding",
+        "description": "设置直播推流。该方法用于旁路推流的视图布局及音频设置等。调用该方法更新转码设置后本地会触发  回调。\n            \n                \n                    在直播场景中，只有角色为主播的用户才能调用该方法。\n                    请确保已开通旁路推流的功能，详见进阶功能《推流到 CDN》中的前提条件。\n                    首次调用该方法更新转码设置时，不会触发 onTranscodingUpdated 回调。\n                    该方法需要在加入频道后调用。\n                    Agora 目前仅支持转码时向 CDN 推送 RTMPS 协议的媒体流。",
+        "parameters": [
+            {
+                "transcoding": "推流设置。详见 。"
+            }
+        ],
+        "returns": "0：方法调用成功。\n                <0：方法调用失败。"
+    },
+    {
+        "id": "api_setlocalrendermode",
+        "description": "更新本地视图显示模式。初始化本地用户视图后，你可以调用该方法更新本地用户视图的渲染和镜像模式。该方法只影响本地用户看到的视频画面，不影响本地发布视频。\n            \n                \n                    请在调用 setup_local_video 方法初始化本地视图后，调用该方法。\n                    你可以在通话中多次调用该方法，多次更新本地用户视图的显示模式。",
+        "parameters": [
+            {
+                "renderMode": "本地视图的渲染模式：RENDER_MODE_TYPE。"
+            },
+            {
+                "mirrorMode": "本地视图的镜像模式：VIDEO_MIRROR_MODE_TYPE。\n                        如果你使用前置摄像头，则 SDK 默认启用本地用户视图镜像模式；如果你使用后置摄像头，则 SDK 默认关闭本地视图镜像模式。"
+            }
+        ],
+        "returns": "0: 方法调用成功。\n                < 0: 方法调用失败。"
+    },
+    {
+        "id": "api_setremoterendermode2",
+        "description": "更新远端视图显示模式。自从\n                    v3.0.0\n                \n            \n            初始化远端用户视图后，你可以调用该方法更新远端用户视图在本地显示时的渲染和镜像模式。该方法只影响本地用户看到的视频画面。\n            \n                \n                    请在调用 setup_remote_video 方法初始化远端视图后，调用该方法。\n                    你可以在通话中多次调用该方法，多次更新远端用户视图的显示模式。",
+        "parameters": [
+            {
+                "userId": "远端用户 ID。"
+            },
+            {
+                "renderMode": "远端用户视图的渲染模式，详见 RENDER_MODE_TYPE。"
+            },
+            {
+                "mirrorMode": "远端用户视图的镜像模式，详见 VIDEO_MIRROR_MODE_TYPE。\n                        默认关闭远端用户的镜像模式。"
+            }
+        ],
+        "returns": "0：方法调用成功。\n                <0：方法调用失败。"
+    },
+    {
+        "id": "api_setuplocalvideo",
+        "description": "初始化本地视图。在 App 开发中，通常在初始化后调用该方法进行本地视频设置，然后再加入频道。退出频道后，绑定仍然有效，如果需要解除绑定，可以指定空(NULL) view 调用该方法。\n        \n            \n                该方法在加入频道前后都能调用。\n                如果你希望在通话中更新本地用户视图的渲染或镜像模式，请使用 set_local_render_mode 方法。",
+        "parameters": [
+            {
+                "canvas": "视频画布信息: VideoCanvas。"
+            }
+        ],
+        "returns": "0：方法调用成功。\n                <0：方法调用失败。"
+    },
+    {
+        "id": "api_setupremotevideo",
+        "description": "初始化远端用户视图。该方法绑定远端用户和显示视图，并设置远端用户视图在本地显示时的渲染模式和镜像模式，只影响本地用户看到的视频画面。\n            调用该接口时需要指定远端视频的 uid，一般可以在进频道前提前设置好。\n            如果 App 不能事先知道对方的 uid，可以在 App 收到 onUserJoined 事件时设置。如果启用了视频录制功能，视频录制服务会做为一个哑客户端加入频道，因此其他客户端也会收到它的 onUserJoined 事件，App 不应给它绑定视图（因为它不会发送视频流）。如果 App 不能识别哑客户端，可以在 onFirstRemoteVideoDecoded 事件时再绑定视图。 解除某个用户的绑定视图可以把 view 设置为空。退出频道后，SDK 会把远端用户的绑定关系清除掉。\n            如果你希望在通话中更新远端用户视图的渲染或镜像模式，请使用 setRemoteRenderMode 方法。",
+        "parameters": [
+            {
+                "canvas": "视频画布信息。详见 VideoCanvas。"
+            }
+        ],
+        "returns": "0：方法调用成功。\n                <0：方法调用失败。"
+    },
+    {
+        "id": "api_setvideoencoderconfiguration",
+        "description": "设置视频编码属性。设置本地视频的编码属性。\n            该方法在加入频道前后都能调用。",
+        "parameters": [
+            {
+                "config": "视频编码参数配置。详见 VideoEncoderConfiguration。"
+            }
+        ],
+        "returns": "0: 方法调用成功\n                < 0: 方法调用失败"
+    },
+    {
+        "id": "api_startpreview",
+        "description": "开启视频预览。该方法用于在进入频道前启动本地视频预览。调用该 API 前，必须：\n            \n                调用 setup_local_video 设置预览窗口及属性；\n                调用 enable_video 开启视频功能。\n            \n            启用了本地视频预览后，如果调用 leave_channel退出频道，本地预览依然处于启动状态，如需要关闭本地预览，需要调用 stop_preview。",
+        "parameters": [],
+        "returns": "0：方法调用成功。\n                <0：方法调用失败。"
+    },
+    {
+        "id": "api_stoppreview",
+        "description": "停止视频预览。",
+        "parameters": [],
+        "returns": "0：方法调用成功。\n                <0：方法调用失败。"
+    },
+    {
+        "id": "class_livetranscoding",
+        "description": "管理旁路推流配置的类。",
+        "parameters": [
+            {
+                "width": "推流视频的总宽度，默认值 360，单位为像素。\n                    \n                        如果推视频流，width 值不得低于 64，否则 Agora 会调整为 64。\n                        如果推音频流，请将 width 和 height 设为 0。"
+            },
+            {
+                "height": "推流视频的总高度，默认值 640，单位为像素。\n                        \n                            如果推视频流，height 值不得低于 64，否则 Agora 会调整为 64。\n                            如果推音频流，请将 width 和 height 设为 0。"
+            },
+            {
+                "videoBitrate": "用于旁路推流的输出视频的码率。 单位为 Kbps。 400 Kbps 为默认值。用户可以根据 Video Profile 参考表中的码率值进行设置；如果设置的码率超出合理范围，Agora 服务器会在合理区间内自动调整码率值。"
+            },
+            {
+                "videoFrameRate": "用于旁路推流的输出视频的帧率。取值范围是 (0,30]，单位为 fps。15 fps 为默认值。\n                        Agora 会将所有高于 30 fps 的帧率统一设为 30 fps。"
+            },
+            {
+                "lowLatency": "弃用\n                                该属性自 v2.8.0 起废弃，Agora 不推荐使用。\n                            \n                        \n                        \n                            true: 低延时，不保证画质。\n                            false:（默认值）高延时，保证画质。"
+            },
+            {
+                "videoGop": "用于旁路直播的输出视频的 GOP。单位为帧。默认值为 30 fps。"
+            },
+            {
+                "videoCodecProfile": "用于旁路推流的输出视频的编码规格，详见 VIDEO_CODEC_PROFILE_TYPE。\n                    如果你将这个参数设为其他值，Agora 会将其设为默认值 100。"
+            },
+            {
+                "backgroundColor": "用于旁路直播的输出视频的背景色，格式为 RGB 定义下的十六进制整数，不要带 # 号，如 0xFFB6C1 表示浅粉色。默认 0x000000，黑色。"
+            },
+            {
+                "userCount": "参与合图的用户数量，默认 0。"
+            },
+            {
+                "transcodingUsers": "用于管理参与旁路直播的音视频转码合图的用户，详见 transcodingUser。最多支持 17 个用户。"
+            },
+            {
+                "transcodingExtraInfo": "预留参数：用户自定义的发送到旁路推流客户端的信息。用于填充 H.264/H.265 视频中 SEI 帧内容。长度限制 4096 字节。关于 SEI 的详细信息，详见 SEI 帧相关问题。"
+            },
+            {
+                "metadata": "弃用：\n                                该属性已废弃。\n                            \n                        \n                        发送给 CDN 客户端的 metadata。"
+            },
+            {
+                "watermark": "用于旁路直播的输出视频上的水印图片。水印图片的定义详见 RtcImage。添加后所有旁路直播的观众都可以看到水印。必须为 PNG 格式。"
+            },
+            {
+                "backgroundImage": "用于旁路直播的输出视频上的背景图片。背景图片的定义详见 RtcImage。添加后所有旁路直播的观众都可以看到背景图片。"
+            },
+            {
+                "audioSampleRate": "自定义音频采样率，详见 AUDIO_SAMPLE_RATE_TYPE。"
+            },
+            {
+                "audioBitrate": "用于旁路推流的输出音频的码率。单位为 Kbps，默认值为 48，最大值为 128。"
+            },
+            {
+                "audioChannels": "用于旁路推流的输出音频的声道数，默认值为 1。取值范围为 [1,5] 中的整型，建议取 1 或 2：\n                        \n                        1: 单声道（默认）\n                        2: 双声道\n                        3: 三声道\n                        4: 四声道\n                        5: 五声道"
+            },
+            {
+                "audioCodecProfile": "用于旁路推流的输出视频的编码规格，详见 AUDIO_CODEC_PROFILE_TYPE。"
+            }
+        ],
+        "returns": ""
+    },
+    {
+        "id": "class_rtcengine",
+        "description": "Agora Native SDK 的基础接口类，包含应用程序调用的主要方法。AgoraRtcEngine 是 Agora Native SDK 的基础接口类，提供 Agora 实时音视频的主要功能。",
+        "parameters": [],
+        "returns": ""
+    },
+    {
+        "id": "class_rtcengineeventhandler",
+        "description": "接口类的所有方法都有缺省（空）实现， app 可以根据需要只继承关心的事件。在回调方法中，app 不应该做耗时或者调用可能会引起阻塞的 API（如\n            sendMessage），否则可能影响 SDK 的运行。",
+        "parameters": [],
+        "returns": ""
+    },
+    {
+        "id": "class_rtcimage",
+        "description": "图像属性。用于设置直播视频的水印和背景图片的属性。",
+        "parameters": [
+            {
+                "url": "直播视频上图片的 HTTP/HTTPS 地址。字符长度不得超过 1024 字节。"
+            },
+            {
+                "x": "水印或背景图片在视频帧左上角的横轴坐标。"
+            },
+            {
+                "y": "水印或背景图片在视频帧左上角的纵轴坐标。"
+            },
+            {
+                "width": "水印或背景图片在视频帧上的宽度。"
+            },
+            {
+                "height": "水印或背景图片在视频帧上的高度。"
+            }
+        ],
+        "returns": ""
+    },
+    {
+        "id": "class_transcodinguser",
+        "description": "管理参与旁路直播的音视频转码的用户。",
+        "parameters": [
+            {
+                "uid": ""
+            },
+            {
+                "x": "屏幕里该区域相对左上角的横坐标绝对值 (pixel)。取值范围为转码配置（LiveTranscoding）定义中设置的 [0,width]。"
+            }
+        ],
+        "returns": ""
+    },
+    {
+        "id": "class_videocanvas",
+        "description": "",
+        "parameters": [
+            {
+                "view": "视频显示窗口 (view)。"
+            },
+            {
+                "renderMode": "视频渲染模式，详见 RENDER_MODE_TYPE。"
+            },
+            {
+                "channelId": "自从\n                                v3.0.0\n                            \n                        \n                        能标识频道的频道名，长度在 64 字节以内的字符。以下为支持的字符集范围（共 89 个字符）：\n                            \n                                26 个小写英文字母 a~z；\n                                26 个大写英文字母 A~Z；\n                                10 个数字 0~9；\n                                空格；\n                                \"!\"、\"#\"、\"$\"、\"%\"、\"&\"、\"(\"、\")\"、\"+\"、\"-\"、\":\"、\";\"、\"<\"、\"=\"、\".\"、\">\"、\"?\"、\"@\"、\"[\"、\"]\"、\"^\"、\"_\"、\" {\"、\"}\"、\"|\"、\"~\"、\",\"。\n                            \n                            \n                                \n                                    该参数默认值为空字符 \"\"。如果用户是通过 AgoraRtcEngine 类的 join_channel 方法加入频道的，则将参数设为默认值，表示该用户在频道内的渲染视图。\n                                    如果用户是通过  类的 join_channel 方法加入频道的，则将该参数设为该 AgoraRtcChannel 类对应的 channelId，表示该用户在该 channelId 对应频道内的渲染视图。"
+            },
+            {
+                "uid": "用户 ID。"
+            },
+            {
+                "mirrorMode": "自从\n                                v3.0.0\n                            \n                        \n                        视图镜像模式，详见 VIDEO_MIRROR_MODE_TYPE。\n                            \n                                \n                                    本地视图镜像模式：\n                                        \n                                            如果你使用前置摄像头，默认启动本地视图镜像模式。\n                                            如果你使用后置摄像头，默认关闭本地视图镜像模式。\n                                        \n                                    \n                                    远端用户视图镜像模式：默认关闭远端用户的镜像模式。"
+            }
+        ],
+        "returns": ""
+    },
+    {
+        "id": "class_videodimensions",
+        "description": "视频尺寸。",
+        "parameters": [
+            {
+                "width": "视频宽度，单位为像素。"
+            },
+            {
+                "height": "视频高度，单位为像素。"
+            }
+        ],
+        "returns": ""
+    },
+    {
+        "id": "class_videoencoderconfiguration",
+        "description": "视频编码器配置的属性。",
+        "parameters": [
+            {
+                "dimensions": "视频编码的分辨率（px），详见 VideoDimensions。用于衡量编码质量，以长 × 宽表示，默认值为 640 × 360。用户可以自行设置分辨率。"
+            },
+            {
+                "frameRate": "视频编码的帧率，详见 FRAME_RATE。默认值为 15。"
+            },
+            {
+                "minFramerate": "视频的最小帧率。默认值为 -1。"
+            },
+            {
+                "bitrate": "视频编码码率，单位为 Kbps。\n                        你可以根据场景需要参照下表手动设置你想要的码率。若设置的视频码率超出合理范围，SDK 会自动按照合理区间处理码率。你也可以直接选择如下任意一种模式进行设置：\n                        \n                             : (推荐)\n                                标准码率模式。该模式下，视频在通信和直播场景下的码率有所不同：通信场景下，码率与基准码率一致；直播场景下，码率对照基准码率翻倍。 \n                            \n                                :适配码率模式。该模式下，视频在通信和直播场景下的码率均与基准码率一致。直播下如果选择该模式，视频帧率可能会低于设置的值。\n                            \n                        \n                        Agora 在通信和直播场景下采用不同的编码方式，以提升不同场景下的用户体验。通信场景保证流畅，而直播场景则更注重画面质量，因此直播场景对码率的需求大于通信场景。所以声网推荐将该参数设置为\n                            。\n                        \n                            \n                                \n                                \n                                \n                                \n                                \n                                    \n                                        分辨率\n                                        帧率（fps）\n                                        通信码率（Kbps）\n                                        直播码率（Kbps）\n                                    \n                                \n                                \n                                    \n                                        160 × 120\n                                        15\n                                        65\n                                        130\n                                    \n                                    \n                                        120 × 120\n                                        15\n                                        50\n                                        100\n                                    \n                                    \n                                        320 × 180\n                                        15\n                                        140\n                                        280\n                                    \n                                    \n                                        180 × 180\n                                        15\n                                        100\n                                        200\n                                    \n                                    \n                                        240 × 180\n                                        15\n                                        120\n                                        240\n                                    \n                                    \n                                        320 × 240\n                                        15\n                                        200\n                                        400\n                                    \n                                    \n                                        240 × 240\n                                        15\n                                        140\n                                        280\n                                    \n                                    \n                                        424 × 240\n                                        15\n                                        220\n                                        440\n                                    \n                                    \n                                        640 × 360\n                                        15\n                                        400\n                                        800\n                                    \n                                    \n                                        360 × 360\n                                        15\n                                        260\n                                        520\n                                    \n                                    \n                                        640 × 360\n                                        30\n                                        600\n                                        1200\n                                    \n                                    \n                                        360 × 360\n                                        30\n                                        400\n                                        800\n                                    \n                                    \n                                        480 × 360\n                                        15\n                                        320\n                                        640\n                                    \n                                    \n                                        480 × 360\n                                        30\n                                        490\n                                        980\n                                    \n                                    \n                                        640 × 480\n                                        15\n                                        500\n                                        1000\n                                    \n                                    \n                                        480 × 480\n                                        15\n                                        400\n                                        800\n                                    \n                                    \n                                        640 × 480\n                                        30\n                                        750\n                                        1500\n                                    \n                                    \n                                        480 × 480\n                                        30\n                                        600\n                                        1200 \n                                    \n                                    \n                                        848 × 480\n                                        15\n                                        610\n                                        1220\n                                    \n                                    \n                                        848 × 480 \n                                        30\n                                        930\n                                        1860\n                                    \n                                    \n                                        640 × 480\n                                        10\n                                        400\n                                        800\n                                    \n                                    \n                                        1280 × 720\n                                        15\n                                        1130\n                                        2260\n                                    \n                                    \n                                        1280 × 720 \n                                        30\n                                        1710\n                                        3420\n                                    \n                                    \n                                        960 × 720\n                                        15\n                                        910\n                                        1820\n                                    \n                                    \n                                        960 × 720\n                                        30\n                                        1380\n                                        2760\n                                    \n                                    \n                                        1920 × 1080\n                                        15\n                                        2080\n                                        4160\n                                    \n                                    \n                                        1920 × 1080\n                                        30\n                                        3150\n                                        6300\n                                    \n                                    \n                                        1920 × 1080\n                                        60 \n                                        4780\n                                        6500\n                                    \n                                    \n                                        2560 × 1440\n                                        30\n                                        4850\n                                        6500\n                                    \n                                    \n                                        2560 × 1440 \n                                        60\n                                        6500\n                                        6500\n                                    \n                                    \n                                        3840 × 2160 \n                                        30\n                                        6500\n                                        6500\n                                    \n                                    \n                                        3840 × 2160 \n                                        60\n                                        6500\n                                        6500\n                                    \n                                \n                            \n                        \n                        该表中的基准码率适用于通信场景。直播场景下通常需要较大码率来提升视频质量。声网推荐通过设置  模式来实现。你也可以直接将码率值设为基准码率值 × 2。"
+            },
+            {
+                "minBitrate": "最低编码码率，单位为 Kbps。\n                        SDK 会根据网络状况自动调整视频编码码率。将参数设为高于默认值可强制视频编码器输出高质量图片，但在网络状况不佳情况下可能导致网络丢包并影响视频播放的流畅度造成卡顿。因此如非对画质有特殊需求，声网建议不要修改该参数的值。\n                        该参数仅适用于直播场景。"
+            },
+            {
+                "orientationMode": "视频编码的方向模式，详见 ORIENTATION_MODE。"
+            },
+            {
+                "degradationPreference": "带宽受限时，视频编码降级偏好。详见 DEGRADATION_PREFERENCE 。"
+            },
+            {
+                "mirrorMode": "自从\n                                v3.3.0\n                            \n                        \n                        \n                            设置本地发送视频的镜像模式，只影响远端用户看到的视频画面。详见 VIDEO_MIRROR_MODE_TYPE。\n                        \n                        默认关闭镜像模式。"
+            }
+        ],
+        "returns": ""
+    },
+    {
+        "id": "enum_audiocodecprofiletype",
+        "description": "用于旁路推流的输出音频的编解码规格，默认为 LC-AAC。",
+        "parameters": [
+            {
+                "AUDIO_CODEC_PROFILE_LC_AAC": "0: LC-AAC 规格，表示基本音频编码规格。"
+            },
+            {
+                "AUDIO_CODEC_PROFILE_HE_AAC": "1: HE-AAC 规格，表示高效音频编码规格。"
+            }
+        ],
+        "returns": ""
+    },
+    {
+        "id": "enum_audiosampleratetype",
+        "description": "用于旁路推流的输出音频的采样率。",
+        "parameters": [
+            {
+                "AUDIO_SAMPLE_RATE_32000": "32000: 32 kHz"
+            },
+            {
+                "AUDIO_SAMPLE_RATE_44100": "44100: 44.1 kHz"
+            },
+            {
+                "AUDIO_SAMPLE_RATE_48000": "48000: 48 kHz"
+            }
+        ],
+        "returns": ""
+    },
+    {
+        "id": "enum_audioscenariotype",
+        "description": "设置音频应用场景。",
+        "parameters": [
+            {
+                "AUDIO_SCENARIO_DEFAULT": "0: 默认的音频应用场景。"
+            },
+            {
+                "AUDIO_SCENARIO_CHATROOM_ENTERTAINMENT": "1: 娱乐场景，适用于用户需要频繁上下麦的场景。"
+            },
+            {
+                "AUDIO_SCENARIO_EDUCATION": "2: 教育场景，适用于需要高流畅度和稳定性的场景。"
+            },
+            {
+                "AUDIO_SCENARIO_GAME_STREAMING": "3: 高音质语聊房场景，适用于音乐为主的场景。"
+            },
+            {
+                "AUDIO_SCENARIO_SHOWROOM": "4: 秀场场景，适用于需要高音质的单主播场景。"
+            },
+            {
+                "AUDIO_SCENARIO_CHATROOM_GAMING": "5: 游戏开黑场景，适用于只有人声的场景。"
+            },
+            {
+                "AUDIO_SCENARIO_IOT": "6: IoT（物联网）场景，适用于使用低功耗 IoT 设备的场景。"
+            },
+            {
+                "AUDIO_SCENARIO_MEETING": "自从\n                                v3.2.0\n                            \n                        \n                        8: 会议场景，适用于人声为主的多人会议。"
+            },
+            {
+                "AUDIO_SCENARIO_NUM": "枚举的数量。"
+            }
+        ],
+        "returns": ""
+    },
+    {
+        "id": "enum_channelprofiletype",
+        "description": "频道使用场景。",
+        "parameters": [
+            {
+                "CHANNEL_PROFILE_COMMUNICATION": "0: （默认）通信场景。该场景下，频道内所有用户都可以发布和接收音、视频流。适用于语音通话、视频群聊等应用场景。"
+            },
+            {
+                "CHANNEL_PROFILE_LIVE_BROADCASTING": "1: 直播场景。该场景有主播和观众两种用户角色，可以通过 set_client_role 设置。主播可以发布和接收音视频流，观众直接接收流。适用于语聊房、视频直播、互动大班课等应用场景。"
+            },
+            {
+                "CHANNEL_PROFILE_GAME": "2: 游戏语音场景。该场景默认使用低功耗低码率的编解码器，且频道内任何用户都可以自由发言，适用于游戏场景。\n                        Agora 不推荐使用该场景。"
+            }
+        ],
+        "returns": ""
+    },
+    {
+        "id": "enum_clientroletype",
+        "description": "直播场景里的用户角色。",
+        "parameters": [
+            {
+                "CLIENT_ROLE_BROADCASTER": "1: 主播。主播可以发流也可以收流。"
+            },
+            {
+                "CLIENT_ROLE_AUDIENCE": "2:（默认）观众。观众只能收流不能发流。"
+            }
+        ],
+        "returns": ""
+    },
+    {
+        "id": "enum_degradationpreference",
+        "description": "带宽受限时的视频编码降级偏好。",
+        "parameters": [
+            {
+                "MAINTAIN_QUALITY": "0：（默认）降低编码帧率以保证视频质量。"
+            },
+            {
+                "MAINTAIN_FRAMERATE": "1：降低视频质量以保证编码帧率。"
+            },
+            {
+                "MAINTAIN_BALANCED": "2：预留参数，暂不支持。"
+            }
+        ],
+        "returns": ""
+    },
+    {
+        "id": "enum_framerate",
+        "description": "视频帧率。",
+        "parameters": [
+            {
+                "FRAME_RATE_FPS_1": "1: 1 fps"
+            },
+            {
+                "FRAME_RATE_FPS_7": "7: 7 fps"
+            },
+            {
+                "FRAME_RATE_FPS_10": "10: 10 fps"
+            },
+            {
+                "FRAME_RATE_FPS_15": "15: 15 fps"
+            },
+            {
+                "FRAME_RATE_FPS_24": "24: 24 fps"
+            },
+            {
+                "FRAME_RATE_FPS_30": "30: 30 fps"
+            }
+        ],
+        "returns": ""
+    },
+    {
+        "id": "enum_orientationmode",
+        "description": "视频编码的方向模式。",
+        "parameters": [
+            {
+                "ORIENTATION_MODE_ADAPTIVE": "0: （默认）该模式下 SDK 输出的视频方向与采集到的视频方向一致。接收端会根据收到的视频旋转信息对视频进行旋转。该模式适用于接收端可以调整视频方向的场景。\n                        \n                            如果采集的视频是横屏模式，则输出的视频也是横屏模式。\n                            如果采集的视频是竖屏模式，则输出的视频也是竖屏模式。"
+            },
+            {
+                "ORIENTATION_FIXED_LANDSCAPE": "1: 该模式下 SDK 固定输出风景（横屏）模式的视频。如果采集到的视频是竖屏模式，则视频编码器会对其进行裁剪。该模式适用于当接收端无法调整视频方向时，如使用旁路推流场景下。"
+            },
+            {
+                "ORIENTATION_FIXED_PORTRAIT": "2: 该模式下 SDK 固定输出人像（竖屏）模式的视频，如果采集到的视频是横屏模式，则视频编码器会对其进行裁剪。该模式适用于当接收端无法调整视频方向时，如使用旁路推流场景下。"
+            }
+        ],
+        "returns": ""
+    },
+    {
+        "id": "enum_remotevideostate",
+        "description": "远端视频流状态。",
+        "parameters": [
+            {
+                "REMOTE_VIDEO_STATE_STOPPED": "0: 远端视频默认初始状态。在 \n        \n            \n                REMOTE_VIDEO_STATE_REASON_LOCAL_MUTED\n            \n        \n    、 \n        \n            \n                REMOTE_VIDEO_STATE_REASON_REMOTE_MUTED\n            \n        \n     或\n                        \n        \n            \n                REMOTE_VIDEO_STATE_REASON_REMOTE_OFFLINE\n            \n        \n     的情况下，会报告该状态。"
+            },
+            {
+                "REMOTE_VIDEO_STATE_STARTING": "1: 本地用户已接收远端视频首包。"
+            },
+            {
+                "REMOTE_VIDEO_STATE_DECODING": "2: 远端视频流正在解码，正常播放。在 \n        \n            \n                REMOTE_VIDEO_STATE_REASON_NETWORK_RECOVERY\n            \n        \n    、 \n        \n            \n                REMOTE_VIDEO_STATE_REASON_LOCAL_UNMUTED\n            \n        \n    、 \n        \n            \n                REMOTE_VIDEO_STATE_REASON_REMOTE_UNMUTED\n            \n        \n     或 \n        \n            \n                REMOTE_VIDEO_STATE_REASON_AUDIO_FALLBACK_RECOVERY\n            \n        \n     的情况下， 会报告该状态。"
+            },
+            {
+                "REMOTE_VIDEO_STATE_FROZEN": "3: 远端视频流卡顿。在 \n        \n            \n                REMOTE_VIDEO_STATE_REASON_NETWORK_CONGESTION\n            \n        \n     或 \n        \n            \n                REMOTE_VIDEO_STATE_REASON_AUDIO_FALLBACK\n            \n        \n     的情况下，会报告该状态。"
+            },
+            {
+                "REMOTE_VIDEO_STATE_FAILED": "4: 远端视频流播放失败。在 \n        \n            \n                REMOTE_VIDEO_STATE_REASON_INTERNAL\n            \n        \n     的情况下，会报告该状态。"
+            }
+        ],
+        "returns": ""
+    },
+    {
+        "id": "enum_remotevideostatereason",
+        "description": "远端视频流状态切换原因。",
+        "parameters": [
+            {
+                "REMOTE_VIDEO_STATE_REASON_INTERNAL": "0: 视频状态发生改变时，会报告该原因。"
+            },
+            {
+                "REMOTE_VIDEO_STATE_REASON_NETWORK_CONGESTION": "1: 网络阻塞。"
+            },
+            {
+                "REMOTE_VIDEO_STATE_REASON_NETWORK_RECOVERY": "2: 网络恢复正常。"
+            },
+            {
+                "REMOTE_VIDEO_STATE_REASON_LOCAL_MUTED": "3: 本地用户停止接收远端视频流或本地用户禁用视频模块。"
+            },
+            {
+                "REMOTE_VIDEO_STATE_REASON_LOCAL_UNMUTED": "4: 本地用户恢复接收远端视频流或本地用户启动视频模块。"
+            },
+            {
+                "REMOTE_VIDEO_STATE_REASON_REMOTE_MUTED": "5: 远端用户停止发送视频流或远端用户禁用视频模块。"
+            },
+            {
+                "REMOTE_VIDEO_STATE_REASON_REMOTE_UNMUTED": "6: 远端用户恢复发送视频流或远端用户启用视频模块。"
+            },
+            {
+                "REMOTE_VIDEO_STATE_REASON_REMOTE_OFFLINE": "7: 远端用户离开频道。"
+            },
+            {
+                "REMOTE_VIDEO_STATE_REASON_AUDIO_FALLBACK": "8: 弱网情况下，远端音视频流回退为音频流。"
+            },
+            {
+                "REMOTE_VIDEO_STATE_REASON_AUDIO_FALLBACK_RECOVERY": "9: 网络情况改善时，远端音频流恢复为音视频流。"
+            }
+        ],
+        "returns": ""
+    },
+    {
+        "id": "enum_rendermodetype",
+        "description": "视频显示模式。",
+        "parameters": [
+            {
+                "RENDER_MODE_HIDDEN": "1: 视频尺寸等比缩放。优先保证视窗被填满。因视频尺寸与显示视窗尺寸不一致而多出的视频将被截掉。"
+            },
+            {
+                "RENDER_MODE_FIT": "2: 视频尺寸等比缩放。优先保证视频内容全部显示。因视频尺寸与显示视窗尺寸不一致造成的视窗未被填满的区域填充黑色。"
+            },
+            {
+                "RENDER_MODE_ADAPTIVE": "3: 该模式已弃用。"
+            },
+            {
+                "RENDER_MODE_FILL": "4: 视频尺寸进行缩放和拉伸以充满显示视窗。"
+            }
+        ],
+        "returns": ""
+    },
+    {
+        "id": "enum_videocodecprofiletype",
+        "description": "用于旁路推流的输出视频的编解码规格。",
+        "parameters": [
+            {
+                "VIDEO_CODEC_PROFILE_BASELINE": "66: Baseline 级别的视频编码规格，一般用于低阶或需要额外容错的应用，比如视频通话、手机视频等。"
+            },
+            {
+                "VIDEO_CODEC_PROFILE_MAIN": "77: Main 级别的视频编码规格，一般用于主流消费类电子产品，如 mp4、便携的视频播放器、PSP 和 iPad 等。"
+            },
+            {
+                "VIDEO_CODEC_PROFILE_HIGH": "100: （默认）High 级别的视频编码规格，一般用于广播及视频碟片存储，高清电视。"
+            }
+        ],
+        "returns": ""
+    },
+    {
+        "id": "enum_videomirrormodetype",
+        "description": "镜像模式类型。",
+        "parameters": [
+            {
+                "VIDEO_MIRROR_MODE_AUTO": "0:（默认）由 SDK 决定镜像模式。"
+            },
+            {
+                "VIDEO_MIRROR_MODE_ENABLED": "1: 启用镜像模式。"
+            },
+            {
+                "VIDEO_MIRROR_MODE_DISABLED": "2: 关闭镜像模式。"
+            }
+        ],
+        "returns": ""
+    }
+]

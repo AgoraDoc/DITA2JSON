@@ -1,0 +1,11 @@
+{
+    "id": "api_destroyrenderer",
+    "name": "destroyRenderer",
+    "description": "Destroys the video renderer.You can call this method to destroy the video renderer after calling setView.",
+    "parameters": [
+        {
+            "user": "The user of the video. See User."
+        }
+    ],
+    "returns": ""
+}

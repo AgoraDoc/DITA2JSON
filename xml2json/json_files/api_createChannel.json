@@ -1,0 +1,11 @@
+{
+    "id": "api_createChannel",
+    "name": "createChannel",
+    "description": "Creates and gets an AgoraRtcChannel object.You can call this method multiple times to create multiple AgoraRtcChannel objects,\n                and then call the joinChannel methods of each AgoraRtcChannel to join multiple channels at the same time.\n   After joining multiple channels, you can simultaneously subscribe to the the audio and video streams of all the channels, but publish a stream in only one channel at one time.",
+    "parameters": [
+        {
+            "channelId": "\n      The name of the channel. This parameter signifies the channel in which users engage in real-time audio and video interaction. Under the premise of the same App ID, users who fill in the same channel name enter the same channel for audio and video interaction. The string length must be less than 64 bytes. Supported characters:\n     All lowercase English letters: a to z.\n     All uppercase English letters: A to Z.\n     All numeric characters: 0 to 9.\n     Space\n     \"!\"、\"#\"、\"$\"、\"%\"、\"&\"、\"(\"、\")\"、\"+\"、\"-\"、\":\"、\";\"、\"<\"、\"=\"、\".\"、\">\"、\"?\"、\"@\"、\"[\"、\"]\"、\"^\"、\"_\"、\"{\"、\"}\"、\"|\"、\"~\"、\",\"\n \n  \n \n     The parameter does not have a default value. You must set it.\n     Do not set this parameter as the empty string \"\". Otherwise, the SDK returns ERR_REFUSED(5).\n \n      \n  "
+        }
+    ],
+    "returns": "A pointer to the AgoraRtcChannel instance, if the method call succeeds.\n       If the call fails, returns null."
+}

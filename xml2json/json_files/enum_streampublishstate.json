@@ -1,0 +1,20 @@
+{
+    "id": "enum_streampublishstate",
+    "name": "STREAM_PUBLISH_STATE",
+    "description": "The publishing state.",
+    "parameters": [
+        {
+            "PUB_STATE_IDLE": "0: The initial publishing state after joining the channel."
+        },
+        {
+            "PUB_STATE_NO_PUBLISHED": "\n      1: Fails to publish the local stream. Possible reasons:\n The local user calls muteLocalAudioStream(true) or muteLocalVideoStream(true) to stop sending the local media stream.\n The local user calls disableAudio or disableVideo to disable the local audio or video module.\n The local user calls enableLocalAudio(false) or enableLocalVideo(false) to disable the local audio or video capture.\n     The role of the local user is audience.\n \n  "
+        },
+        {
+            "PUB_STATE_PUBLISHING": "2: Publishing."
+        },
+        {
+            "PUB_STATE_PUBLISHED": "3: Publishes successfully."
+        }
+    ],
+    "returns": ""
+}

@@ -1,0 +1,7 @@
+{
+    "id": "api_videosourcerelease",
+    "name": "videoSourceRelease",
+    "description": "Releases the videoSource object.A method for the second instance.",
+    "parameters": [],
+    "returns": "0: Success.\n                < 0: Failure."
+}

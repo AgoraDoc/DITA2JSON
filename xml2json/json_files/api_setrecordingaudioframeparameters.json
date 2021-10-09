@@ -1,0 +1,20 @@
+{
+    "id": "api_setrecordingaudioframeparameters",
+    "name": "setRecordingAudioFrameParameters",
+    "description": "Sets the format of the captured raw audio\n        data.After calling registerPlugin to register a plugin and get the captured raw audio data, you can call this method to set the sample rate and number of audio channels of the raw data returned by the SDK.\n            \n                \n                    Ensure that you call this method before joining a channel.\n                    The SDK calculates the sampling interval based on the\n                            samplesPerCall, sampleRate and\n                            channel parameters set in this\n                            method.Sample interval (sec) =\n                            samplePerCall/(sampleRate × channel). Ensure that the\n                        sample interval ≥ 0.01 (s).",
+    "parameters": [
+        {
+            "sampleRate": "The sample rate returned in the callback, which can be set as 8000, 16000, 32000, 44100, or 48000 Hz."
+        },
+        {
+            "channel": "The number of channels returned by the SDK. You can set is as 1 or 2:\n                                1: Mono.\n                                2: Stereo.\n                            "
+        },
+        {
+            "mode": "The use mode of the returned data, see RAW_AUDIO_FRAME_OP_MODE_TYPE."
+        },
+        {
+            "samplesPerCall": "The number of samples returned by the SDK. Usually set as 1024 for RTMP or RTMPS streaming."
+        }
+    ],
+    "returns": "0: Success.\n                < 0: Failure."
+}

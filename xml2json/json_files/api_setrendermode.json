@@ -1,0 +1,11 @@
+{
+    "id": "api_setrendermode",
+    "name": "setRenderMode",
+    "description": "Sets the rendering mode.",
+    "parameters": [
+        {
+            "mode": "The rendering mode. See RENDER_MODE."
+        }
+    ],
+    "returns": ""
+}

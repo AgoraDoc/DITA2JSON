@@ -1,0 +1,11 @@
+{
+    "id": "api_videosourceenablelocalaudio",
+    "name": "videoSourceEnableLocalAudio",
+    "description": "Disables/Re-enables the local audio function.A method for the second instance.\n            This method disables or re-enables the local audio function to stop or restart local audio capturing.\n            This method does not affect receiving or playing the remote audio streams, and videoSourceEnableLocalAudio(false) applies to scenarios where the user wants to receive remote audio streams without sending any audio stream to other users in the channel.",
+    "parameters": [
+        {
+            "enabled": "\n      true: (Default) Re-enable the local audio function, that is, to start the local audio capturing device (for example, the microphone).\n      false: Disable the local audio function, that is, to stop local audio capturing.\n       \n  "
+        }
+    ],
+    "returns": "0: Success.\n       < 0: Failure."
+}

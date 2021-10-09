@@ -1,0 +1,20 @@
+{
+    "id": "api_oncameraexposureareachanged",
+    "name": "CAMERA_EXPOSURE_AREA_CHANGED",
+    "description": "Occurs when the camera exposure area changes.",
+    "parameters": [
+        {
+            "x": "The x coordinate of the changed camera exposure area."
+        },
+        {
+            "y": "The y coordinate of the changed camera exposure area."
+        },
+        {
+            "width": "The width of the changed camera exposure area."
+        },
+        {
+            "height": "The height of the changed exposure area."
+        }
+    ],
+    "returns": ""
+}

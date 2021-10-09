@@ -1,0 +1,14 @@
+{
+    "id": "enum_clientroletype",
+    "name": "CLIENT_ROLE_TYPE",
+    "description": "The user role in the interactive live streaming.",
+    "parameters": [
+        {
+            "CLIENT_ROLE_BROADCASTER": "1: Host. A host can both send and receive streams."
+        },
+        {
+            "CLIENT_ROLE_AUDIENCE": "2: (Default) Audience. An audience member can only receive streams."
+        }
+    ],
+    "returns": ""
+}

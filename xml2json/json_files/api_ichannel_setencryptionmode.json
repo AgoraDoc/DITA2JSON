@@ -1,0 +1,11 @@
+{
+    "id": "api_ichannel_setencryptionmode",
+    "name": "setEncryptionMode",
+    "description": "Sets the built-in encryption mode.The Agora SDK supports built-in encryption. The default encryption is AES-128-XTS. Call this method to use other encryption modes. All users in the same channel must use the same encryption mode and secret. Refer to the information related to the AES encryption algorithm on the differences between the encryption modes.\n   \n       \n  Deprecated:\n  Deprecated as of v3.1.0. Please use the enableEncryption method instead.\n       \n   \n   Before calling this method, please call setEncryptionSecret to enable the built-in encryption function.",
+    "parameters": [
+        {
+            "encryptionMode": "\n      Encryption mode.\n     \"aes-128-xts\": (Default) 128-bit AES encryption, XTS mode.\n     \"aes-128-ecb\": 128-bit AES encryption, ECB mode.\n     \"aes-256-xts\": 256-bit AES encryption, XTS mode.\n     \"\": When setting as an empty string, the encryption mode is set as\n                                        \"aes-128-xts\" by default.\n \n      \n  "
+        }
+    ],
+    "returns": "0: Success.\n       < 0: Failure."
+}

@@ -1,0 +1,17 @@
+{
+    "id": "api_ichannel_onclientrolechanged",
+    "name": "CLIENT_ROLE_CHANGED",
+    "description": "Occurs when the user role switches in the interactive live streaming.The SDK triggers this callback when the local user uses the setClientRole method to change the user role after joining the channel.",
+    "parameters": [
+        {
+            "newRole": "Role that the user switches to: CLIENT_ROLE_TYPE."
+        },
+        {
+            "oldRole": "Role that the user switches from: CLIENT_ROLE_TYPE."
+        },
+        {
+            "rtcChannel": "AgoraRtcChannel."
+        }
+    ],
+    "returns": ""
+}

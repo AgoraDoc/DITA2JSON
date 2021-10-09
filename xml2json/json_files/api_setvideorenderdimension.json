@@ -1,0 +1,20 @@
+{
+    "id": "api_setvideorenderdimension",
+    "name": "setVideoRenderDimension",
+    "description": "Sets the rendering resolution of the local video in the JavaScript layer.The Agora SDK automatically controls the video rendering in the JavaScript layer. If the display resolution is too low, you can call this method to adjust the resolution.\n            \n                \n                    This method affects only the local display.\n                    To ensure the video quality, adjust the video resolution accordingly when you set the frame rate. See setVideoRenderFPS.",
+    "parameters": [
+        {
+            "user": "The user of the video. See User."
+        },
+        {
+            "width": "Width (pixel) of the video frame. The default value is 360."
+        },
+        {
+            "height": "Height (pixel) of the video frame. The default value is 640."
+        },
+        {
+            "channelId": "The ID of the channel in which the video is rendered. Set this parameter in multi-channel scenarios only."
+        }
+    ],
+    "returns": ""
+}

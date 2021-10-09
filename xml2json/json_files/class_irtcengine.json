@@ -1,0 +1,7 @@
+{
+    "id": "class_rtcengine",
+    "name": "AgoraRtcEngine",
+    "description": "The basic interface of the Agora Native SDK that implements the core functions of real-time communication.AgoraRtcEngine This interface provides the main methods that your app can call.",
+    "parameters": [],
+    "returns": ""
+}

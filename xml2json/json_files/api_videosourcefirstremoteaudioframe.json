@@ -1,0 +1,14 @@
+{
+    "id": "api_videosourcefirstremoteaudioframe",
+    "name": "VIDEO_SOURCE_FIRST_REMOTE_AUDIO_FRAME",
+    "description": "Occurs when the SDK receives the first audio frame from a specific remote user.Deprecated:\n                    Please use VIDEO_SOURCE_REMOTE_AUDIO_STATE_CHANGED instead.",
+    "parameters": [
+        {
+            "uid": "The user ID of the remote user."
+        },
+        {
+            "elapsed": "Time elapsed (ms) from the local user calling videoSourceJoinChannel until the SDK triggers this callback."
+        }
+    ],
+    "returns": ""
+}

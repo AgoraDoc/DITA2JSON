@@ -1,0 +1,11 @@
+{
+    "id": "api_setvideorenderfps",
+    "name": "setVideoRenderFPS",
+    "description": "Sets the rendering frame rate of the local video in the JavaScript layer.The Agora SDK automatically controls the video rendering in the JavaScript layer. If the display frame rate is too low, you can call this method to adjust the frame rate.\n            \n                \n                    This method affects only the local display.\n                    To ensure the video quality, adjust the frame rate accordingly when you set the resolution. See setVideoRenderDimension.",
+    "parameters": [
+        {
+            "fps": "The rendering frame rate (fps) of the local video. The maximum value is 30 fps."
+        }
+    ],
+    "returns": ""
+}

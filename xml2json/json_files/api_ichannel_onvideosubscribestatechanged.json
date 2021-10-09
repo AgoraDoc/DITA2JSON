@@ -1,0 +1,11 @@
+{
+    "id": "api_ichannel_onvideosubscribestatechanged",
+    "name": "VIDEO_SUBSCRIBE_STATE_CHANGED",
+    "description": "Occurs when the video subscribing state changes.Since\n  v3.1.0",
+    "parameters": [
+        {
+            "null": ""
+        }
+    ],
+    "returns": ""
+}

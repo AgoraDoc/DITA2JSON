@@ -1,0 +1,11 @@
+{
+    "id": "api_setcloudproxy",
+    "name": "setCloudProxy",
+    "description": "Sets the Agora cloud proxy service.Since\n                    3.3.0\n                \n            \n            When the user's firewall restricts the IP address and port, refer to Use Cloud Proxy to add the specific IP\n                addresses and ports to the firewall whitelist; then, call this method to enable the\n                cloud proxy and set the cloud proxyType as UDP_PROXY.\n            After successfully connecting to the cloud proxy, the SDK triggers the CONNECTION_STATE_CHANGED (CONNECTION_STATE_CONNECTING,CONNECTION_CHANGED_SETTING_PROXY_SERVER) callback.\n            To disable the cloud proxy that has been set, call setCloudProxy\n                (NONE_PROXY).\n            To change the cloud proxy type that has been set, call setCloudProxy (NONE_PROXY) first, and then call setCloudProxy and pass the value that you expect in\n                    proxyType.\n            \n                \n                    Agora recommends that you call this method before joining the channel or after leaving the channel.\n                    When you use the cloud proxy for the UDP protocol, the services for pushing streams to CDN and co-hosting across channels are not available.",
+    "parameters": [
+        {
+            "proxyType": "The type of the cloud proxy. See CLOUD_PROXY_TYPE . This parameter is required. The SDK reports an error if you do not pass in a value."
+        }
+    ],
+    "returns": "0: Success.\n                \n                    < 0: Failure.\n                        -2 (ERR_INVALID_ARGUMENT): The parameter is invalid.\n                        -7(ERR_NOT_INITIALIZED): The SDK is not initialized."
+}

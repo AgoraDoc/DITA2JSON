@@ -1,0 +1,7 @@
+{
+    "id": "api_videosourcedisablevideo",
+    "name": "videoSourceDisableVideo",
+    "description": "Disables the video module.A method for the second instance.\n            This method disables video. You can call this method either before or after joining a channel. If you call it before joining a channel, an audio call starts when you join the channel. If you call it after joining a channel, a video call switches to an audio call. Call the videoSourceEnableVideo method to enable video.\n            A successful call of this method triggers the VIDEO_SOURCE_USER_ENABLE_VIDEO(false) callback on the remote client.",
+    "parameters": [],
+    "returns": "0: Success.\n       < 0: Failure."
+}

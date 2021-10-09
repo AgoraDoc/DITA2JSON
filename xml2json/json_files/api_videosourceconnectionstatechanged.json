@@ -1,0 +1,14 @@
+{
+    "id": "api_videosourceconnectionstatechanged",
+    "name": "VIDEO_SOURCE_CONNECTION_STATE_CHANGED",
+    "description": "Occurs when the network connection state changes.When the network connection state changes, the SDK triggers this callback and reports the current connection state and the reason for the change.\n        The callback for the second instance.",
+    "parameters": [
+        {
+            "state": "The current connection state. See CONNECTION_STATE_TYPE."
+        },
+        {
+            "reason": "The reason for a connection state change. See CONNECTION_CHANGED_REASON_TYPE."
+        }
+    ],
+    "returns": ""
+}

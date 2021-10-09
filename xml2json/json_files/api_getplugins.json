@@ -1,0 +1,7 @@
+{
+    "id": "api_getplugins",
+    "name": "getPlugins",
+    "description": "Gets the plugins.After the method call of registerPlugin, you can call this method to get registered plugins.",
+    "parameters": [],
+    "returns": "An array of the Plugin objects."
+}

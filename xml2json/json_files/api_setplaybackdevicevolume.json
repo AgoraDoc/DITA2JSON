@@ -1,0 +1,11 @@
+{
+    "id": "api_setplaybackdevicevolume",
+    "name": "setAudioPlaybackVolume",
+    "description": "Sets the volume of the audio playback device.",
+    "parameters": [
+        {
+            "volume": "The volume of the audio playback device. The value ranges between 0 (lowest volume) and 255 (highest volume)."
+        }
+    ],
+    "returns": "0: Success.\n       < 0: Failure."
+}

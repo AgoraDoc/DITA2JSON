@@ -1,0 +1,11 @@
+{
+    "id": "api_videosourcerenewtoken",
+    "name": "videoSourceRenewToken",
+    "description": "Renews the token for videoSource.A method for the second instance.",
+    "parameters": [
+        {
+            "token": "The new token."
+        }
+    ],
+    "returns": "0(ERR_OK): Success.\n       < 0: Failure.\n  -1(ERR_FAILED): A general error occurs (no specified reason).\n  -2(ERR_INVALID_ARGUMENT): The parameter is invalid.\n  -7(ERR_NOT_INITIALIZED): The SDK is not initialized."
+}

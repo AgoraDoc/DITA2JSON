@@ -1,0 +1,17 @@
+{
+    "id": "api_ichannel_setremotevoiceposition",
+    "name": "setRemoteVoicePosition",
+    "description": "Sets the sound position and gain of a remote user.This method sets the sound position and gain of a remote user.\n   When the local user calls this method to set the sound position of a remote user, the sound difference between the left and right channels allows the local user to track the real-time position of the remote user, creating a real sense of space. This method applies to massively multiplayer online games, such as Battle Royale games.\n   \n       \n  For this method to work, enable stereo panning for remote users by calling the enableSoundPositionIndication method before joining a channel.\n  This method requires hardware support. For the best sound positioning, we recommend using a stereo speaker.\n  Call this method after joining a channel.",
+    "parameters": [
+        {
+            "uid": "The ID of the remote user."
+        },
+        {
+            "pan": "The sound position of the remote user. The value ranges from -1.0 to 1.0:\n 0.0: the remote sound comes from the front.\n -1.0: the remote sound comes from the left.\n 1.0: the remote sound comes from the right.\n      \n  "
+        },
+        {
+            "gain": "The gain of the remote user. The value ranges from 0.0 to 100.0. The default value is 100.0 (the original gain of the remote user). The smaller the value, the less the gain."
+        }
+    ],
+    "returns": "0: Success.\n       < 0: Failure."
+}

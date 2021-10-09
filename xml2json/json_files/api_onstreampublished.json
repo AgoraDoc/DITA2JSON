@@ -1,0 +1,14 @@
+{
+    "id": "api_onstreampublished",
+    "name": "STREAM_PUBLISHED",
+    "description": "Occurs when an RTMP or RTMPS stream is published.Deprecated:\n  v3.0.0\n       \n   \n   This method is deprecated, please use RTMP_STREAMING_STATE_CHANGED instead.\n   Reports the result of publishing an RTMP or RTMPS stream.",
+    "parameters": [
+        {
+            "url": "The CDN streaming URL."
+        },
+        {
+            "error": "\n      Error codes of the RTMP or RTMPS streaming.\n                                ERR_OK (0): The publishing succeeds.\n                                ERR_FAILED (1): The publishing fails.\n                                ERR_INVALID_ARGUMENT (-2): Invalid argument used. If you do not call setLiveTranscoding to configure LiveTranscoding before calling addPublishStreamUrl, the SDK reports ERR_INVALID_ARGUMENT.\n                                ERR_TIMEDOUT (10): The publishing timed out.\n                                ERR_ALREADY_IN_USE (19): The chosen URL address is alreadyin usefor CDN live streaming.\n                                ERR_ENCRYPTED_STREAM_NOT_ALLOWED_PUBLISH (130): You cannot publish an encrypted stream.\n                                ERR_PUBLISH_STREAM_CDN_ERROR (151): CDN related error. Remove the original URL address and add a new one by calling the removePublishStreamUrl and addPublishStreamUrl methods.\n                                ERR_PUBLISH_STREAM_NUM_REACH_LIMIT (152): The host manipulates more than 10 URLs. Delete the unnecessary URLs before adding new ones.\n                                ERR_PUBLISH_STREAM_NOT_AUTHORIZED (153): The host manipulates other hosts' URLs. Please check your app logic.\n                                ERR_PUBLISH_STREAM_INTERNAL_SERVER_ERROR: An error occurs in Agora's streaming server. Call the removePublishStreamUrl method to publish the streaming again.\n                                ERR_PUBLISH_STREAM_FORMAT_NOT_SUPPORTED (156): The format of the CDN streaming URL is not supported. Check whether the URL format is correct.\n                            \n                        \n  "
+        }
+    ],
+    "returns": ""
+}

@@ -1,0 +1,14 @@
+{
+    "id": "api_ichannel_adjustuserplaybacksignalvolume",
+    "name": "adjustUserPlaybackSignalVolume",
+    "description": "Adjusts the playback signal volume of a specified remote user.Since\n  v3.0.0\n       \n   \n   You can call this method as many times as necessary to adjust the playback volume of different remote users, or to repeatedly adjust the playback volume of the same remote user.\n   \n       \n  Call this method after joining a channel.\n  The playback volume here refers to the mixed volume of a specified remote user.",
+    "parameters": [
+        {
+            "volume": "\n      The playback volume. The value ranges from 0 to 100. The default value is 100, which represents the original volume.\n  "
+        },
+        {
+            "userId": "The ID of the remote user."
+        }
+    ],
+    "returns": "0: Success.\n       < 0: Failure."
+}

@@ -1,0 +1,7 @@
+{
+    "id": "api_startdevicetest",
+    "name": "startVideoDeviceTest",
+    "description": "Starts the video capture device test.This method tests whether the video-capture device is working properly. Before calling this method, ensure that you have already called the enableVideo method, and the window handle (hwnd) parameter is valid.",
+    "parameters": [],
+    "returns": "0: Success.\n       < 0: Failure."
+}

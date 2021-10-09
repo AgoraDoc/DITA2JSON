@@ -1,0 +1,7 @@
+{
+    "id": "api_getrecordingdevice",
+    "name": "getCurrentAudioRecordingDevice",
+    "description": "Gets the current audio recording device.",
+    "parameters": [],
+    "returns": "0: Success.\n       < 0: Failure.\n   \n            The audio recording device. See Device."
+}

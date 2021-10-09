@@ -1,0 +1,14 @@
+{
+    "id": "enum_contentmode",
+    "name": "CONTENT_MODE",
+    "description": "Video display mode.",
+    "parameters": [
+        {
+            "CROPPED": "Uniformly scale the video until it fills the visible boundaries (cropped). One dimension of the video might have clipped contents."
+        },
+        {
+            "FIT": "Uniformly scale the video until one of its dimensions fits the boundary (zoomed to fit). Areas that are not filled due to disparity in the aspect ratio are filled with black."
+        }
+    ],
+    "returns": ""
+}

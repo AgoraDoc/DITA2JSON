@@ -1,0 +1,14 @@
+{
+    "id": "api_onaudiomixingstatechanged",
+    "name": "AUDIO_MIXING_STATE_CHANGED",
+    "description": "Occurs when the playback state of the music file changes.This callback occurs when the playback state of the music file changes, and reports the current state and error code.",
+    "parameters": [
+        {
+            "state": "The playback state of the music file. See AUDIO_MIXING_STATE_TYPE. "
+        },
+        {
+            "reason": "The error code. See AUDIO_MIXING_ERROR_TYPE."
+        }
+    ],
+    "returns": ""
+}

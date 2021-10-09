@@ -1,0 +1,17 @@
+{
+    "id": "enum_videocodecprofiletype",
+    "name": "VIDEO_CODEC_PROFILE_TYPE",
+    "description": "Video codec profile types.",
+    "parameters": [
+        {
+            "VIDEO_CODEC_PROFILE_BASELINE": "66: Baseline video codec profile. Generally used for video calls on mobile phones."
+        },
+        {
+            "VIDEO_CODEC_PROFILE_MAIN": "77: Main video codec profile. Generally used in mainstream electronics such as MP4 players, portable video players, PSP, and iPads."
+        },
+        {
+            "VIDEO_CODEC_PROFILE_HIGH": "100: (Default) High video codec profile. Generally used in high-resolution live streaming or television."
+        }
+    ],
+    "returns": ""
+}

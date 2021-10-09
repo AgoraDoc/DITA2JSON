@@ -1,0 +1,7 @@
+{
+    "id": "api_ivideodevicemanager_getdevice",
+    "name": "getCurrentVideoDevice",
+    "description": "Retrieves the video capture device that is in use.",
+    "parameters": [],
+    "returns": "0: Success.\n       < 0: Failure.\n   \n            The video capture device. See Device."
+}

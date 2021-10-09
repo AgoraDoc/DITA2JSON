@@ -1,0 +1,11 @@
+{
+    "id": "api_videosourceenabledualstreammode",
+    "name": "videoSourceEnableDualStreamMode",
+    "description": "Enables the dual-stream mode for a videoSource stream.A method for the second instance.",
+    "parameters": [
+        {
+            "enabled": "\n      \n true: Enables dual-stream mode.\n false: Disables dual-stream mode.\n      \n  "
+        }
+    ],
+    "returns": "0: Success.\n                < 0: Failure."
+}

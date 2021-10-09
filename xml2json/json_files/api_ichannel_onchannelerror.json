@@ -1,0 +1,17 @@
+{
+    "id": "api_ichannel_onchannelerror",
+    "name": "CHANNEL_ERROR",
+    "description": "The error code AgoraRtcChannel reported.",
+    "parameters": [
+        {
+            "rtcChannel": "AgoraRtcChannel."
+        },
+        {
+            "err": "The error code. For details, see Error Codes and Warning Codes."
+        },
+        {
+            "msg": "The error message."
+        }
+    ],
+    "returns": ""
+}

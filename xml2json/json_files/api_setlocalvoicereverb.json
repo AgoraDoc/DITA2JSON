@@ -1,0 +1,14 @@
+{
+    "id": "api_setlocalvoicereverb",
+    "name": "setLocalVoiceReverb",
+    "description": "Sets the local voice reverberation.You can call this method either before or after joining a channel.",
+    "parameters": [
+        {
+            "reverbKey": "The reverberation key. Agora provides 5 reverberation keys: AUDIO_REVERB_TYPE."
+        },
+        {
+            "value": "The value of the reverberation key."
+        }
+    ],
+    "returns": "0: Success.\n       < 0: Failure."
+}

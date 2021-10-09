@@ -1,0 +1,11 @@
+{
+    "id": "api_setclientrole1",
+    "name": "setClientRole",
+    "description": "Sets the user role in an interactive live streaming channel.You can call this method either before or after joining the channel to set the user role as audience or host.\n   If you call this method to switch the user role after joining the channel, the SDK triggers the following callbacks:The local client: CLIENT_ROLE_CHANGED.The remote client: USER_JOINED or USER_OFFLINE (USER_OFFLINE_BECOME_AUDIENCE).\n   This method only takes effect when the channel profile is live interactive streaming (when the profile parameter in setChannelProfile set as CHANNEL_PROFILE_LIVE_BROADCASTING).",
+    "parameters": [
+        {
+            "role": "\n      The user role in the interactive live streaming. See CLIENT_ROLE_TYPE.\n  "
+        }
+    ],
+    "returns": "0(ERR_OK): Success.\n       < 0: Failure.\n      -1(ERR_FAILED): A general error occurs (no specified reason).\n -2(ERR_INALID_ARGUMENT): The parameter is invalid.\n -7(ERR_NOT_INITIALIZED): The SDK is not initialized."
+}

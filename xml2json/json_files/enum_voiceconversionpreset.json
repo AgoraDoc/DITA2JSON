@@ -1,0 +1,23 @@
+{
+    "id": "enum_voice_conversion_preset",
+    "name": "VOICE_CONVERSION_PRESET",
+    "description": "The options for SDK preset voice conversion effects.Since\n                    v3.3.1",
+    "parameters": [
+        {
+            "VOICE_CONVERSION_OFF": "Turn off voice conversion effects and use the original voice."
+        },
+        {
+            "VOICE_CHANGER_NEUTRAL": "A gender-neutral voice. To avoid audio distortion, ensure that you use this enumerator to process a female-sounding voice."
+        },
+        {
+            "VOICE_CHANGER_SWEET": "A sweet voice. To avoid audio distortion, ensure that you use this enumerator to process a female-sounding voice."
+        },
+        {
+            "VOICE_CHANGER_SOLID": "A steady voice. To avoid audio distortion, ensure that you use this enumerator to process a male-sounding voice."
+        },
+        {
+            "VOICE_CHANGER_BASS": "A deep voice. To avoid audio distortion, ensure that you use this enumerator to process a male-sounding voice."
+        }
+    ],
+    "returns": ""
+}

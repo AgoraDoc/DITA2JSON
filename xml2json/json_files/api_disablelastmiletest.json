@@ -1,0 +1,7 @@
+{
+    "id": "api_disablelastmiletest",
+    "name": "disableLastmileTest",
+    "description": "Disables the network connection quality test.",
+    "parameters": [],
+    "returns": "0: Success.\n       < 0: Failure."
+}

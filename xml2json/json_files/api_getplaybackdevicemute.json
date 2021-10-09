@@ -1,0 +1,7 @@
+{
+    "id": "api_getplaybackdevicemute",
+    "name": "getAudioPlaybackDeviceMute",
+    "description": "Retrieves whether the audio playback device is muted.",
+    "parameters": [],
+    "returns": "0: Success.\n       < 0: Failure.\n   \n            \ntrue: The audio playback device is muted.\nfalse: The audio playback device is unmuted."
+}

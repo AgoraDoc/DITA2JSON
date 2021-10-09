@@ -1,0 +1,41 @@
+{
+    "id": "enum_injectstreamstatus",
+    "name": "INJECT_STREAM_STATUS",
+    "description": "States of importing an external video stream in the interactive live streaming.",
+    "parameters": [
+        {
+            "INJECT_STREAM_STATUS_START_SUCCESS": "0: The external video stream is imported successfully."
+        },
+        {
+            "INJECT_STREAM_STATUS_START_ALREADY_EXISTS": "1: The external video stream already exists."
+        },
+        {
+            "INJECT_STREAM_STATUS_START_UNAUTHORIZED": "2: The external video stream to be imported is unauthorized."
+        },
+        {
+            "INJECT_STREAM_STATUS_START_TIMEDOUT": "3: A timeout occurs when importing the external video stream."
+        },
+        {
+            "INJECT_STREAM_STATUS_START_FAILED": "4: The SDK fails to import the external video stream."
+        },
+        {
+            "INJECT_STREAM_STATUS_STOP_SUCCESS": "5: The SDK successfully stops importing the external video stream."
+        },
+        {
+            "INJECT_STREAM_STATUS_STOP_NOT_FOUND": "6: The external video stream to be stopped importing is not found."
+        },
+        {
+            "INJECT_STREAM_STATUS_STOP_UNAUTHORIZED": "7: The external video stream to be stopped importing is unauthorized."
+        },
+        {
+            "INJECT_STREAM_STATUS_STOP_TIMEDOUT": "8: A timeout occurs when stopping importing the external video stream."
+        },
+        {
+            "INJECT_STREAM_STATUS_STOP_FAILED": "9: The SDK fails to stop importing the external video stream."
+        },
+        {
+            "INJECT_STREAM_STATUS_BROKEN": "10: The external video stream is corrupted."
+        }
+    ],
+    "returns": ""
+}

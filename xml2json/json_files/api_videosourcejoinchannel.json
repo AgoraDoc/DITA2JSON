@@ -1,0 +1,23 @@
+{
+    "id": "api_videosourcejoinchannel",
+    "name": "videoSourceJoinChannel",
+    "description": "Allows the videoSource object to join a channel.A method for the second instance.",
+    "parameters": [
+        {
+            "options": "The channel media options. See ChannelMediaOptions."
+        },
+        {
+            "info": "\n      Reserved for future use.\n  "
+        },
+        {
+            "channelId": "\n      The name of the channel. This parameter signifies the channel in which users engage in real-time audio and video interaction. Under the premise of the same App ID, users who fill in the same channel name enter the same channel for audio and video interaction. The string length must be less than 64 bytes. Supported characters:\n     All lowercase English letters: a to z.\n     All uppercase English letters: A to Z.\n     All numeric characters: 0 to 9.\n     Space\n     \"!\"、\"#\"、\"$\"、\"%\"、\"&\"、\"(\"、\")\"、\"+\"、\"-\"、\":\"、\";\"、\"<\"、\"=\"、\".\"、\">\"、\"?\"、\"@\"、\"[\"、\"]\"、\"^\"、\"_\"、\"{\"、\"}\"、\"|\"、\"~\"、\",\"\n \n  "
+        },
+        {
+            "token": "\n    The token generated on your server for authentication. See Authenticate Your Users with Token.\n    Ensure that the App ID used for creating the token is the same App ID used by the initializeWithContext method for initializing the RTC engine.\n      "
+        },
+        {
+            "uid": "The user ID of the videoSource object. Each user ID is unique in the channel. Ensure that the user ID of the videoSource is different from the uid used when calling the joinChannel method."
+        }
+    ],
+    "returns": "0: Success.\n                < 0: Failure."
+}

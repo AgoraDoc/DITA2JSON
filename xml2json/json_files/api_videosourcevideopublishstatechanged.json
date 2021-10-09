@@ -1,0 +1,20 @@
+{
+    "id": "api_videosourcevideopublishstatechanged",
+    "name": "VIDEO_SOURCE_VIDEO_PUBLISH_STATE_CHANGED",
+    "description": "Occurs when the video publishing state changes.The callback for the second instance.",
+    "parameters": [
+        {
+            "channel": "The name of the channel."
+        },
+        {
+            "oldState": "The previous publishing state, see STREAM_PUBLISH_STATE for details."
+        },
+        {
+            "newState": "The current publishing state, see STREAM_PUBLISH_STATE for details."
+        },
+        {
+            "elapseSinceLastState": "The time elapsed (ms) from the previous state to the current state."
+        }
+    ],
+    "returns": ""
+}

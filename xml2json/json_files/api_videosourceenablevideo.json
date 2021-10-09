@@ -1,0 +1,7 @@
+{
+    "id": "api_videosourceenablevideo",
+    "name": "videoSourceEnableVideo",
+    "description": "Enables the video module.A method for the second instance.\n            Call this method either before joining a channel or during a call. If this method is called before joining a channel, the call starts in the video mode. Call the videoSourceDisableVideo method to disable the video mode.\n            A successful call of this method triggers the VIDEO_SOURCE_REMOTE_VIDEO_STATE_CHANGED callback on the remote client.",
+    "parameters": [],
+    "returns": "0: Success.\n       < 0: Failure."
+}

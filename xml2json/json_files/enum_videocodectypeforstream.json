@@ -1,0 +1,11 @@
+{
+    "id": "enum_videocodectypeforstream",
+    "name": "VIDEO_CODEC_TYPE_FOR_STREAM",
+    "description": "The codec type of the output video.",
+    "parameters": [
+        {
+            "null": "2: H.265."
+        }
+    ],
+    "returns": ""
+}

@@ -1,0 +1,14 @@
+{
+    "id": "api_ichannel_setclientrole2",
+    "name": "setClientRoleWithOptions",
+    "description": "Sets the user role and level in an interactive live streaming channel.You can call this method either before or after joining the channel to set the user role as audience or host.\n   \n       \n  Since\n  v3.2.0\n       \n   \n   If you call this method to switch the user role after joining the channel, the SDK triggers the following callbacks:\n       The local client: CLIENT_ROLE_CHANGED.\n       The remote client: USER_JOINED or USER_OFFLINE.\n   \n   \n       \n       This method only takes effect when the channel profile is live interactive streaming (when the profile parameter in setChannelProfile set as CHANNEL_PROFILE_LIVE_BROADCASTING).\n       The difference between this method and \n      The user role determines the permissions that the SDK grants to a user, such as permission to send local streams, receive remote streams, and push streams to a CDN address.\n      The user level determines the level of services that a user can enjoy within the permissions of the user's role. For example, an audience can choose to receive remote streams with low latency or ultra-low latency. Levels affect prices.\n    setClientRole[1/2] is that this method can set the user level in addition to the user role.",
+    "parameters": [
+        {
+            "role": "The user role in a live interactive streaming. See CLIENT_ROLE_TYPE."
+        },
+        {
+            "options": "The detailed options of a user, including the user level. See ClientRoleOptions."
+        }
+    ],
+    "returns": "0(ERR_OK): Success.\n       < 0: Failure.\n  -1(ERR_FAILED): A general error occurs (no specified reason).\n  -2 (ERR_INVALID_ARGUMENT): The parameter is invalid.\n  -7(ERR_NOT_INITIALIZED): The SDK is not initialized."
+}

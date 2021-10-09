@@ -1,0 +1,14 @@
+{
+    "id": "api_onerror",
+    "name": "ERROR",
+    "description": "Reports an error during SDK runtime.This callback indicates that an error occurs during SDK runtime. In most cases, the SDK cannot fix the issue and resume running. The SDK requires the application to take action or informs the user about the issue. For example, the SDK reports an ERR_START_CALL error when failing to initialize a call. The app informs the user that the call initialization failed and invokes the leaveChannel method to leave the channel.",
+    "parameters": [
+        {
+            "err": "The error code. For details, see Error Codes and Warning Codes."
+        },
+        {
+            "msg": "The error message."
+        }
+    ],
+    "returns": ""
+}

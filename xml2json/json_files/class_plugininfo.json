@@ -1,0 +1,17 @@
+{
+    "id": "class_plugininfo",
+    "name": "PluginInfo",
+    "description": "Information of the plugin.",
+    "parameters": [
+        {
+            "pluginId": "The ID that identifies the plugin."
+        },
+        {
+            "pluginPath": "The absolute path of the plugin file."
+        },
+        {
+            "order": "The priority of the plugin. If multiple plugins are enabled, the SDK uses\n                        them in the descending order of priority. Set this parameter as a\n                        non-negative integer. The greater the value, the lower the priority. 0\n                        represents the highest priority."
+        }
+    ],
+    "returns": ""
+}

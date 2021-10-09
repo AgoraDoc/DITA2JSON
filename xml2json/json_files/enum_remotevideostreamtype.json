@@ -1,0 +1,14 @@
+{
+    "id": "enum_remotevideostreamtype",
+    "name": "REMOTE_VIDEO_STREAM_TYPE",
+    "description": "The type of video streams.",
+    "parameters": [
+        {
+            "REMOTE_VIDEO_STREAM_HIGH": "0: High-quality video stream."
+        },
+        {
+            "REMOTE_VIDEO_STREAM_LOW": "1: Low-quality video stream."
+        }
+    ],
+    "returns": ""
+}

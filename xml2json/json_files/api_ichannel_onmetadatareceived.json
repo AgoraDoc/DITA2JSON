@@ -1,0 +1,11 @@
+{
+    "id": "api_ichannel_onmetadatareceived",
+    "name": "METADATA_RECEIVED",
+    "description": "Occurs when the local user receives Metadata.",
+    "parameters": [
+        {
+            "metadata": "The received metadata. See Metadata."
+        }
+    ],
+    "returns": ""
+}

@@ -1,0 +1,20 @@
+{
+    "id": "api_ichannel_joinchannel",
+    "name": "joinChannel",
+    "description": "Joins the channel with a user ID.joinChannel\n                   \n               \n           \n           \n      \n Does not contain the channelId parameter, because channelId is specified when creating the AgoraRtcChannel object.\n You need to fill in the channelId that can identify the channel.\n      \n      \n Users can join multiple channels simultaneously by creating multiple AgoraRtcChannel objects and calling the joinChannel methods of each object.\n Users can join only one channel.\n      \n      \n By default, the SDK does not publish any stream after the user joins the channel. You need to call the publish method to do that.\n By default, the SDK publishes streams once the user joins the channel.\n      \n  \n       \n   \n   Once the user joins the channel, the user subscribes to the audio and video streams of all the other users in the channel by default, giving rise to usage and billing calculation. If you do not want to subscribe to a specified stream or all remote streams, call the mute methods accordingly.\n   \n       \n  If you are already in a channel, you cannot rejoin it with the user ID.\n  We recommend using different UIDs for different channels.\n  If you want to join the same channel from different devices, ensure that the user IDs in all devices are different.",
+    "parameters": [
+        {
+            "options": "The channel media options. See ChannelMediaOptions."
+        },
+        {
+            "info": "\n      Reserved for future use.\n  "
+        },
+        {
+            "token": "\n    The token generated on your server for authentication. See Authenticate Your Users with Token.\n    Ensure that the App ID used for creating the token is the same App ID used by the initializeWithContext method for initializing the RTC engine.\n      "
+        },
+        {
+            "uid": "User ID. This parameter is used to identify the user in the channel for real-time audio and video interaction. You need to set and manage user IDs yourself, and ensure that each user ID in the same channel is unique. This parameter is a 32-bit unsigned integer with a value ranging from 1 to 232 -1. If the user ID is not assigned (or set as 0), the SDK assigns a user ID and reports it in the JOIN_CHANNEL_SUCCESS callback. Your app must maintain this user ID."
+        }
+    ],
+    "returns": "0(ERR_OK): Success.\n       < 0: Failure.\n  -2 (ERR_INVALID_ARGUMENT): The parameter is invalid.\n  -3(ERR_NOT_READY): The SDK fails to be initialized. You can try re-initializing the SDK.\n  -5(ERR_REFUSED): The request is rejected. This may be caused by the following:\n      You have created an AgoraRtcChannel object with the same channel name.\n      You have joined and published a stream in an AgoraRtcChannel channel created by the AgoraRtcChannel object.\n  -7(ERR_NOT_INITIALIZED): The SDK is not initialized before calling this method. Initialize the AgoraRtcEngine instance before calling this method."
+}

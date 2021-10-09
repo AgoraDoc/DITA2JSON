@@ -1,0 +1,14 @@
+{
+    "id": "api_videosourceenableplugin",
+    "name": "videoSourceEnablePlugin",
+    "description": "Enable or disable the specified plug-in.A method for the second instance.",
+    "parameters": [
+        {
+            "null": ""
+        },
+        {
+            "enabled": "Whether to enable the plug-in:\n                            true: Enable the plug-in.\n                            false: Disable the plug-in.\n                        "
+        }
+    ],
+    "returns": "0: Success.\n                < 0: Failure."
+}

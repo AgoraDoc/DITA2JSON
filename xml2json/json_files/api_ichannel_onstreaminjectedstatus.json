@@ -1,0 +1,20 @@
+{
+    "id": "api_ichannel_onstreaminjectedstatus",
+    "name": "STREAM_INJECTED_STATUS",
+    "description": "Occurs when a media stream URL address is added to the interactive live streaming.",
+    "parameters": [
+        {
+            "status": "State of the externally injected stream: INJECT_STREAM_STATUS."
+        },
+        {
+            "uid": "User ID."
+        },
+        {
+            "url": "The URL address of the externally injected stream."
+        },
+        {
+            "rtcChannel": "AgoraRtcChannel."
+        }
+    ],
+    "returns": ""
+}

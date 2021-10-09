@@ -1,0 +1,11 @@
+{
+    "id": "api_registerplugin",
+    "name": "registerPlugin",
+    "description": "Registers a plugin.After registering the plugin, you can use the functionality of the plugin in the SDK. For example, if you want to use a FaceUnity plugin, you can integrate the plugin file into the SDK's project project file first, and then call this method to register the plugin.\n            Agora provides the following approaches for using the plugin:\n                    Call getPlugins and use the enable, disable, setParameter, and getParameter methods in Plugin to enable or disable the plugin, set plugin parameters, and get plugin parameters.\n                    Call enablePlugin, setPluginParameter, and getPluginParameter to enable or disable the plugin, set plugin parameters, and get plugin parameters.",
+    "parameters": [
+        {
+            "pluginInfo": "Plugin information. See PluginInfo."
+        }
+    ],
+    "returns": "0: Success.\n                < 0: Failure."
+}

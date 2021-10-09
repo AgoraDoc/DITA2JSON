@@ -1,0 +1,11 @@
+{
+    "id": "api_registermediametadataobserver",
+    "name": "registerMediaMetadataObserver",
+    "description": "Registers the metadata observer.Since\n                    v2.4.1\n                \n            \n   \n       \n  \n      Call this method before joinChannel.\n      This method applies only to interactive live streaming.",
+    "parameters": [
+        {
+            "type": "The type of the metadata. The SDK currently only supports VIDEO_METADATA.\n                        For details, see METADATA_TYPE."
+        }
+    ],
+    "returns": "0: Success.\n       < 0: Failure."
+}

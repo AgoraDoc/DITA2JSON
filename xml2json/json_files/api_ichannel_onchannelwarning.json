@@ -1,0 +1,17 @@
+{
+    "id": "api_ichannel_onchannelwarning",
+    "name": "CHANNEL_WARNING",
+    "description": "Reports the warning code of AgoraRtcChannel.",
+    "parameters": [
+        {
+            "rtcChannel": "AgoraRtcChannel."
+        },
+        {
+            "warn": "Warning codes. For details, see Error Codes and Warning Codes."
+        },
+        {
+            "msg": "The warning message."
+        }
+    ],
+    "returns": ""
+}

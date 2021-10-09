@@ -1,0 +1,20 @@
+{
+    "id": "enum_localaudiostreamstate",
+    "name": "LOCAL_AUDIO_STREAM_STATE",
+    "description": "Local audio states.",
+    "parameters": [
+        {
+            "LOCAL_AUDIO_STREAM_STATE_STOPPED": "0: The local audio is in the initial state."
+        },
+        {
+            "LOCAL_AUDIO_STREAM_STATE_RECORDING": "1: The capturing device starts successfully."
+        },
+        {
+            "LOCAL_AUDIO_STREAM_STATE_ENCODING": "2: The first audio frame encodes successfully."
+        },
+        {
+            "LOCAL_AUDIO_STREAM_STATE_FAILED": "3: The local audio fails to start."
+        }
+    ],
+    "returns": ""
+}

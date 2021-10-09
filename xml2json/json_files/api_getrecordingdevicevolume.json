@@ -1,0 +1,7 @@
+{
+    "id": "api_getrecordingdevicevolume",
+    "name": "getAudioRecordingVolume",
+    "description": "Retrieves the volume of the audio recording device.",
+    "parameters": [],
+    "returns": "0: Success.\n       < 0: Failure.\n   \n            The volume of the audio recording device. The value ranges between 0 (lowest volume) and 255 (highest volume)."
+}

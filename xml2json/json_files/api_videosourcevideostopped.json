@@ -1,0 +1,7 @@
+{
+    "id": "api_videosourcevideostopped",
+    "name": "VIDEO_SOURCE_VIDEO_STOPPED",
+    "description": "Occurs when the video stops playing.The application can use this callback to change the configuration of the view (for example, displaying other pictures in the view) after the video stops playing.\n        \n                \n                    Deprecated:\n                    Please use VIDEO_SOURCE_LOCAL_VIDEO_STATE_CHANGED(0) in the LOCAL_VIDEO_STREAM_STATE_STOPPED callback instead.\n                \n            \n            The callback for the second instance.",
+    "parameters": [],
+    "returns": ""
+}

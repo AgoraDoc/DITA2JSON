@@ -1,0 +1,14 @@
+{
+    "id": "class_userinfo",
+    "name": "UserInfo",
+    "description": "The user information.Since\n  v2.8.0",
+    "parameters": [
+        {
+            "uid": "User ID."
+        },
+        {
+            "userAccount": "The user account."
+        }
+    ],
+    "returns": ""
+}

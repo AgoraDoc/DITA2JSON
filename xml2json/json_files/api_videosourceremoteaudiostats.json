@@ -1,0 +1,11 @@
+{
+    "id": "api_videosourceremoteaudiostats",
+    "name": "VIDEO_SOURCE_REMOTE_AUDIO_STATS",
+    "description": "Audio statistics of the remote user.The SDK triggers this callback once every two seconds for each remote user who is sending audio streams. If a channel includes multiple remote users, the SDK triggers this callback as many times.\n        The callback for the second instance.",
+    "parameters": [
+        {
+            "stats": "The statistics of the received remote audio streams. See RemoteAudioStats."
+        }
+    ],
+    "returns": ""
+}

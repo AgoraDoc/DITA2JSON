@@ -1,0 +1,14 @@
+{
+    "id": "api_onusermuteaudio",
+    "name": "USER_MUTE_AUDIO",
+    "description": "Occurs when a remote user's audio stream playback pauses/resumes.The SDK triggers this callback when the remote user stops or resumes sending the audio stream by calling the muteLocalAudioStream method.\n   This callback does not work properly when the number of users (in the COMMUNICATION profile) or hosts (in the LIVE_BROADCASTING profile) in the channel exceeds 17.",
+    "parameters": [
+        {
+            "uid": "User ID."
+        },
+        {
+            "muted": "Whether the remote user's audio stream is muted/unmuted:\n      true: Muted.\n      false: Unmuted.\n  \n  "
+        }
+    ],
+    "returns": ""
+}

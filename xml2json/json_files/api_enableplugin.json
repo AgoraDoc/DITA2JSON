@@ -1,0 +1,14 @@
+{
+    "id": "api_enableplugin",
+    "name": "enablePlugin",
+    "description": "Enable or disable the specified plug-in.",
+    "parameters": [
+        {
+            "pluginId": "The ID that identifies the plugin. You can get it from PluginInfo."
+        },
+        {
+            "enabled": "Whether to enable the plug-in:\n                            true: Enable the plug-in.\n                            false: Disable the plug-in.\n                        "
+        }
+    ],
+    "returns": "0: Success.\n                < 0: Failure."
+}

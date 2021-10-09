@@ -1,0 +1,7 @@
+{
+    "id": "api_agorartcchannel_on",
+    "name": "AgoraRtcChannel callbacks",
+    "description": "AgoraRtcChannel.on provides callbacks that report events and statistics of a specified channel.",
+    "parameters": [],
+    "returns": ""
+}

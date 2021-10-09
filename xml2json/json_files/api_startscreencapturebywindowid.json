@@ -1,0 +1,17 @@
+{
+    "id": "api_startscreencapturebywindowid",
+    "name": "startScreenCaptureByWindow",
+    "description": "Shares the whole or part of a window by specifying the window ID.Since\n  v2.4.0\n       \n   \n   This method shares a window or part of the window. You need to specify the ID of the window to be shared.\n   \n       \n  Call this method after joining a channel.\n  \n   \n   \n       \n  \n      \n      \n      \n      \n      \n          \n              System version\n              Software\n              Compatible versions\n              Support\n          \n      \n      \n \n     win10\n     Chrome\n     76.0.3809.100\n     No\n \n \n     Office Word\n     18.1903.1152.0\n     Yes\n \n \n     Office Excel\n     No\n \n \n     Office PPT\n     Yes\n \n \n     WPS Word\n     11.1.0.9145\n     Yes\n \n \n     WPS Excel\n \n \n     WPS PPT\n \n \n     Media Player (come with the system)\n     All\n     Yes\n \n \n     win8\n     Chrome\n     All\n     Yes\n \n \n     Office Word\n     All\n     Yes\n \n \n     Office Excel\n \n \n     Office PPT\n \n \n     WPS Word\n     11.1.0.9098\n     Yes\n \n \n     WPS Excel\n \n \n     WPS PPT\n \n \n     Media Player (come with the system)\n     All\n     Yes\n \n \n     win7\n     Chrome\n     73.0.3683.103\n     No\n \n \n     Office Word\n     All\n     Yes\n \n \n     Office Excel\n \n \n     Office PPT\n \n \n     WPS Word\n     11.1.0.9098\n     No\n \n \n     WPS Excel\n \n \n     WPS PPT\n     11.1.0.9098\n     Yes\n \n \n     Media Player (come with the system)\n     All\n     No",
+    "parameters": [
+        {
+            "windowId": "The ID of the window to be shared."
+        },
+        {
+            "rectangle": "(Optional) The relative location of the region to the screen or window. If you do not set this parameter, the SDK shares the whole screen or window. It consists of the following parameters:\n      x: The horizontal offset from the top-left corner.\n      y: The vertical offset from the top-left corner.\n      width: The width of the region.\n      height: The height of the region.\n  \n  If the specified region overruns the window, the SDK shares only the region within it; if you set width or height as 0, the SDK shares the whole window.\n  "
+        },
+        {
+            "captureParams": "Screen sharing configurations. The default video dimension is 1920 x 1080, that is, 2,073,600 pixels. Agora uses the value of this parameter to calculate the charges. See ScreenCaptureParameters."
+        }
+    ],
+    "returns": "0: Success.\n       < 0: Failure."
+}

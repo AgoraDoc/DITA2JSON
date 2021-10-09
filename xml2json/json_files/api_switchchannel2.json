@@ -1,0 +1,17 @@
+{
+    "id": "api_switchchannel2",
+    "name": "switchChannel",
+    "description": "Switches to a different channel, and configures whether to automatically subscribe to audio or video streams in the target channel.Since\n  v3.3.0\n       \n   \n   This method allows the audience of a LIVE_BROADCASTING channel to switch to a different channel.\n   After the user successfully switches to another channel, the LEAVE_CHANNEL and JOINED_CHANNEL callbacks are triggered to indicate that the user has left the original channel and joined a new one.\n   Once the user switches to another channel, the user subscribes to the audio and video streams of all the other users in the channel by default, giving rise to usage and billing calculation. If you do not want to subscribe to a specified stream or all remote streams, call the mute methods accordingly.",
+    "parameters": [
+        {
+            "token": "The token generated at your server.\n      In scenarios with low security requirements, token is optional and can be set as null.\n      In scenarios with high security requirements, set the value to the token generated from your server. If you enable the App Certificate, you must use a token to join the channel.\n  \n      Ensure that the App ID used for creating the token is the same App ID used by the initializeWithContext method for initializing the RTC engine.\n  "
+        },
+        {
+            "channelId": "\n      The name of the channel. This parameter signifies the channel in which users engage in real-time audio and video interaction. Under the premise of the same App ID, users who fill in the same channelId enter the same channel for audio and video interaction. The string length must be less than 64 bytes. Supported characters:\n All lowercase English letters: a to z.\n All uppercase English letters: A to Z.\n All numeric characters: 0 to 9.\n Space\n \"!\"、\"#\"、\"$\"、\"%\"、\"&\"、\"(\"、\")\"、\"+\"、\"-\"、\":\"、\";\"、\"<\"、\"=\"、\".\"、\">\"、\"?\"、\"@\"、\"[\"、\"]\"、\"^\"、\"_\"、\"{\"、\"}\"、\"|\"、\"~\"、\",\"\n      \n  "
+        },
+        {
+            "options": "The channel media options. See ChannelMediaOptions."
+        }
+    ],
+    "returns": "0(ERR_OK): Success.\n       < 0: Failure.\n  -1(ERR_FAILED): A general error occurs (no specified reason).\n  -2 (ERR_INVALID_ARGUMENT): The parameter is invalid.\n  -5(ERR_REFUSED): The request is rejected. The role of the remote user is not AUDIENCE.\n  -7(ERR_NOT_INITIALIZED): The SDK is not initialized.\n  -102(ERR_INVALID CHANNEL_NAME): The channel name is invalid. Please use a valid channel name.\n  -113(ERR_NOT_IN_CHANNEL): The user is not in the channel."
+}

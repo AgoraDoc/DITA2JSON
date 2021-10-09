@@ -1,0 +1,11 @@
+{
+    "id": "api_ichannel_onvideopublishstatechanged",
+    "name": "VIDEO_PUBLISH_STATE_CHANGED",
+    "description": "Occurs when the video publishing state changes.Since\n  v3.1.0",
+    "parameters": [
+        {
+            "null": ""
+        }
+    ],
+    "returns": ""
+}

@@ -1,0 +1,7 @@
+{
+    "id": "api_getaudioplaybackdevices",
+    "name": "getAudioPlaybackDevices",
+    "description": "Retrieves the audio playback device associated with the device ID.",
+    "parameters": [],
+    "returns": "An array of the audio playback devices. See Device."
+}

@@ -1,0 +1,23 @@
+{
+    "id": "api_onaudiosubscribestatechanged",
+    "name": "AUDIO_SUBSCRIBE_STATE_CHANGED",
+    "description": "Occurs when the audio subscribing state changes.Since\n  v3.1.0",
+    "parameters": [
+        {
+            "channel": "The name of the channel."
+        },
+        {
+            "uid": "The ID of the remote user."
+        },
+        {
+            "oldState": "The previous subscribing status, see STREAM_SUBSCRIBE_STATE for details."
+        },
+        {
+            "newState": "The current subscribing status, see STREAM_SUBSCRIBE_STATE for details."
+        },
+        {
+            "elapseSinceLastState": "The time elapsed (ms) from the previous state to the current state."
+        }
+    ],
+    "returns": ""
+}

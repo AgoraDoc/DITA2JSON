@@ -1,0 +1,14 @@
+{
+    "id": "class_encryptionconfig",
+    "name": "EncryptionConfig",
+    "description": "Configurations of built-in encryption.",
+    "parameters": [
+        {
+            "encryptionMode": "Encryption mode. The default encryption mode is AES_128_XTS. For details, see ENCRYPTION_MODE."
+        },
+        {
+            "encryptionKey": "\n      Encryption key in string type.\n      If you do not set an encryption key or set it as null, you cannot use the built-in\n                            encryption, and the SDK returns ERR_INVALID_ARGUMENT\n                            (-2).\n  "
+        }
+    ],
+    "returns": ""
+}

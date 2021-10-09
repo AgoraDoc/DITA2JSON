@@ -1,0 +1,7 @@
+{
+    "id": "api_getversion",
+    "name": "getVersion",
+    "description": "Gets the SDK version.",
+    "parameters": [],
+    "returns": "The SDK version number. The format is a string, such as 3.3.0."
+}

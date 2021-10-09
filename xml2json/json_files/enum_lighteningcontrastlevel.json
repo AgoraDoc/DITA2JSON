@@ -1,0 +1,17 @@
+{
+    "id": "enum_lighteningcontrastlevel",
+    "name": "LIGHTENING_CONTRAST_LEVEL",
+    "description": "The contrast level.",
+    "parameters": [
+        {
+            "LIGHTENING_CONTRAST_LOW": "Low contrast level."
+        },
+        {
+            "LIGHTENING_CONTRAST_NORMAL": "(Default) Normal contrast level."
+        },
+        {
+            "LIGHTENING_CONTRAST_HIGH": "High contrast level."
+        }
+    ],
+    "returns": ""
+}

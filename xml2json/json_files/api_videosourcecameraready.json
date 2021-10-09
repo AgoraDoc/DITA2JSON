@@ -1,0 +1,7 @@
+{
+    "id": "api_videosourcecameraready",
+    "name": "VIDEO_SOURCE_CAMERA_READY",
+    "description": "Occurs when the camera turns on and is ready to capture the video.This callback indicates that the camera has been successfully turned on and you can start to capture video.\n        \n                \n                    Deprecated:\n                    \n                        Please use LOCAL_VIDEO_STREAM_STATE_CAPTURING(1) in VIDEO_SOURCE_LOCAL_VIDEO_STATE_CHANGED instead.\n                    \n                \n            \n            The callback for the second instance.",
+    "parameters": [],
+    "returns": ""
+}

@@ -1,0 +1,7 @@
+{
+    "id": "api_agorartcengine_on",
+    "name": "AgoraRtcEngine callbacks",
+    "description": "AgoraRtcEngine.on reports runtime events to the application.",
+    "parameters": [],
+    "returns": ""
+}

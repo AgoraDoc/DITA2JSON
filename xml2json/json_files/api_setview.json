@@ -1,0 +1,11 @@
+{
+    "id": "api_setview",
+    "name": "setView",
+    "description": "Configures the video renderer.",
+    "parameters": [
+        {
+            "renderConfig": "Configurations for the video renderer. See RendererConfig."
+        }
+    ],
+    "returns": ""
+}

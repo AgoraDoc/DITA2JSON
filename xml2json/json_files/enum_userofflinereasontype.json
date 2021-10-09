@@ -1,0 +1,17 @@
+{
+    "id": "enum_userofflinereasontype",
+    "name": "USER_OFFLINE_REASON_TYPE",
+    "description": "Reasons for a user being offline.",
+    "parameters": [
+        {
+            "USER_OFFLINE_QUIT": "0: The user quits the call."
+        },
+        {
+            "USER_OFFLINE_DROPPED": "1: The SDK times out and the user drops offline because no data packet is received within a certain period of time.\n      If the user quits the call and the message is not passed to the SDK (due to an unreliable channel), the SDK assumes the user dropped offline."
+        },
+        {
+            "USER_OFFLINE_BECOME_AUDIENCE": "2: The user switches the client role from the host to the audience."
+        }
+    ],
+    "returns": ""
+}

@@ -1,0 +1,29 @@
+{
+    "id": "enum_audioprofiletype",
+    "name": "AUDIO_PROFILE_TYPE",
+    "description": "The audio profile, including the sampling rate, bitrate, encoding mode, and the number of channels.",
+    "parameters": [
+        {
+            "AUDIO_PROFILE_DEFAULT": "\n      0: The default audio profile.\n For the LIVE_BROADCASTING profile: A sampling rate of 48 kHz, music encoding, mono, and a bitrate of up to 64 Kbps.\n For the COMMUNICATION profile: A sampling rate of 32 kHz, music encoding, mono, and a bitrate of up to 18 Kbps.\n      \n  "
+        },
+        {
+            "AUDIO_PROFILE_SPEECH_STANDARD": "1: A sampling rate of 32 kHz, audio encoding, mono, and a bitrate of up to 18 Kbps."
+        },
+        {
+            "AUDIO_PROFILE_MUSIC_STANDARD": "2: A sampling rate of 48 kHz, music encoding, mono, and a bitrate of up to 64 Kbps."
+        },
+        {
+            "AUDIO_PROFILE_MUSIC_STANDARD_STEREO": "3: A sampling rate of 48 kHz, music encoding, stereo, and a bitrate of up to 80 Kbps."
+        },
+        {
+            "AUDIO_PROFILE_MUSIC_HIGH_QUALITY": "4: A sampling rate of 48 kHz, music encoding, mono, and a bitrate of up to 96 Kbps."
+        },
+        {
+            "AUDIO_PROFILE_MUSIC_HIGH_QUALITY_STEREO": "5: A sampling rate of 48 kHz, music encoding, stereo, and a bitrate of up to 128 Kbps."
+        },
+        {
+            "AUDIO_PROFILE_NUM": "Enumerator boundary."
+        }
+    ],
+    "returns": ""
+}

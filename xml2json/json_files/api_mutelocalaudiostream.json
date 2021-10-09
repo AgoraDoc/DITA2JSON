@@ -1,0 +1,11 @@
+{
+    "id": "api_mutelocalaudiostream",
+    "name": "muteLocalAudioStream",
+    "description": "Stops or resumes publishing the local audio stream.A successful call of this method triggers the USER_MUTE_AUDIO callback on the remote client.\n   \n       \n  This method does not affect any ongoing audio recording, because it does not disable the microphone.\n  You can call this method either before or after joining a channel. If you call the setChannelProfile method after this method, the SDK resets whether or not to stop publishing the local audio according to the channel profile and user role. Therefore, Agora recommends calling this method after the setChannelProfile method.",
+    "parameters": [
+        {
+            "mute": "Whether to stop publishing the local audio stream.\n  \n      true: Stop publishing the local audio stream.\n      false: (Default) Resumes publishing the local audio stream.\n  \n  "
+        }
+    ],
+    "returns": "0: Success.\n        < 0: Failure."
+}

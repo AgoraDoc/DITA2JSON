@@ -1,0 +1,14 @@
+{
+    "id": "api_setvideoprofile",
+    "name": "setVideoProfile",
+    "description": "Sets the video encoder configuration.Deprecated:\n  This method is deprecated as of v2.3. Please use the setVideoEncoderConfiguration method instead.\n       \n   \n   This method sets the video encoder configuration. You can call this method either before or after joining a channel. If the user does not need to reset the video encoding properties after joining the channel, Agora recommends calling this method before enableVideo to reduce the time to render the first video frame.",
+    "parameters": [
+        {
+            "profile": "Video profile. See VIDEO_PROFILE_TYPE."
+        },
+        {
+            "swapWidthAndHeight": "The SDK outputs video with a fixed width and height according to the video profile (profile) you selected. This parameter sets whether to swap width and height of the video:\n  \n      true: Swap the width and height.\n      false: (Default) Do not swap the width and height.\n  \n  "
+        }
+    ],
+    "returns": "0: Success.\n        < 0: Failure."
+}

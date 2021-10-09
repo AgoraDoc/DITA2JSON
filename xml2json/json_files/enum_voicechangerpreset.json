@@ -1,0 +1,65 @@
+{
+    "id": "enum_voicechangerpreset",
+    "name": "VOICE_CHANGER_PRESET",
+    "description": "Local voice changer options.",
+    "parameters": [
+        {
+            "VOICE_CHANGER_OFF": "The original voice (no local voice change)."
+        },
+        {
+            "VOICE_CHANGER_OLDMAN": "The voice of an old man."
+        },
+        {
+            "VOICE_CHANGER_BABYBOY": "The voice of a little boy."
+        },
+        {
+            "VOICE_CHANGER_BABYGIRL": "The voice of a little girl."
+        },
+        {
+            "VOICE_CHANGER_ZHUBAJIE": "The voice of Zhu Bajie, a character in Journey to the West who has a voice like that of a growling bear."
+        },
+        {
+            "VOICE_CHANGER_ETHEREAL": "The ethereal voice."
+        },
+        {
+            "VOICE_CHANGER_HULK": "The voice of Hulk."
+        },
+        {
+            "VOICE_BEAUTY_VIGOROUS": "A more vigorous voice."
+        },
+        {
+            "VOICE_BEAUTY_DEEP": "A deeper voice."
+        },
+        {
+            "VOICE_BEAUTY_MELLOW": "A mellower voice."
+        },
+        {
+            "VOICE_BEAUTY_FALSETTO": "Falsetto."
+        },
+        {
+            "VOICE_BEAUTY_FULL": "A fuller voice."
+        },
+        {
+            "VOICE_BEAUTY_CLEAR": "A clearer voice."
+        },
+        {
+            "VOICE_BEAUTY_RESOUNDING": "A more resounding voice."
+        },
+        {
+            "VOICE_BEAUTY_RINGING": "A more ringing voice."
+        },
+        {
+            "VOICE_BEAUTY_SPACIAL": "A more spatially resonant voice."
+        },
+        {
+            "GENERAL_BEAUTY_VOICE_MALE_MAGNETIC": "(For male only) A more magnetic voice. Do not use it when the speaker is a female; otherwise, voice distortion occurs."
+        },
+        {
+            "GENERAL_BEAUTY_VOICE_FEMALE_FRESH": "(For female only) A fresher voice. Do not use it when the speaker is a male; otherwise, voice distortion occurs."
+        },
+        {
+            "GENERAL_BEAUTY_VOICE_FEMALE_VITALITY": "(For female only) A more vital voice. Do not use it when the speaker is a male; otherwise, voice distortion occurs."
+        }
+    ],
+    "returns": ""
+}

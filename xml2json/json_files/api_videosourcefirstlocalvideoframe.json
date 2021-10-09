@@ -1,0 +1,17 @@
+{
+    "id": "api_videosourcefirstlocalvideoframe",
+    "name": "VIDEO_SOURCE_FIRST_LOCAL_VIDEO_FRAME",
+    "description": "Occurs when the first local video frame is rendered.The SDK triggers this callback when the first local video frame is displayed/rendered on the local video view.\n          The callback for the second instance.",
+    "parameters": [
+        {
+            "width": "The width (px) of the first local video frame."
+        },
+        {
+            "height": "The height (px) of the first local video frame."
+        },
+        {
+            "elapsed": "Time elapsed(ms) from the local user calling videoSourceJoinChannel until the SDK triggers this callback. If you call videoSourceStartPreview before calling videoSourceJoinChannel, then this parameter is the time elapsed from calling the videoSourceStartPreview method until the SDK triggers this callback."
+        }
+    ],
+    "returns": ""
+}

@@ -1,0 +1,11 @@
+{
+    "id": "api_ichannel_onconnectionlost",
+    "name": "CONNECTION_LOST",
+    "description": "Occurs when the SDK cannot reconnect to Agora's edge server 10 seconds after its connection to the server is interrupted.The SDK triggers this callback when it cannot connect to the server 10 seconds after calling the joinChannel method, regardless of whether it is in the channel.",
+    "parameters": [
+        {
+            "rtcChannel": "AgoraRtcChannel."
+        }
+    ],
+    "returns": ""
+}

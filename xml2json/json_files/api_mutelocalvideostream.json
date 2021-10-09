@@ -1,0 +1,11 @@
+{
+    "id": "api_mutelocalvideostream",
+    "name": "muteLocalVideoStream",
+    "description": "Stops or resumes publishing the local video stream.A successful call of this method triggers the USER_MUTE_VIDEO callback on the remote client.\n            \n                    \n                        This method executes faster than the enableLocalVideo(false) method, which controls the sending of the local video stream.\n                        This method does not affect any ongoing video recording, because it does not disable the camera.\n                        You can call this method either before or after joining a channel. If you call setChannelProfile after this method, the SDK resets whether or not to stop publishing the local video according to the channel profile and user role. Therefore, Agora recommends calling this method after the setChannelProfile method.",
+    "parameters": [
+        {
+            "mute": "\n                        Whether to stop publishing the local video stream.\n                            true: Stop publishing the local video stream.\n                            false: (Default) Publish the local video stream.\n                        \n                        \n                    "
+        }
+    ],
+    "returns": "0: Success.\n                < 0: Failure."
+}

@@ -1,0 +1,11 @@
+{
+    "id": "api_resumeeffect",
+    "name": "resumeEffect",
+    "description": "Resumes playing a specified audio effect.",
+    "parameters": [
+        {
+            "soundId": "The ID of the audio effect. Each audio effect has a unique ID."
+        }
+    ],
+    "returns": "0: Success.\n       < 0: Failure."
+}

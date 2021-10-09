@@ -1,0 +1,11 @@
+{
+    "id": "api_onaudioeffectfinished",
+    "name": "AUDIO_EFFECT_FINISHED",
+    "description": "Occurs when the playback of the local audio effect file finishes.This callback occurs when the local audio effect file finishes playing.",
+    "parameters": [
+        {
+            "soundId": "The ID of the audio effect. Each audio effect has a unique ID."
+        }
+    ],
+    "returns": ""
+}

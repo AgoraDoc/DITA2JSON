@@ -1,0 +1,17 @@
+{
+    "id": "class_watermarkoptions",
+    "name": "WatermarkOptions",
+    "description": "Configurations of the watermark image.",
+    "parameters": [
+        {
+            "visibleInPreview": "\n      Whether the watermark image is visible in the local video preview:\n     true: (Default) The watermark image is visible in the preview.\n     false: The watermark image is not visible in the preview.\n \n      \n  "
+        },
+        {
+            "positionInLandscapeMode": "\n      The area to display the watermark image in landscape mode. See Rectangle:\n                                x: The horizontal offset from the top-left\n                                    corner.\n                                y: The vertical offset from the top-left\n                                    corner.\n                                width: The width (pixels) of\n                                    the area.\n                                height: The height (pixels) of\n                                    the area.\n                            For details about the landscape mode, see Set the Video Profile.\n  "
+        },
+        {
+            "positionInPortraitMode": "\n      The area to display the watermark image in portrait mode. See Rectangle :\n                                x: The horizontal offset from the top-left\n                                    corner.\n                                y: The vertical offset from the top-left\n                                    corner.\n                                width: The width (pixels) of\n                                    the area.\n                                height: The height (pixels) of\n                                    the area.\n                            For details about the portrait mode, see Set the Video Profile.\n  "
+        }
+    ],
+    "returns": ""
+}

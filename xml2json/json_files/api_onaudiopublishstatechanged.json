@@ -1,0 +1,20 @@
+{
+    "id": "api_onaudiopublishstatechanged",
+    "name": "AUDIO_PUBLISH_STATE_CHANGED",
+    "description": "Occurs when the audio publishing state changes.Since\n  v3.1.0",
+    "parameters": [
+        {
+            "channel": "The name of the channel."
+        },
+        {
+            "oldState": "For the previous publishing state, see STREAM_PUBLISH_STATE."
+        },
+        {
+            "newState": "For the current publishing state, see STREAM_PUBLISH_STATE."
+        },
+        {
+            "elapseSinceLastState": "The time elapsed (ms) from the previous state to the current state."
+        }
+    ],
+    "returns": ""
+}

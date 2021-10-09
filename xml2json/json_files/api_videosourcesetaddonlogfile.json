@@ -1,0 +1,11 @@
+{
+    "id": "api_videosourcesetaddonlogfile",
+    "name": "videoSourceSetAddonLogFile",
+    "description": "Sets the log file for the videoSource instance in the Electron layer.A method for the second instance.",
+    "parameters": [
+        {
+            "filePath": "The full path to the log file for the Electron layer of the SDK. Ensure that the directory for the log files exists and is writable. You can use this parameter to rename the log files."
+        }
+    ],
+    "returns": "0: Success.\n                < 0: Failure."
+}

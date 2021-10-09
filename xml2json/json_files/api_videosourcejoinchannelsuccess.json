@@ -1,0 +1,17 @@
+{
+    "id": "api_videosourcejoinchannelsuccess",
+    "name": "VIDEO_SOURCE_JOIN_CHANNEL_SUCCESS",
+    "description": "Occurs when a user joins a channel.This callback notifies the application that a user joins a specified channel.\n        The callback for the second instance.",
+    "parameters": [
+        {
+            "channel": "The name of the channel."
+        },
+        {
+            "uid": "The ID of the user who joins the channel."
+        },
+        {
+            "elapsed": "Time elapsed (ms) from the local user calling the videoSourceJoinChannel method until the SDK triggers this callback."
+        }
+    ],
+    "returns": ""
+}

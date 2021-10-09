@@ -1,0 +1,20 @@
+{
+    "id": "enum_localvideostreamstate",
+    "name": "LOCAL_VIDEO_STREAM_STATE",
+    "description": "Local video states.",
+    "parameters": [
+        {
+            "LOCAL_VIDEO_STREAM_STATE_STOPPED": "0: The local video is in the initial state."
+        },
+        {
+            "LOCAL_VIDEO_STREAM_STATE_CAPTURING": "1: The local video capturing device starts successfully. The SDK also reports this state when you call startScreenCaptureByWindow to share a maximized window."
+        },
+        {
+            "LOCAL_VIDEO_STREAM_STATE_ENCODING": "2: The first video frame is successfully encoded."
+        },
+        {
+            "LOCAL_VIDEO_STREAM_STATE_FAILED": "3: Fails to start the local video."
+        }
+    ],
+    "returns": ""
+}

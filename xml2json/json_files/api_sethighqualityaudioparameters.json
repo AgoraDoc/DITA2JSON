@@ -1,0 +1,17 @@
+{
+    "id": "api_sethighqualityaudioparameters",
+    "name": "setHighQualityAudioParameters",
+    "description": "Set audio high quality options.Deprecated:\n  This method is deprecated. Agora does not recommend using this method. If you want to set the audio high-quality options, use the setAudioProfile method instead.",
+    "parameters": [
+        {
+            "fullband": "Whether to enable full-band codec (48-kHz sample rate). Not compatible with SDK versions before v1.7.4.\n      \n true: Enable full-band codec.\n false: Disable full-band codec.\n      \n  "
+        },
+        {
+            "stereo": "Whether to enable stereo codec. Not compatible with SDK versions before v1.7.4.\n      \n true: Enable stereo codec.\n false: Disable stereo codec.\n      \n  "
+        },
+        {
+            "fullBitrate": "High bitrate mode. Recommended in voice-only mode.\n      \n true: Enable high-bitrate mode.\n false: Disable high-bitrate mode.\n      \n  "
+        }
+    ],
+    "returns": "0: Success.\n        < 0: Failure."
+}

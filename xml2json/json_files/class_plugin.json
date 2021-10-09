@@ -1,0 +1,23 @@
+{
+    "id": "class_plugin",
+    "name": "Plugin",
+    "description": "Interface for configuring and managing plug-ins.After calling registerPlugin to register a plugin, you can get the Plugin interface through getPlugins.",
+    "parameters": [
+        {
+            "id": "The ID of the plugin."
+        },
+        {
+            "enable": "Enable the plugin."
+        },
+        {
+            "disable": "Disable the plugin."
+        },
+        {
+            "setParameter": "Set the plugin parameters. After calling getParameter to get the value, you can call this method to pass a JSON string containing a key and a value to the C++ layer."
+        },
+        {
+            "getParameter": "Get the plugin parameters. If you want to pass the JSON string to the C++ layer when using the plugin, you need to call this method to get the plugin parameters and then call setParameter to the parameters."
+        }
+    ],
+    "returns": ""
+}

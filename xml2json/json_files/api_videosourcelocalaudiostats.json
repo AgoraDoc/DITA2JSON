@@ -1,0 +1,11 @@
+{
+    "id": "api_videosourcelocalaudiostats",
+    "name": "VIDEO_SOURCE_LOCAL_AUDIO_STATS",
+    "description": "Reports the statistics of the local audio stream.The SDK triggers this callback once every two seconds.\n        The callback for the second instance.",
+    "parameters": [
+        {
+            "stats": "Local audio statistics. See LocalAudioStats."
+        }
+    ],
+    "returns": ""
+}

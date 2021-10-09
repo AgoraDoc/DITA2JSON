@@ -1,0 +1,11 @@
+{
+    "id": "api_ichannel_sendmetadata",
+    "name": "sendMetadata",
+    "description": "Sends media metadata.After a successful method call of registerMediaMetadataObserver, the SDK triggers the READY_TO_SEND_METADATA callback, and then you can call this method to send media metadata.\n            If the metadata is sent successfully, the SDK triggers the METADATA_RECEIVED callback on the receiver.",
+    "parameters": [
+        {
+            "metadata": "Media metadata. See Metadata."
+        }
+    ],
+    "returns": "0: Success.\n                < 0: Failure."
+}

@@ -1,0 +1,14 @@
+{
+    "id": "api_videosourceenableencryption",
+    "name": "videoSourceEnableEncryption",
+    "description": "Enables/Disables the built-in encryption.All users in the same channel must use the same encryption mode and encryption key. After the user leaves the channel, the SDK automatically disables the built-in encryption. To enable the built-in encryption, call this method before the user joins the channel again.\n               In scenarios requiring high security, Agora recommends calling this method to enable the built-in encryption before joining a channel.\n               A method for the second instance.",
+    "parameters": [
+        {
+            "enabled": "\n                              Whether to enable built-in encryption:\n                                        true: Enable the built-in encryption.\n                                        false: Disable the built-in encryption.\n                                   \n                              \n                         "
+        },
+        {
+            "config": "Configurations of built-in encryption. See EncryptionConfig."
+        }
+    ],
+    "returns": "0: Success.\n                    \n                         < 0: Failure.\n                              -2(ERR_INVALID_ARGUMENT): An invalid parameter is used. Set the\n                                   parameter with a valid value.\n                              -4(ERR_NOT_SUPPORTED): The encryption mode is incorrect or the SDK\n                                   fails to load the external encryption library. Check the\n                                   enumeration or reload the external encryption library.\n                              -7(ERR_NOT_INITIALIZED): The SDK is not initialized. Initialize\n                                   the AgoraRtcEngine instance before calling this\n                                   method."
+}

@@ -1,0 +1,7 @@
+{
+    "id": "api_getvideodevices",
+    "name": "getVideoDevices",
+    "description": "Gets the list of video devices.",
+    "parameters": [],
+    "returns": "An array of the video devices. See Device."
+}

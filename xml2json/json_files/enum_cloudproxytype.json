@@ -1,0 +1,14 @@
+{
+    "id": "enum_cloudproxytype",
+    "name": "CLOUD_PROXY_TYPE",
+    "description": "The cloud proxy type.",
+    "parameters": [
+        {
+            "NONE_PROXY": "0: Do not use cloud proxy."
+        },
+        {
+            "UDP_PROXY": "1: Use cloud proxy with the UDP protocol."
+        }
+    ],
+    "returns": ""
+}

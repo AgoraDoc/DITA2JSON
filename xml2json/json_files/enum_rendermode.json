@@ -1,0 +1,17 @@
+{
+    "id": "enum_rendermodeelectron",
+    "name": "RENDER_MODE",
+    "description": "Video rendering mode.",
+    "parameters": [
+        {
+            "WEBGL": "WebGL rendering."
+        },
+        {
+            "SOFTWARE": "Software rendering."
+        },
+        {
+            "CUSTOM": "Customized rendering."
+        }
+    ],
+    "returns": ""
+}

@@ -1,0 +1,77 @@
+{
+    "id": "class_rtcstats",
+    "name": "RtcStats",
+    "description": "Statistics of a call session.",
+    "parameters": [
+        {
+            "duration": "\n      Call duration of the local user in seconds, represented by an aggregate value.\n      "
+        },
+        {
+            "txBytes": "The number of bytes sent."
+        },
+        {
+            "rxBytes": "The number of bytes received."
+        },
+        {
+            "txAudioBytes": "The total number of audio bytes sent, represented by an aggregate value."
+        },
+        {
+            "txVideoBytes": "The total number of video bytes sent, represented by an aggregate value."
+        },
+        {
+            "rxAudioBytes": "The total number of audio bytes received, represented by an aggregate value."
+        },
+        {
+            "rxVideoBytes": "The total number of video bytes received, represented by an aggregate value."
+        },
+        {
+            "txKBitRate": "The bitrate (Kbps) of sending data."
+        },
+        {
+            "rxKBitRate": "The receiving bitrate (Kbps), represented by an instantaneous value."
+        },
+        {
+            "rxAudioKBitRate": "Audio receive bitrate (Kbps), represented by an instantaneous value."
+        },
+        {
+            "txAudioKBitRate": "The bitrate (Kbps) of sending the audio packet."
+        },
+        {
+            "rxVideoKBitRate": "Video receive bitrate (Kbps), represented by an instantaneous value."
+        },
+        {
+            "txVideoKBitRate": "The bitrate (Kbps) of sending the video."
+        },
+        {
+            "lastmileDelay": "The client-to-server delay (milliseconds)."
+        },
+        {
+            "txPacketLossRate": "The packet loss rate (%) from the client to the Agora server before using the anti-packet-loss method."
+        },
+        {
+            "rxPacketLossRate": "The packet loss rate (%) from the Agora server to the client before using the anti-packet-loss method."
+        },
+        {
+            "userCount": "The number of users in the channel.\n      For COMMUNICATION profile: The number of users in the channel.\n      For LIVE_BROADCASTING profile:\n If the local user is an audience member: The number of users in the channel = The number of hosts in the channel + 1.\n If the user is a host: The number of users in the channel = The number of hosts in the channel.\n      \n  \n  "
+        },
+        {
+            "cpuAppUsage": "The CPU usage (%) of the application."
+        },
+        {
+            "cpuTotalUsage": "\n      The system CPU usage (%).\n      In the multi-kernel environment, this member represents the average CPU usage. The value = 100 - System Idle Progress in Task Manager.\n  "
+        },
+        {
+            "gatewayRtt": "The round-trip time delay from the client to the local router."
+        },
+        {
+            "memoryAppUsageRatio": "\n      The memory occupied by the application (%).\n      This value is for reference only. Due to system limitations, you might\n                            not get this value.\n  "
+        },
+        {
+            "memoryTotalUsageRatio": "\n      The memory occupied by the system (%).\n      This value is for reference only. Due to system limitations, you might\n                            not get this value.\n  "
+        },
+        {
+            "memoryAppUsageInKbytes": "\n      The memory occupied by the application (KB).\n      This value is for reference only. Due to system limitations, you might\n                            not get this value.\n  "
+        }
+    ],
+    "returns": ""
+}

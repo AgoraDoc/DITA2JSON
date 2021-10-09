@@ -1,0 +1,14 @@
+{
+    "id": "api_ichannel_createdatastream2",
+    "name": "createDataStreamWithConfig",
+    "description": "Creates a data stream.Compared with createDataStream, this method does not\n                support data reliability. If a data packet is not received five seconds after it was\n                sent, the SDK directly discards the data.\n        Creates a data stream. Each user can create up to five data streams in a\n                single channel.  \n            \n       \n  Since\n  v3.3.0. Use this method instead of createDataStream.",
+    "parameters": [
+        {
+            "streamId": "Output parameter. Pointer to the ID of the created data stream."
+        },
+        {
+            "config": "The configurations for the data stream. See DataStreamConfig."
+        }
+    ],
+    "returns": "0: The data stream is successfully created.\n       ID of the created data stream, if the method call succeeds.\n       < 0: Failure. You can refer to Error Codes and Warning Codes for troubleshooting."
+}

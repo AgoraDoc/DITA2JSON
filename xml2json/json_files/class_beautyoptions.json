@@ -1,0 +1,20 @@
+{
+    "id": "class_beautyoptions",
+    "name": "BeautyOptions",
+    "description": "Image enhancement options.",
+    "parameters": [
+        {
+            "lighteningContrastLevel": "The contrast level. See LIGHTENING_CONTRAST_LEVEL."
+        },
+        {
+            "lighteningLevel": "The brightness level. The value ranges from 0.0 (original) to 1.0. This parameter adjusts the red saturation level."
+        },
+        {
+            "smoothnessLevel": "The sharpness level. The value ranges between 0 (original) and 1. This parameter is usually used to remove blemishes."
+        },
+        {
+            "rednessLevel": "The redness level. The value ranges between 0 (original) and 1. This parameter adjusts the red saturation level."
+        }
+    ],
+    "returns": ""
+}

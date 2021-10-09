@@ -1,0 +1,7 @@
+{
+    "id": "api_stopchannelmediarelay",
+    "name": "stopChannelMediaRelay",
+    "description": "Stops the media stream relay. Once the relay stops, the host quits all the destination channels.Since\n                    v2.9.0\n                \n            \n            \n   After a successful method call, the SDK triggers the CHANNEL_MEDIA_RELAY_STATE callback. If the callback reports RELAY_STATE_IDLE(0) and RELAY_OK(0), the host successfully stops the relay.\n   If the method call fails, the SDK triggers the CHANNEL_MEDIA_RELAY_STATE callback with the RELAY_ERROR_SERVER_NO_RESPONSE(2) or RELAY_ERROR_SERVER_CONNECTION_LOST(8) status code. You can call the leaveChannel method to leave the channel, and the media stream relay automatically stops.",
+    "parameters": [],
+    "returns": "0: Success.\n       < 0: Failure."
+}

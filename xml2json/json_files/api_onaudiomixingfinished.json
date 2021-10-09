@@ -1,0 +1,7 @@
+{
+    "id": "api_onaudiomixingfinished",
+    "name": "AUDIO_MIXING_FINISHED",
+    "description": "Occurs when the playback of the local music file finishes.Deprecated:\n  This method is deprecated as of v2.4.0. Use AUDIO_MIXING_STATE_CHANGED instead.\n       \n   \n   After you call startAudioMixing to play a local music file, this callback occurs when the playback finishes. If the call of startAudioMixing fails, the ERROR callback returns the error code WARN_AUDIO_MIXING_OPEN_ERROR.",
+    "parameters": [],
+    "returns": ""
+}

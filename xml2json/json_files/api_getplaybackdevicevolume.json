@@ -1,0 +1,7 @@
+{
+    "id": "api_getplaybackdevicevolume",
+    "name": "getAudioPlaybackVolume",
+    "description": "Retrieves the volume of the audio playback device.",
+    "parameters": [],
+    "returns": "0: Success.\n       < 0: Failure.\n   \n            The volume of the audio playback device. The value ranges between 0 (lowest volume) and 255 (highest volume)."
+}

@@ -1,0 +1,7 @@
+{
+    "id": "api_onvideostopped",
+    "name": "VIDEO_STOPPED",
+    "description": "Occurs when the video stops playing.Deprecated:\n  Deprecated as of v2.4.1. Please use LOCAL_VIDEO_STATE_CHANGED(0) in the LOCAL_VIDEO_STREAM_STATE_STOPPED callback instead.\n       \n   \n   The application can use this callback to change the configuration of the view (for example, displaying other pictures in the view) after the video stops playing.",
+    "parameters": [],
+    "returns": ""
+}

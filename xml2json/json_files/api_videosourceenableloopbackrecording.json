@@ -1,0 +1,14 @@
+{
+    "id": "api_videosourceenableloopbackrecording",
+    "name": "videoSourceEnableLoopbackRecording",
+    "description": "Enables loopback audio capture.Applies to the macOS and Windows platforms only.\n      macOS does not support loopback capturing of the default sound card. If you need to use this method, please use a virtual sound card and pass its name to the deviceName parameter. Agora has tested and recommends using soundflower.\n      You can call this method either before or after joining a channel.\n  \n       \n        If you enable loopback audio capturing, the output of the sound card is mixed into the audio stream sent to the other end.\n       A method for the second instance.",
+    "parameters": [
+        {
+            "enabled": "Whether to enableloopback capture:\n true: Enable loopback audio capture.\n false: (Default) Disable loopback capture.\n      "
+        },
+        {
+            "deviceName": "The device name of the sound card. The default value is null (the default sound card). If the user uses a virtual sound card, such as \"Soundflower\", the virtual sound card name \"Soundflower\" can be passed to this parameter, and the SDK finds the corresponding virtual sound card device and starts collecting."
+        }
+    ],
+    "returns": "0: Success.\n                < 0: Failure."
+}

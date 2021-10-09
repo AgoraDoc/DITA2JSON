@@ -1,0 +1,7 @@
+{
+    "id": "api_getwindowsinfo",
+    "name": "getWindowsInfo",
+    "description": "Gets the window information.Before sharing a window through a window ID that specifies the window, you need to call this method to get the window information.\n            This method can get the information of multiple windows.",
+    "parameters": [],
+    "returns": "An array of WindowInfo objects. See WindowInfo."
+}

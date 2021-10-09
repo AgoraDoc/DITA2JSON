@@ -1,0 +1,17 @@
+{
+    "id": "api_ichannel_onconnectionstatechanged",
+    "name": "CONNECTION_STATE_CHANGED",
+    "description": "Occurs when the network connection state changes.When the network connection state changes, the SDK triggers this callback and reports the current connection state and the reason for the change.",
+    "parameters": [
+        {
+            "reason": "The reason for a connection state change. See CONNECTION_CHANGED_REASON_TYPE."
+        },
+        {
+            "state": "The current connection state. See CONNECTION_STATE_TYPE."
+        },
+        {
+            "rtcChannel": "AgoraRtcChannel."
+        }
+    ],
+    "returns": ""
+}

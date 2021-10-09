@@ -1,0 +1,20 @@
+{
+    "id": "class_metadata",
+    "name": "Metadata",
+    "description": "Media metadata",
+    "parameters": [
+        {
+            "uid": "\n      User ID.\n For the receiver: The user ID of the user who sent the Metadata.\n     For the sender: Ignore this value.\n \n  "
+        },
+        {
+            "size": "The buffer size of the sent or received Metadata."
+        },
+        {
+            "buffer": "The buffer address of the sent or received Metadata."
+        },
+        {
+            "timeStampMs": "The timestamp (ms) of the Metadata."
+        }
+    ],
+    "returns": ""
+}

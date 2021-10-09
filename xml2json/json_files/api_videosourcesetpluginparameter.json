@@ -1,0 +1,14 @@
+{
+    "id": "api_videosourcesetpluginparameter",
+    "name": "videoSourceSetPluginParameter",
+    "description": "Sets the parameter of a specified\n        plugin.A method for the second instance.\n            After getting the value using videoSourceGetPluginParameter, you can call this method to pass a JSON string containing a key and a value to the C++ layer.",
+    "parameters": [
+        {
+            "null": ""
+        },
+        {
+            "parameter": "A JSON string containing a key and a value."
+        }
+    ],
+    "returns": "0: Success.\n                < 0: Failure."
+}

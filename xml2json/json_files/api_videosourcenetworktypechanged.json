@@ -1,0 +1,11 @@
+{
+    "id": "api_videosourcenetworktypechanged",
+    "name": "VIDEO_SOURCE_NETWORK_TYPE_CHANGED",
+    "description": "Occurs when the local network type changes.This callback occurs when the connection state of the local user changes. You can get the connection state and reason for the state change in this callback. When the network connection is interrupted, this callback indicates whether the interruption is caused by a network type change or poor network conditions.\n        The callback for the second instance.",
+    "parameters": [
+        {
+            "type": "The type of the local network connection. See NETWORK_TYPE."
+        }
+    ],
+    "returns": ""
+}

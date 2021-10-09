@@ -1,0 +1,11 @@
+{
+    "id": "api_onstreamunpublished",
+    "name": "STREAM_UNPUBLISHED",
+    "description": "Occurs when an RTMP or RTMPS stream is removed.Deprecated:\n  v3.0.0\n       \n   \n   This method is deprecated, please use RTMP_STREAMING_STATE_CHANGED instead.",
+    "parameters": [
+        {
+            "url": "The URL of the removed RTMP or RTMPS stream."
+        }
+    ],
+    "returns": ""
+}

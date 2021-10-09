@@ -1,0 +1,20 @@
+{
+    "id": "api_oncamerafocusareachanged",
+    "name": "CAMERA_FOCUS_AREA_CHANGED",
+    "description": "Occurs when the camera focus area changes.This method applies to mobile platforms only.",
+    "parameters": [
+        {
+            "x": "The x coordinate of the changed camera focus area."
+        },
+        {
+            "y": "The y coordinate of the changed camera focus area."
+        },
+        {
+            "width": "The width of the changed camera focus area."
+        },
+        {
+            "height": "The height of the changed camera focus area."
+        }
+    ],
+    "returns": ""
+}

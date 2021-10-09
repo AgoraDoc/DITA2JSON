@@ -1,0 +1,14 @@
+{
+    "id": "api_onapierror",
+    "name": "API_ERROR",
+    "description": "Occurs when an error occurs in Electron.During the SDK runtime, the SDK triggers this callback when an error occurs in Electron.",
+    "parameters": [
+        {
+            "apiType": "The internal engine. You can ignore this parameter."
+        },
+        {
+            "msg": "The error message. A typical reason is incorrect parameter setting in the API call, for example invalid value or incorrect number of parameters."
+        }
+    ],
+    "returns": ""
+}

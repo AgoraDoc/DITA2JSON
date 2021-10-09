@@ -1,0 +1,17 @@
+{
+    "id": "api_ichannel_onchannelmediarelaystatechanged",
+    "name": "CHANNEL_MEDIA_RELAY_STATE_CHANGED",
+    "description": "Occurs when the state of the media stream relay changes.The SDK returns the state of the current media relay with any error message.",
+    "parameters": [
+        {
+            "code": "The error code of the channel media replay. See CHANNEL_MEDIA_RELAY_ERROR."
+        },
+        {
+            "state": "The state code. See CHANNEL_MEDIA_RELAY_STATE."
+        },
+        {
+            "rtcChannel": "AgoraRtcChannel."
+        }
+    ],
+    "returns": ""
+}

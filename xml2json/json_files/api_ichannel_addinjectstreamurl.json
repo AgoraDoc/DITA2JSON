@@ -1,0 +1,14 @@
+{
+    "id": "api_ichannel_addinjectstreamurl",
+    "name": "addInjectStreamUrl",
+    "description": "Injects an online media stream to a live streaming channel.Agora will soon stop the service for injecting online media streams on the client. If you have not implemented this service, Agora recommends that you do not use it. For details, see Service Sunset Plans.\n   \n  \n      Ensure that you enable the RTMP Converter service before using this function. See Prerequisites in Push Streams to CDN.\n      This method applies to the Native SDK v2.4.1 and later.\n      This method takes effect only when you are a host in a live streaming channel.\n      Only one online media stream can be injected into the same channel at the same time.\n      Call this method after joining a channel.\n  \n       \n   This method injects the currently playing audio and video as audio and video sources into the\n                ongoing live broadcast. This applies to scenarios where all users in the channel can\n                watch a live show and interact with each other. After calling this method, the SDK\n                triggers the STREAM_INJECT_STATUS callback on the local client to\n                report the state of injecting the online media stream; after successfully injecting\n                the media stream, the stream joins the channel, and all users in the channel receive\n                the USER_JOINED callback, where uid is\n                    666.",
+    "parameters": [
+        {
+            "url": "\n      The URL address to be added to the ongoing streaming. Valid protocols are RTMP, HLS, and HTTP-FLV.\n     Supported audio codec type: AAC.\n     Supported video codec type: H264 (AVC).\n \n      \n  "
+        },
+        {
+            "config": "The configuration information for the added voice or video stream: InjectStreamConfig."
+        }
+    ],
+    "returns": "0: Success.\n       < 0: Failure.\n      ERR_INVALID_ARGUMENT (-2): The injected URL does not exist. Call this method again to inject the stream and ensure that the URL is valid.\n      ERR_NOT_READY (-3): The user is not in the channel.\n      ERR_NOT_SUPPORTED (-4): The channel is not a live streaming channel. Call\n                                setChannelProfile and set the channel profile to\n                            live streaming before calling this method.\n      ERR_NOT_INITIALIZED (-7): The SDK is not initialized. Ensure that the AgoraRtcEngine object is initialized before using this method."
+}

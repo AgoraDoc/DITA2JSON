@@ -1,0 +1,23 @@
+{
+    "id": "api_ichannel_onremotevideostatechanged",
+    "name": "REMOTE_VIDEO_STATE_CHANGED",
+    "description": "Occurs when the remote video state changes.Since\n                        v2.9.0\n                    \n                \n               This callback does not work properly when the number of users (in the voice/video call channel) or hosts (in the live streaming channel) in the channel exceeds 17.",
+    "parameters": [
+        {
+            "reason": "The reason for the remote video state change, see REMOTE_VIDEO_STATE_REASON."
+        },
+        {
+            "state": "The state of the remote video, see REMOTE_VIDEO_STATE."
+        },
+        {
+            "uid": "The ID of the remote user whose video state changes."
+        },
+        {
+            "rtcChannel": "AgoraRtcChannel."
+        },
+        {
+            "elapsed": "Time elapsed (ms) from the local user calling the joinChannel method until the SDK triggers this callback."
+        }
+    ],
+    "returns": ""
+}

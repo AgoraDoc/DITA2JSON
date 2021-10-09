@@ -1,0 +1,11 @@
+{
+    "id": "api_adjustplaybacksignalvolume",
+    "name": "adjustPlaybackSignalVolume",
+    "description": "Adjusts the playback signal volume of all remote users.This method adjusts the playback volume that is the mixed volume of all remote users.\n  As of v2.3.2, to mute the local audio, you need to call the adjustPlaybackSignalVolume and adjustAudioMixingPlayoutVolume methods at the same time, and set volume to 0.\n  You can call this method either before or after joining a channel.",
+    "parameters": [
+        {
+            "volume": "The playback volume. The value ranges from 0 to 100. The default value is 100, which represents the original volume.\n  "
+        }
+    ],
+    "returns": "0: Success.\n        < 0: Failure."
+}

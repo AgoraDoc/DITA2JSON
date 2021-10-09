@@ -1,0 +1,32 @@
+{
+    "id": "enum_localvideostreamerror",
+    "name": "LOCAL_VIDEO_STREAM_ERROR",
+    "description": "Local video state error codes.",
+    "parameters": [
+        {
+            "LOCAL_VIDEO_STREAM_ERROR_OK": "0: The local video is normal."
+        },
+        {
+            "LOCAL_VIDEO_STREAM_ERROR_FAILURE": "1: No specified reason for the local video failure."
+        },
+        {
+            "LOCAL_VIDEO_STREAM_ERROR_DEVICE_NO_PERMISSION": "2: No permission to use the local video capturing device."
+        },
+        {
+            "LOCAL_VIDEO_STREAM_ERROR_DEVICE_BUSY": "3: The local video capturing device is in use."
+        },
+        {
+            "LOCAL_VIDEO_STREAM_ERROR_CAPTURE_FAILURE": "5: The local video encoding fails."
+        },
+        {
+            "LOCAL_VIDEO_STREAM_ERROR_DEVICE_NOT_FOUND": "\n                        8: Fails to find a local video capture device.\n                    "
+        },
+        {
+            "LOCAL_VIDEO_STREAM_ERROR_SCREEN_CAPTURE_WINDOW_MINIMIZED": "11: When calling startScreenCaptureByWindow to share the window, the shared window is in a minimized state."
+        },
+        {
+            "LOCAL_VIDEO_STREAM_ERROR_SCREEN_CAPTURE_WINDOW_CLOSED": "\n      \n          \n              Since\n              v3.2.0\n          \n      \n      12: The error code indicates that a window shared by the window ID has been closed, or a full-screen window shared by the window ID has exited full-screen mode. After exiting full-screen mode, remote users cannot see the shared window. To prevent remote users from seeing a black screen, Agora recommends that you immediately stop screen sharing.\n      Common scenarios for reporting this error code:\n When the local user closes the shared window, the SDK reports this error code.\n     The local user shows some slides in full-screen mode first, and then shares the windows of the slides. After the user exits full-screen mode, the SDK reports this error code.\n     The local user watches web video or reads web document in full-screen mode first, and then shares the window of the web video or document. After the user exits full-screen mode, the SDK reports this error code.\n      \n  "
+        }
+    ],
+    "returns": ""
+}

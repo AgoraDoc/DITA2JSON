@@ -1,0 +1,65 @@
+{
+    "id": "class_livetranscoding",
+    "name": "LiveTranscoding",
+    "description": "Transcoding configurations for CDN live streaming.",
+    "parameters": [
+        {
+            "width": "\n                        The width of the output media stream in pixels. The default value is 360.\n                        \n                            When the output media stream is video, ensure that width is set to 64 or higher. Otherwise, the Agora server adjusts the value to 64.\n                            When the output media stream is audio, set width to 0.\n                        \n                    "
+        },
+        {
+            "height": "\n      The height of the output media stream in pixels. The default value is 640.\n      \n When the output media stream is video, ensure that height is set to 64 or higher. Otherwise, the Agora server adjusts the value to 64.\n When the output media stream is audio, set height to 0.\n      \n  "
+        },
+        {
+            "videoBitrate": "The video bitrate (Kbps) of the output media stream. The default value is 400. You can refer\n                        to Pushing Streams to CDN to set\n                        this paramter."
+        },
+        {
+            "videoFrameRate": "The video frame rate (fps) of the output media stream. The default value is 15, and the value range is [1,30].The Agora server adjusts any value over 30 fps to 30 fps."
+        },
+        {
+            "lowLatency": "\n      \n \n     Deprecated\n     This attribute is deprecated since v2.8.0, and Agora does not recommend it.\n \n      \n      \n true: Low latency with unassured quality.\n false: (Default) High latency with assured quality.\n      \n  "
+        },
+        {
+            "videoGop": "The video GOP (Group of Pictures) of the output media stream. The default value is 30."
+        },
+        {
+            "videoCodecProfile": "\n  The video encoding specifications of the output media stream. See VIDEO_CODEC_PROFILE_TYPE.\n  If you set this parameter to other values, Agora adjusts it to the default value.\n       "
+        },
+        {
+            "videoCodecType": "The codec type of the output video. See VIDEO_CODEC_TYPE_FOR_STREAM."
+        },
+        {
+            "backgroundColor": "The video background color of the output media stream. The format is a hexadecimal integer defined by RGB without the # symbol. For example, 0xFFB6C1 represents light pink. The default value is 0x000000 (black)."
+        },
+        {
+            "userCount": "The number of hosts involved in transcoding. The default value is 0."
+        },
+        {
+            "transcodingUsers": "\n      Transcoding configurations of each host. One live streaming channel supports up to 17 hosts. See TranscodingUser.\n  "
+        },
+        {
+            "transcodingExtraInfo": "The user SEI information embedded in the output media stream. This parameter is used to send SEI information to the CDN. The maximum length is 4096 bytes. See How to solve SEI-related issues?"
+        },
+        {
+            "metadata": "\n      \n \n     Deprecated:\n     This attribute is deprecated.\n \n      The metadata sent to the CDN client."
+        },
+        {
+            "watermark": "The video watermark of the output media stream. Ensure that the format of the watermark image is PNG. See RtcImage."
+        },
+        {
+            "backgroundImage": "The video background image of the output media stream. See RtcImage."
+        },
+        {
+            "audioSampleRate": "The audio sampling rate (Hz) of the output media stream. See AUDIO_SAMPLE_RATE_TYPE."
+        },
+        {
+            "audioBitrate": "The audio bitrate (Kbps) of the output media stream. The default value is 48, and the maximum is 128."
+        },
+        {
+            "audioChannels": "The number of audio channels of the output media stream. The default value is 1. Agora recommends setting it to 1 or 2.\n      1: (Default) Mono.\n      2: Stereo.\n      3: Three audio channels.\n      4: Four audio channels.\n      5: Five audio channels.\n      \n  "
+        },
+        {
+            "audioCodecProfile": "The audio codec of the media stream. See AUDIO_CODEC_PROFILE_TYPE."
+        }
+    ],
+    "returns": ""
+}

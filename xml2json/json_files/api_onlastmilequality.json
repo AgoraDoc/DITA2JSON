@@ -1,0 +1,11 @@
+{
+    "id": "api_onlastmilequality",
+    "name": "LASTMILE_QUALITY",
+    "description": "Reports the last mile network quality of the local user once every two seconds.This callback reports the last-mile network conditions of the local user before the user joins the channel. Last mile refers to the connection between the local device and Agora's edge server.\n   After the app calls enableLastmileTest, the SDK triggers this callback once every two seconds.",
+    "parameters": [
+        {
+            "quality": "The last mile network quality. See QUALITY_TYPE."
+        }
+    ],
+    "returns": ""
+}

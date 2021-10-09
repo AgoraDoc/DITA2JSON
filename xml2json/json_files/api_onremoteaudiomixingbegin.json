@@ -1,0 +1,7 @@
+{
+    "id": "api_onremoteaudiomixingbegin",
+    "name": "REMOTE_AUDIO_MIXING_BEGIN",
+    "description": "Occurs when a remote user starts audio mixing.When a remote user calls startAudioMixing to play the background music, the SDK reports this callback.",
+    "parameters": [],
+    "returns": ""
+}

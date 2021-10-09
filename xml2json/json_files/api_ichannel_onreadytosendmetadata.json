@@ -1,0 +1,11 @@
+{
+    "id": "api_ichannel_onreadytosendmetadata",
+    "name": "READY_TO_SEND_METADATA",
+    "description": "Occurs when the SDK is ready to send Metadata.This callback is triggered when the SDK is ready to receive and send Metadata. After receiving this callback, you can call sendMetadata to send the media metadata.",
+    "parameters": [
+        {
+            "metadata": "Media metadata See Metadata."
+        }
+    ],
+    "returns": ""
+}

@@ -1,0 +1,7 @@
+{
+    "id": "api_ichannel_release",
+    "name": "release",
+    "description": "Releases the AgoraRtcChannel instance.",
+    "parameters": [],
+    "returns": "0: Success.\n       < 0: Failure.\n      -7(ERR_NOT_INITIALIZED): The SDK is not initialized before calling this method. Create and\n                            initialize the AgoraRtcChannel instance before calling this\n                            method."
+}

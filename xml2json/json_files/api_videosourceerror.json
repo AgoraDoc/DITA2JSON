@@ -1,0 +1,14 @@
+{
+    "id": "api_videosourceerror",
+    "name": "VIDEO_SOURCE_ERROR",
+    "description": "Reports an error (in the C++ layer).This callback indicates that an error occurs during SDK runtime. In most cases, the SDK cannot fix the issue and resume running. The SDK requires the application to take action or informs the user about the issue. For example, the SDK reports an ERR_START_CALL error when failing to initialize a call. The app informs the user that the call initialization failed and invokes the leaveChannel method to leave the channel.\n    The callback for the second instance.\n            The callback only reports errors in the C++ layer. If you want to receive errors from the Electron layer, use VIDEO_SOURCE_API_ERROR.",
+    "parameters": [
+        {
+            "err": "The error code. For details, see Error Codes and Warning Codes."
+        },
+        {
+            "msg": "The error message."
+        }
+    ],
+    "returns": ""
+}

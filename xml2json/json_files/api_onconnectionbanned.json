@@ -1,0 +1,7 @@
+{
+    "id": "api_onconnectionbanned",
+    "name": "CONNECTION_BANNED",
+    "description": "Occurs when the connection is banned by the Agora server.Deprecated:\n  Please use CONNECTION_STATE_CHANGED instead.",
+    "parameters": [],
+    "returns": ""
+}

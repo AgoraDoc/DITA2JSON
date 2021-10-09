@@ -1,0 +1,11 @@
+{
+    "id": "api_createdatastream2",
+    "name": "createDataStreamWithConfig",
+    "description": "Creates a data stream.Creates a data stream. Each user can create up to five data streams in a\n                single channel.  \n            Compared with createDataStream, this method does not\n                support data reliability. If a data packet is not received five seconds after it was\n                sent, the SDK directly discards the data.",
+    "parameters": [
+        {
+            "config": "The configurations for the data stream. See DataStreamConfig."
+        }
+    ],
+    "returns": "ID of the created data stream, if the method call succeeds.\n       < 0: Failure. You can refer to Error Codes and Warning Codes for troubleshooting."
+}

@@ -1,0 +1,14 @@
+{
+    "id": "api_onclientrolechanged",
+    "name": "CLIENT_ROLE_CHANGED",
+    "description": "Occurs when the user role switches in the interactive live streaming.The SDK triggers this callback when the local user switches the user role by calling setClientRoleWithOptions after joining the channel.",
+    "parameters": [
+        {
+            "oldRole": "Role that the user switches from: CLIENT_ROLE_TYPE."
+        },
+        {
+            "newRole": "Role that the user switches to: CLIENT_ROLE_TYPE."
+        }
+    ],
+    "returns": ""
+}

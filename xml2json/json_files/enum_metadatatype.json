@@ -1,0 +1,14 @@
+{
+    "id": "enum_metadatatype",
+    "name": "METADATA_TYPE",
+    "description": "Metadata type of the  observer. We only support video metadata for now.",
+    "parameters": [
+        {
+            "UNKNOWN_METADATA": "The type of Metadata is unknown."
+        },
+        {
+            "VIDEO_METADATA": "The type of Metadata is video."
+        }
+    ],
+    "returns": ""
+}

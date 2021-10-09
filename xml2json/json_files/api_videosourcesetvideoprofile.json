@@ -1,0 +1,14 @@
+{
+    "id": "api_videosourcesetvideoprofile",
+    "name": "videoSourceSetVideoProfile",
+    "description": "Sets the video profile for videoSource.Deprecated:\n                    Please use the videoSourceSetVideoEncoderConfiguration method instead.\n                \n            \n            A method for the second instance.\n            Call this method before calling videoSourceStartScreenCaptureByScreen or videoSourceStartScreenCaptureByWindow.",
+    "parameters": [
+        {
+            "profile": "Video profile. See VIDEO_PROFILE_TYPE."
+        },
+        {
+            "swapWidthAndHeight": "The SDK outputs video with a fixed width and height according to the video profile (profile) you selected. This parameter sets whether to swap width and height of the video:\n  \n      true: Swap the width and height.\n      false: (Default) Do not swap the width and height.\n  \n  "
+        }
+    ],
+    "returns": "0: Success.\n        < 0: Failure."
+}

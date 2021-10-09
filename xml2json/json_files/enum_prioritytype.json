@@ -1,0 +1,14 @@
+{
+    "id": "enum_prioritytype",
+    "name": "PRIORITY_TYPE",
+    "description": "The priority of the remote user.",
+    "parameters": [
+        {
+            "PRIORITY_HIGH": "The user's priority is high."
+        },
+        {
+            "PRIORITY_NORMAL": "(Default) The user's priority is normal."
+        }
+    ],
+    "returns": ""
+}

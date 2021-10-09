@@ -1,0 +1,11 @@
+{
+    "id": "api_setaudioeffectpreset",
+    "name": "setAudioEffectPreset",
+    "description": "Sets an SDK preset audio effect.Since\n  v3.2.0\n       \n   \n   Call this method to set an SDK preset audio effect for the local user who sends an audio stream. This audio effect does not change the gender characteristics of the original voice. After setting an audio effect, all users in the channel can hear the effect.\n   You can set different audio effects for different scenarios. See Set the Voice Beautifier and Audio Effects.\n   To get better audio effect quality, Agora recommends calling setAudioProfile and setting the scenario as AUDIO_SCENARIO_GAME_STREAMING (3) before calling this method.\n   \n       \n  You can call this method either before or after joining a channel.\n  Do not set the profile parameter in setAudioProfile to AUDIO_PROFILE_SPEECH_STANDARD(1) or AUDIO_PROFILE_IOT (6), or the method will not take effect.\n  This method works best with the human voice. Agora does not recommend using this method for audio containing music.\n  If you call setAudioEffectPreset and set the preset parameter to enumerators except for ROOM_ACOUSTICS_3D_VOICE or PITCH_CORRECTION, do not call setAudioEffectParameters; otherwise, setAudioEffectPreset will be overridden.\n  After calling setAudioEffectPreset, Agora recommends not calling the following methods, because they can override setAudioEffectPreset:\n         setVoiceBeautifierPreset\n         setLocalVoiceReverbPreset\n         setLocalVoiceChanger\n         setLocalVoicePitch\n         setLocalVoiceEqualization\n         setLocalVoiceReverb\n         setVoiceBeautifierParameters\n         setVoiceConversionPreset",
+    "parameters": [
+        {
+            "preset": "The options for SDK preset audio effects. See AUDIO_EFFECT_PRESET."
+        }
+    ],
+    "returns": "0: Success.\n       < 0: Failure."
+}

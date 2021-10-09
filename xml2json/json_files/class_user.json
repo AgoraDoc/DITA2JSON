@@ -1,0 +1,7 @@
+{
+    "id": "class_user",
+    "name": "User",
+    "description": "User information of the rendered video.This class specifies the user information to which the SDK renders the video. You can set it as one of the following values:\n                \"local\": Represents video rendering for the local user.\n                \"videoSource\": Represents video rendering for the video source object.\n                Integer: This value is consistent with the remote user's user ID, and represents the remote user's video rendering.\n                String: This string is consistent with the remote user's user account, and represents the video rendering of the remote user.",
+    "parameters": [],
+    "returns": ""
+}

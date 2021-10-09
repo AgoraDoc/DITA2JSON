@@ -1,0 +1,23 @@
+{
+    "id": "enum_encryptionmode",
+    "name": "ENCRYPTION_MODE",
+    "description": "The built-in encryption mode.",
+    "parameters": [
+        {
+            "AES_128_XTS": "1: (Default) 128-bit AES encryption, XTS mode."
+        },
+        {
+            "AES_128_ECB": "2: 128-bit AES encryption, ECB mode."
+        },
+        {
+            "AES_256_XTS": "3: 256-bit AES encryption, XTS mode."
+        },
+        {
+            "AES_128_GCM": "\n               \n                   \n                       Since\n                       v3.3.1\n                   \n               \n               5: 128-bit AES encryption, GCM mode."
+        },
+        {
+            "AES_256_GCM": "\n               \n                   \n                       Since\n                       v3.3.1\n                   \n               \n               6: 256-bit AES encryption, GCM mode."
+        }
+    ],
+    "returns": ""
+}

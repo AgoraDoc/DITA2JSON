@@ -1,0 +1,7 @@
+{
+    "id": "api_videosourceenableaudio",
+    "name": "videoSourceEnableAudio",
+    "description": "Enables the audio module.A method for the second instance.\n            This method enables audio (disabled by default) for the screen-sharing instance.",
+    "parameters": [],
+    "returns": "0: Success.\n       < 0: Failure."
+}

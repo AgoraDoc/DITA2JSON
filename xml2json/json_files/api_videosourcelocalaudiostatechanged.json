@@ -1,0 +1,14 @@
+{
+    "id": "api_videosourcelocalaudiostatechanged",
+    "name": "VIDEO_SOURCE_LOCAL_AUDIO_STATE_CHANGED",
+    "description": "Occurs when the local audio stream state changes.When the state is LOCAL_AUDIO_STREAM_STATE_FAILED(3), you can view the error information in the error parameter.\n        When the state of the local audio stream changes (including the state of the audio capture and encoding), the SDK triggers this callback to report the current state. This callback allows you to troubleshoot issues when audio exceptions occur.\n            The callback for the second instance.",
+    "parameters": [
+        {
+            "state": "The state of the local audio. See LOCAL_AUDIO_STREAM_STATE."
+        },
+        {
+            "error": "Local audio state error codes. See LOCAL_AUDIO_STREAM_ERROR."
+        }
+    ],
+    "returns": ""
+}

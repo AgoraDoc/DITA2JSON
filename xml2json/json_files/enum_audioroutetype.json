@@ -1,0 +1,41 @@
+{
+    "id": "enum_audioroutetype",
+    "name": "AUDIO_ROUTE_TYPE",
+    "description": "The type of the audio route.",
+    "parameters": [
+        {
+            "AUDIO_ROUTE_DEFAULT": "The default audio route."
+        },
+        {
+            "AUDIO_ROUTE_HEADSET": "The headset."
+        },
+        {
+            "AUDIO_ROUTE_EARPIECE": "The earpiece."
+        },
+        {
+            "AUDIO_ROUTE_HEADSET_NO_MIC": "The headset with no microphone."
+        },
+        {
+            "AUDIO_ROUTE_SPEAKERPHONE": "The built-in speaker on a mobile device."
+        },
+        {
+            "AUDIO_ROUTE_LOUDSPEAKER": "The external speaker."
+        },
+        {
+            "AUDIO_ROUTE_BLUETOOTH": "The bluetooth headset."
+        },
+        {
+            "AUDIO_ROUTE_USB": "The USB peripheral (macOS only)."
+        },
+        {
+            "AUDIO_ROUTE_HDMI": "The HDMI peripheral (macOS only)."
+        },
+        {
+            "AUDIO_ROUTE_DISPLAYPORT": "The DisplayPort peripheral (macOS only)."
+        },
+        {
+            "AUDIO_ROUTE_AIRPLAY": "Apple AirPlay (macOS only)."
+        }
+    ],
+    "returns": ""
+}

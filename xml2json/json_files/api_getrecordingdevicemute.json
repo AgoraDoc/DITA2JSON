@@ -1,0 +1,7 @@
+{
+    "id": "api_getrecordingdevicemute",
+    "name": "getAudioRecordingDeviceMute",
+    "description": "Gets the microphone's mute status.",
+    "parameters": [],
+    "returns": "0: Success.\n       < 0: Failure.\n   \n            \n                            true: The microphone is muted.\n                            false: The microphone is unmuted."
+}

@@ -1,0 +1,7 @@
+{
+    "id": "api_getscreensinfo",
+    "name": "getScreensInfo",
+    "description": "Gets the screen information.You need to call this method to get the screen information before sharing the screen by a display ID (macOS) or ScreenRect (Windows).\n            This method can get the information of multiple screens.",
+    "parameters": [],
+    "returns": "Objects that contain the screen information. The screen information on macOS and Windows is different. You can ignore the details and directly use the returned objects for screen sharing."
+}

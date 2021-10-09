@@ -1,0 +1,14 @@
+{
+    "id": "class_device",
+    "name": "Device",
+    "description": "The device information.",
+    "parameters": [
+        {
+            "deviceId": "The device ID."
+        },
+        {
+            "deviceName": "The name of the device."
+        }
+    ],
+    "returns": ""
+}

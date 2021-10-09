@@ -1,0 +1,14 @@
+{
+    "id": "api_videosourceapierror",
+    "name": "VIDEO_SOURCE_API_ERROR",
+    "description": "Occurs when an error occurs in Electron.During the SDK runtime, the SDK triggers this callback when an error occurs in Electron.\n            The callback for the second instance.\n            This callback repots only errors in Electron. If you want to receive errors on the native layer, use VIDEO_SOURCE_ERROR.",
+    "parameters": [
+        {
+            "apiType": "The internal engine. You can ignore this parameter."
+        },
+        {
+            "msg": "The error message. A typical reason is incorrect parameter setting in the API call, for example invalid value or incorrect number of parameters."
+        }
+    ],
+    "returns": ""
+}

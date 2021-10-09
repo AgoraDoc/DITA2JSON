@@ -1,0 +1,11 @@
+{
+    "id": "api_videosourcesetlogfile",
+    "name": "videoSourceSetLogFile",
+    "description": "Sets the log file for the videoSource instance in the Native layer.Deprecated:\n                    This method is deprecated. Please use videoSourceInitializeWithContext instead.\n                \n            \n            A method for the second instance.\n            \n                Ensure that you call this method immediately after initializing videoSource; otherwise, the output log may not be complete.\n                The default path for the log file of videoSource is the same with the main thread. Ensure that you change the log file path to avoid overwriting the log.",
+    "parameters": [
+        {
+            "filePath": "\n                        The absolute path of the log files. The default file path is C: \\Users\\<user_name>\\AppData\\Local\\Agora\\<process_name>\\agorasdk.log. Ensure that the directory for the log files exists and is writable. You can use this parameter to rename the log files.\n                    "
+        }
+    ],
+    "returns": "0: Success.\n       < 0: Failure."
+}

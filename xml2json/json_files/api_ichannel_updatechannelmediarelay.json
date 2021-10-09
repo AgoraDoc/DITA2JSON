@@ -1,0 +1,11 @@
+{
+    "id": "api_ichannel_updatechannelmediarelay",
+    "name": "updateChannelMediaRelay",
+    "description": "Updates the channels for media stream relay.After the media relay starts, if you want to relay the media stream to more channels, or leave the current relay channel, you can call the updateChannelMediaRelay method.\n   After a successful method call, the SDK triggers the CHANNEL_MEDIA_RELAY_EVENT callback with the RELAY_EVENT_PACKET_UPDATE_DEST_CHANNEL(7) state code.\n   Call this method after the startChannelMediaRelay method to update the destination channel.",
+    "parameters": [
+        {
+            "configuration": "The configuration of the media stream relay. See ChannelMediaRelayConfiguration."
+        }
+    ],
+    "returns": "0: Success.\n       < 0: Failure."
+}

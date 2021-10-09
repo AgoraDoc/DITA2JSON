@@ -1,0 +1,14 @@
+{
+    "id": "api_ichannel_onactivespeaker",
+    "name": "ACTIVE_SPEAKER",
+    "description": "Occurs when the most active speaker is detected.After a successful call of enableAudioVolumeIndication, the SDK continuously detects which remote user has the loudest volume. During the current period, the remote user, who is detected as the loudest for the most times, is the most active user.\n   When the number of users is no less than two and an active speaker exists, the SDK triggers this callback and reports the uid of the most active speaker.\n  If the most active speaker is always the same user, the SDK triggers the ACTIVE_SPEAKER callback only once.\n  If the most active speaker changes to another user, the SDK triggers this callback again and reports the uid of the new active speaker.",
+    "parameters": [
+        {
+            "uid": "The user ID of the most active speaker."
+        },
+        {
+            "rtcChannel": "AgoraRtcChannel."
+        }
+    ],
+    "returns": ""
+}

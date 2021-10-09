@@ -1,0 +1,14 @@
+{
+    "id": "api_onfirstremoteaudiodecoded",
+    "name": "FIRST_REMOTE_AUDIO_DECODED",
+    "description": "Occurs when the SDK decodes the first remote audio frame for playback.Deprecated:\n  Deprecated as of v3.0.0. Please use REMOTE_AUDIO_STATE_CHANGED instead.\n       \n   \n   The SDK triggers this callback under one of the following circumstances:\n                    The remote user joins the channel and sends the audio stream.\n                    The remote user stops sending the audio stream and re-sends it after 15 seconds. The remote user stops sending the audio stream and re-sends it after 15 seconds. Reasons for such an interruption include:\n                            The remote user leaves channel.\n                            The remote user drops offline.\n                            The remote user calls muteLocalAudioStream to stop sending the audio stream.\n                            The remote user calls disableAudio to disable audio.",
+    "parameters": [
+        {
+            "uid": "The user ID of the remote user."
+        },
+        {
+            "elapsed": "Time elapsed (ms) from the local user calling joinChannel until the SDK triggers this callback."
+        }
+    ],
+    "returns": ""
+}

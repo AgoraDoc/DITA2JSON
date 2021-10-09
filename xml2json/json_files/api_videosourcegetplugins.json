@@ -1,0 +1,7 @@
+{
+    "id": "api_videosourcegetplugins",
+    "name": "videoSourceGetPlugins",
+    "description": "Gets the plugins.A method for the second instance.\n            After the method call of videoSourceRegisterPlugin, you can call this method to get registered plugins.",
+    "parameters": [],
+    "returns": "An array of the Plugin objects."
+}

@@ -1,0 +1,11 @@
+{
+    "id": "api_unregistermediametadataobserver",
+    "name": "unregisterMediaMetadataObserver",
+    "description": "Unregisters the media metadata\n        observer.",
+    "parameters": [
+        {
+            "type": "The type of the metadata. The SDK currently only supports VIDEO_METADATA. For details, see METADATA_TYPE."
+        }
+    ],
+    "returns": "0: Success.\n                < 0: Failure."
+}

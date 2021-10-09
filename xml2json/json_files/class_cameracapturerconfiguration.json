@@ -1,0 +1,17 @@
+{
+    "id": "class_cameracapturerconfiguration",
+    "name": "CameraCapturerConfiguration",
+    "description": "The camera capturer preference.",
+    "parameters": [
+        {
+            "preference": "The camera capture preference. See CAPTURER_OUTPUT_PREFERENCE."
+        },
+        {
+            "captureWidth": "\n                        \n                            \n                                Since\n                                v3.3.1\n                            \n                        \n                        The width (px) of the video image captured by the local camera. To customize the width of the video image, set preference as CAPTURER_OUTPUT_PREFERENCE_MANUAL(3) first, and then use captureWidth to set the video width.\n                    "
+        },
+        {
+            "captureHeight": "\n                        \n                            \n                                Since\n                                v3.3.1\n                            \n                        \n                        The height (px) of the video image captured by the local camera. To customize the height of the video image, set preference as CAPTURER_OUTPUT_PREFERENCE_MANUAL(3) first, and then use captureHeight to set the video height.\n                    "
+        }
+    ],
+    "returns": ""
+}

@@ -1,0 +1,17 @@
+{
+    "id": "api_videosourceaudiodevicestatechanged",
+    "name": "VIDEO_SOURCE_AUDIO_DEVICE_STATE_CHANGED",
+    "description": "Occurs when the audio device state changes.This callback notifies the application that the system's audio device state is changed. For example, a headset is unplugged from the device.\n        The callback for the second instance.",
+    "parameters": [
+        {
+            "deviceId": "The device ID."
+        },
+        {
+            "deviceType": "The device type. See MEDIA_DEVICE_TYPE."
+        },
+        {
+            "deviceState": "The device state. See MEDIA_DEVICE_STATE_TYPE."
+        }
+    ],
+    "returns": ""
+}

@@ -1,0 +1,17 @@
+{
+    "id": "api_onaudiodevicevolumechanged",
+    "name": "AUDIO_DEVICE_VOLUME_CHANGED",
+    "description": "Occurs when the volume on the playback or audio capture device, or the volume in the application changes.",
+    "parameters": [
+        {
+            "deviceType": "The device type. See MEDIA_DEVICE_TYPE."
+        },
+        {
+            "volume": "The volume value. The range is [0, 255]."
+        },
+        {
+            "muted": "Whether the audio device is muted:\n      true: The audio device is muted.\n      false: The audio device is not muted.\n  "
+        }
+    ],
+    "returns": ""
+}

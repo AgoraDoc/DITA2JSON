@@ -1,0 +1,11 @@
+{
+    "id": "api_enabledualstreammode",
+    "name": "enableDualStreamMode",
+    "description": "Enables/Disables dual-stream mode.This method enables or disables dual streams. If a remote user enables dual-stream mode, use this method to subscribe to the high-quality or low-quality video stream. The high-quality video stream has a higher resolution and bitrate, and the low-quality video stream has a lower resolution and bitrate.\n   You can call this method either before or after joining a channel.",
+    "parameters": [
+        {
+            "enabled": "\n      \n true: Enables dual-stream mode.\n false: Disables dual-stream mode.\n      \n  "
+        }
+    ],
+    "returns": "0: Success.\n                < 0: Failure."
+}

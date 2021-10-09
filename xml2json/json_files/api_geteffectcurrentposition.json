@@ -1,0 +1,11 @@
+{
+    "id": "api_geteffectcurrentposition",
+    "name": "getEffectCurrentPosition",
+    "description": "Retrieves the playback position of the audio effect file.Call this method after playEffect.",
+    "parameters": [
+        {
+            "sound": "Audio effect ID. Ensure that this parameter matches the soundId set in playEffect."
+        }
+    ],
+    "returns": "≥ 0: A successful method call. Returns the playback position (ms) of the specified audio effect file.\n                < 0: Failure."
+}

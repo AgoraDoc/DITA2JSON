@@ -1,0 +1,11 @@
+{
+    "id": "api_setlocalvideomirrormode",
+    "name": "setLocalVideoMirrorMode",
+    "description": "Sets the local video mirror mode.Deprecated:\n           Deprecated as of v3.0.0.\n           Please use setView instead.",
+    "parameters": [
+        {
+            "mode": "The local video mirror mode. See VIDEO_MIRROR_MODE_TYPE."
+        }
+    ],
+    "returns": "0: Success.\n       < 0: Failure."
+}

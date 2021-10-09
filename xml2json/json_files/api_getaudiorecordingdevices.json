@@ -1,0 +1,7 @@
+{
+    "id": "api_getaudiorecordingdevices",
+    "name": "getAudioRecordingDevices",
+    "description": "Retrieves the audio recording device associated with the device ID.",
+    "parameters": [],
+    "returns": "An array of the audio recording devices. See Device."
+}

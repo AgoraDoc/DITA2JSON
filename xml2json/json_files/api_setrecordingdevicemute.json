@@ -1,0 +1,11 @@
+{
+    "id": "api_setrecordingdevicemute",
+    "name": "setAudioRecordingDeviceMute",
+    "description": "Sets the mute status of the audio capture device.",
+    "parameters": [
+        {
+            "mute": "Whether to mute the audio capture device:\n      true: Mute the audio capture device.\n      false: Unmute the audio capture device.\n  "
+        }
+    ],
+    "returns": "0: Success.\n       < 0: Failure."
+}

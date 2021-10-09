@@ -1,0 +1,11 @@
+{
+    "id": "api_onlocalpublishfallbacktoaudioonly",
+    "name": "LOCAL_PUBLISH_FALLBACK_TO_AUDIO_ONLY",
+    "description": "Occurs when the published media stream falls back to an audio-only stream due to poor network conditions or switches back to the video after the network conditions improve.If you call setLocalPublishFallbackOption and set option as STREAM_FALLBACK_OPTION_AUDIO_ONLY, the SDK triggers this callback when the remote media stream falls back to audio-only mode due to poor uplink conditions, or when the remote media stream switches back to the video after the uplink network condition improves.\n   If the local stream fallbacks to the audio-only stream, the remote user receives the USER_MUTE_VIDEO callback.",
+    "parameters": [
+        {
+            "isFallbackOrRecover": "\n      \n true: The published stream falls back to audio-only due to poor network conditions.\n false: The published stream switches back to the video after the network conditions improve.\n      \n  "
+        }
+    ],
+    "returns": ""
+}

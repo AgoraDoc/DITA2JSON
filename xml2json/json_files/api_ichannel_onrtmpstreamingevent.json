@@ -1,0 +1,17 @@
+{
+    "id": "api_ichannel_onrtmpstreamingevent",
+    "name": "RTMP_STREAMING_EVENT",
+    "description": "Reports events during the RTMP or RTMPS streaming.Since\n  v3.1.0",
+    "parameters": [
+        {
+            "eventCode": "The event code of the streaming. See RTMP_STREAMING_EVENT."
+        },
+        {
+            "url": "The RTMP or RTMPS streaming URL."
+        },
+        {
+            "rtcChannel": "AgoraRtcChannel."
+        }
+    ],
+    "returns": ""
+}

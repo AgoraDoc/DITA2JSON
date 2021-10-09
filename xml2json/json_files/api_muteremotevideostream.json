@@ -1,0 +1,14 @@
+{
+    "id": "api_muteremotevideostream",
+    "name": "muteRemoteVideoStream",
+    "description": "Stops or resumes subscribing to the video stream of a specified user.",
+    "parameters": [
+        {
+            "userId": "\n      The user ID of the specified user.\n  "
+        },
+        {
+            "mute": "Whether to stop subscribing to the video stream of the specified user.\n      true:Stop subscribing to the video streams of the specified user.\n      false: (Default) Subscribe to the video stream of the specified user.\n  \n      "
+        }
+    ],
+    "returns": "0: Success.\n       < 0: Failure."
+}

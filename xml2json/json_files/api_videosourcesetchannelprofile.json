@@ -1,0 +1,11 @@
+{
+    "id": "api_videosourcesetchannelprofile",
+    "name": "videoSourceSetChannelProfile",
+    "description": "Sets the channel profile for videoSource.A method for the second instance.",
+    "parameters": [
+        {
+            "profile": "\n      The channel profile. See CHANNEL_PROFILE_TYPE.\n      "
+        }
+    ],
+    "returns": "0(ERR_OK): Success.\n       < 0: Failure.\n      -2 (ERR_INVALID_ARGUMENT): The parameter is invalid.\n      -7(ERR_NOT_INITIALIZED): The SDK is not initialized."
+}

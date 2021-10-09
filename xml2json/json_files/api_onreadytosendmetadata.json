@@ -1,0 +1,11 @@
+{
+    "id": "api_onreadytosendmetadata",
+    "name": "READY_TO_SEND_METADATA",
+    "description": "Occurs when the SDK is ready to send Metadata.This callback is triggered when the SDK is ready to receive and send Metadata.\n   Ensure that the size of the Metadata does not exceed the value set in the  callback.",
+    "parameters": [
+        {
+            "metadata": "The metadata to be sent."
+        }
+    ],
+    "returns": ""
+}

@@ -1,0 +1,7 @@
+{
+    "id": "api_getcallid",
+    "name": "getCallId",
+    "description": "Retrieves the call ID.When a user joins a channel on a client, a callId is generated to identify the call from the client. Some methods, such as rate and complain, must be called after the call ends to submit feedback to the SDK. These methods require the callId parameter.\n   Call this method after joining a channel.",
+    "parameters": [],
+    "returns": "The current call ID.\n   \n       0: Success.\n       < 0: Failure."
+}

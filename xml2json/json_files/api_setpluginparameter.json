@@ -1,0 +1,14 @@
+{
+    "id": "api_setpluginparameter",
+    "name": "setPluginParameter",
+    "description": "Sets the parameter of a specified\n        plugin.After getting the value using getPluginParameter, you can call this method to pass a JSON string containing a key and a value to the C++ layer.",
+    "parameters": [
+        {
+            "pluginId": "The ID that identifies the plugin. You can get it from PluginInfo."
+        },
+        {
+            "parameter": "A JSON string containing a key and a value."
+        }
+    ],
+    "returns": "0: Success.\n                < 0: Failure."
+}

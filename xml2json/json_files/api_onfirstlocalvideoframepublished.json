@@ -1,0 +1,11 @@
+{
+    "id": "api_onfirstlocalvideoframepublished",
+    "name": "FIRST_LOCAL_VIDEO_FRAME_PUBLISHED",
+    "description": "Occurs when the first video frame is published.Since\n  v3.1.0\n       \n   \n   The SDK triggers this callback under one of the following circumstances:\n  The local client enables the video module and calls joinChannel successfully.\n  The local client calls muteLocalVideoStream(true) and muteLocalVideoStream(false) in sequence.\n  The local client calls disableVideo and enableVideo in sequence.",
+    "parameters": [
+        {
+            "elapsed": "The time elapsed (ms) from the local client calling joinChannel until the SDK triggers this callback."
+        }
+    ],
+    "returns": ""
+}

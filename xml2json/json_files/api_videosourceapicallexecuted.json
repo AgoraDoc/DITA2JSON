@@ -1,0 +1,17 @@
+{
+    "id": "api_videosourceapicallexecuted",
+    "name": "VIDEO_SOURCE_API_CALL_EXECUTED",
+    "description": "Occurs when a method is executed by the SDK.The callback for the second instance.",
+    "parameters": [
+        {
+            "err": "The error code returned by the SDK when the method call fails. For detailed error information and troubleshooting methods, see Error Code and Warning Code. If the SDK returns 0, then the method call is successful."
+        },
+        {
+            "api": "The method executed by the SDK."
+        },
+        {
+            "result": "The result of the method call."
+        }
+    ],
+    "returns": ""
+}
