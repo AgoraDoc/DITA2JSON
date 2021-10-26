@@ -1,6 +1,5 @@
-# coding utf-8
-# using Python 3.x
-# Created by Lu Wang 2020-12-16
+#!/usr/local/bin/python3
+# -*- coding: utf-8 -*-
 
 
 import xml.etree.ElementTree as ET
@@ -9,7 +8,6 @@ from os import path
 import os
 
 import sys
-import glob
 
 # ------------------------------------------------------
 # Parse the dita file to get information. Child's play.
