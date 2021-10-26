@@ -15,10 +15,21 @@ import glob
 # Parse the dita file to get information. Child's play.
 # ------------------------------------------------------
 
+# TODO: !!!!!!!!!!!!!!!!!!!!!!!!!  Set your working path here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 working_dir = 'C:\\Users\\WL\\Documents\\GitHub\\doc_source\\en-US\\dita\\RTC'
 
 # working_dir = 'C:\\Users\\WL\\Documents\\GitHub\\doc_source\\dita\\RTC'
 file_dir = ''
+
+# TODO: !!!!!!!!!!!!!!!!!!!!!!!!!  Set your PLATFORM TAG here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+platform_tag = "csharp"
+
+# TODO: !!!!!!!!!!!!!!!!!!!!!!!!!  Set your JSON path here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+json_file = "csharp_interface_new.json"
+
+# TODO: !!!!!!!!!!!!!!!!!!!!!!!!!  Set your SDK here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+sdk_type = "rtc"
+remove_sdk_type = "rtc-ng"
 
 # Get path of ditamap files that contain refs
 # These variables are used globally
@@ -27,6 +38,7 @@ android_path = "config/keys-rtc-api-android.ditamap"
 cpp_path = "config/keys-rtc-api-cpp.ditamap"
 rust_path = "config/keys-rtc-api-rust.ditamap"
 electron_path = "config/keys-rtc-api-electron.ditamap"
+c_sharp_path = "config/keys-rtc-api-unity.ditamap"
 
 if sys.platform == 'darwin':
     print("macOS")
@@ -34,6 +46,7 @@ if sys.platform == 'darwin':
     cpp_full_path = path.join(working_dir, cpp_path)
     rust_full_path = path.join(working_dir, rust_path)
     electron_full_path = path.join(working_dir, electron_path)
+    c_sharp_path = path.join(working_dir, c_sharp_path)
     # Need to add electron??
 elif sys.platform == 'win32':
     print("Windows")
@@ -41,17 +54,21 @@ elif sys.platform == 'win32':
     cpp_full_path = path.join(working_dir, cpp_path.replace("/", "\\"))
     rust_full_path = path.join(working_dir, rust_path.replace("/", "\\"))
     electron_full_path = path.join(working_dir, electron_path.replace("/", "\\"))
+    c_sharp_full_path = path.join(working_dir, c_sharp_path.replace("/", "\\"))
     # Need to add electron??
 
 print(android_full_path)
 print(cpp_full_path)
 print(rust_full_path)
 print(electron_full_path)
+print(c_sharp_full_path)
 
-# Set your defined path here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-defined_path = electron_full_path
+# TODO: !!!!!!!!!!!!!!!!!!!!!!!!!  Set your defined path here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# defined_path = electron_full_path
+# defined_path = android_full_path
+# defined_path = cpp_full_path
+defined_path = c_sharp_full_path
 
-# TODO: Get DITA file list from DITAMAP
 # rust_full_path
 # cpp_full_path
 # Other types of full path
@@ -105,8 +122,7 @@ def create_json_from_xml(working_dir, file_dir, android_path, cpp_path, rust_pat
     parent_map = {c: p for p in tree.iter() for c in p}
     for child in root.iter('*'):
         if child.get("props") is not None:
-            # !!!! CPP specific
-            if "cpp" not in child.get("props"):
+            if platform_tag not in child.get("props") or remove_sdk_type in child.get("props"):
                 print("------------------- Tag to remove ---------------------------")
                 print(child)
                 print(child.text)
@@ -682,6 +698,8 @@ def create_json_from_xml(working_dir, file_dir, android_path, cpp_path, rust_pat
     file_name = path.basename(path.normpath(file_dir))
     name_list = file_name.split(".")
     json_name = name_list[0]
+
+
     # Write to JSON
     # Test only: ensure_ascii=False is only used for UTF-8 characters
     with open(path.join(path.dirname(__file__), "json_files", json_name + '.json'), 'w', encoding="utf-8") as outfile:
@@ -690,6 +708,11 @@ def create_json_from_xml(working_dir, file_dir, android_path, cpp_path, rust_pat
     # Call the function to create a single JSON file
     # create_json_from_xml(working_dir, file_dir)
 
+
+# Clean the json_files folder
+for root, dirs, files in os.walk(path.join(path.dirname(__file__), "json_files")):
+    for file in files:
+        os.remove(os.path.join(root, file))
 
 for file_name in os.listdir(path.join(working_dir, 'API')):
     if file_name.endswith(
@@ -713,7 +736,7 @@ def merge_JsonFiles(files):
         with open(file, 'r', encoding="utf-8") as infile:
             result.append(json.load(infile))
 
-    with open('electron_interface_new.json', 'w', encoding="utf-8") as output_file:
+    with open(json_file, 'w', encoding="utf-8") as output_file:
         json.dump(result, output_file, ensure_ascii=False, indent=4)
 
 
