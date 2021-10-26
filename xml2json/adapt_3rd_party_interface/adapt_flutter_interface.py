@@ -1,18 +1,9 @@
 #!/usr/local/bin/python3
 # -*- coding: utf-8 -*-
 
-# Developed by Lutkin Wang
-# Check prototype in
-# <codeblock props="windows" outputclass="language-cpp">
-# virtual int adjustAudioMixingPlayoutVolume(int volume) = 0;
-# </codeblock>
-
-# Deprecated. Tested applying C++ interface to Dart interface. Met too many irregularities.
-
 import os
 import re
 
-log_name = "log_cpp.txt"
 
 def removeComments(string):
     string = re.sub(re.compile("/\*.*?\*/", re.DOTALL), "",
@@ -22,80 +13,28 @@ def removeComments(string):
     return string
 
 
-def write_log(text):
-    with open(log_name, encoding='utf8', mode='a') as f:
-        f.write(text + "\n")
-
-
 def read_ditamap(filename):
     with open(filename, encoding='utf8', mode='r') as f:
         text = f.read()
     return text
 
 
-def cpp2dart(prototype):
-    # Manually detect the cases:
-    # 1. Virtual funcs and data types
-    # C++: virtual int addPublishStreamUrl(const char* url, bool transcodingEnabled) = 0;
-    # dart: Future<void> addPublishStreamUrl(String url, bool transcodingEnabled);
+def extract_dart_proto(cpp_code, content):
+    # TODO extract dart proto from content via cpp_code
+    dart_code = cpp_code
 
-    prototype = prototype.replace("const char*", "String")
-    prototype = prototype.replace(") = 0;", ");")
-    prototype = prototype.replace("&","")
-    prototype = prototype.replace("*", "")
-    prototype = prototype.replace("const ", "")
+    content.find("")
 
-    prototype = prototype.replace("char deviceId[MAX_DEVICE_ID_LENGTH]", "")
-    prototype = prototype.replace("char deviceName[MAX_DEVICE_ID_LENGTH]", "")
-    prototype = prototype.replace("(, )", "()")
+    return dart_code
 
-    prototype = prototype.replace("AGORA_API ", "")
-    prototype = prototype.replace("AGORA_CALL ", "")
-    prototype = prototype.replace("agora::rtc::IRtcEngine", "static IRtcEngine")
-    prototype = prototype.replace("virtual int", "Future<void>")
-    prototype = prototype.replace("virtual bool", "Future<void>")
-    prototype = prototype.replace("virtual String", "Future<void>")
-    prototype = prototype.replace("virtual CONNECTION_STATE_TYPE", "Future<CONNECTION_STATE_TYPE?>")
 
-    prototype = prototype.replace("int code", "ERROR_CODE_TYPE code")
+def inject_dart_proto(dart_dict):
 
-    prototype = prototype.replace("Future<void> getRecordingDeviceVolume()", "Future<int?> getRecordingDeviceVolume()")
-    prototype = prototype.replace("Future<void> getEffects", "Future<int?> getEffects")
-    prototype = prototype.replace("Future<void> createData", "Future<int?> createData")
-    prototype = prototype.replace("Future<void> getRecordingDevice()", "Future<String?> getRecordingDevice()")
-    prototype = prototype.replace("Future<void> getRecordingDeviceMute(bool mute)", "Future<bool?> getRecordingDeviceMute()")
-    prototype = prototype.replace("Future<void> getRecordingDeviceInfo()", "Future<MediaDevice?> getRecordingDeviceInfo()")
-    prototype = prototype.replace("Future<void> getRecordingDeviceVolume(int volume)", "Future<int?> getRecordingDeviceVolume()")
-    prototype = prototype.replace("Future<void> getEffect", "Future<int?> getEffect")
-    prototype = prototype.replace("Future<void> getAudioMixing", "Future<int?> getAudioMixing")
+    ## TODO Inject dart proto into file
 
-    prototype = prototype.replace("int includeAudioFilters", "EAR_MONITORING_FILTER_TYPE includeAudioFilters")
-    prototype = prototype.replace("Future<void> getCallId(agora::util::AString callId);", "Future<String?> getCallId();")
-    prototype = prototype.replace("Future<void> getErrorDescription", "Future<String?> getErrorDescription")
-    prototype = prototype.replace("Future<void> getMaxMetadataSize", "int getMaxMetadataSize")
-    prototype = prototype.replace("Future<void> getPlaybackDevice", "Future<String?> getPlaybackDevice")
-    prototype = prototype.replace("Future<String?> getPlaybackDeviceInfo", "Future<MediaDevice?> getPlaybackDeviceInfo")
+    result = True
 
-    prototype = prototype.replace("Future<String?> getPlaybackDeviceMute(bool mute)", "Future<bool?> getPlaybackDeviceMute()")
-    prototype = prototype.replace("Future<String?> getPlaybackDeviceVolume(int volume)", "Future<int?> getPlaybackDeviceVolume()")
-    prototype = prototype.replace("= true", "")
-    prototype = prototype.replace("= false", "")
-    prototype = prototype.replace("=true", "")
-    prototype = prototype.replace("=false", "")
-
-    prototype = prototype.replace("virtual IAudioDeviceCollection", "Future<List<MediaDevice>?>")
-    prototype = prototype.replace("virtual IVideoDeviceCollection", "Future<List<MediaDevice>?>")
-    prototype = prototype.replace("virtual void", "void")
-
-    prototype = prototype.replace("unsigned int uid", "uid_t uid")
-
-    num_reg = re.compile("=\s*[0-9]+")
-    prototype = re.sub(num_reg, "", prototype)
-
-    print("Adapted prototype is " + prototype)
-
-    return prototype
-
+    return result
 
 def main():
 
@@ -108,7 +47,7 @@ def main():
     # dita_location = "C:\\Users\\WL\\Documents\\GitHub\\doc_source\\en-US\\dita\\RTC\\API"
 
     # DITA map location
-    dita_map_location = "C:\\Users\\WL\\Documents\\GitHub\\doc_source\\dita\\RTC\\config\\keys-rtc-ng-api-flutter.ditamap."
+    dita_map_location = "C:\\Users\\WL\\Documents\\GitHub\\doc_source\\dita\\RTC\\config\\keys-rtc-ng-api-flutter.ditamap"
 
     decomment_code_location = "C:\\Users\\WL\\Documents\\nocomment"
 
@@ -123,6 +62,12 @@ def main():
 
     # A list of proto files
     code_proto_list = []
+
+    dart_file_list = []
+
+    dart_proto_list = []
+
+    dart_dictionary = {}
 
     ditamap_content = read_ditamap(dita_map_location)
 
@@ -149,17 +94,17 @@ def main():
 
                 print(proto_text)
 
-                ### TESTING
-                proto_text = cpp2dart(proto_text)
-                ### TESTING
-
                 dita_proto_list.append(proto_text)
 
     dictionary = dict(zip(dita_file_list, dita_proto_list))
 
     # Handle the interface files
-
-    # Decomment all cpp files
+    # For example,
+    # for APIs, get the part "addInjectStreamUrl" from proto_text and find the proto in dart.
+    # virtual int addInjectStreamUrl(const char* url, const InjectStreamConfig&amp; config) = 0;
+    #
+    # For Classes, no prototypes are necessary. Just explain their member variables.
+    # Decomment all dart files
     for root, dirs, files in os.walk(code_location):
         for file in files:
             if file.endswith(".dart"):
@@ -170,36 +115,14 @@ def main():
 
     with open(decomment_code_location + "/" + "concatenated.dart", encoding='utf8', mode='r') as f:
         content = f.read()
-        content1 = content.replace("&amp;", "&")
-        content2 = content1.replace("&lt;", "<")
-        content3 = content2.replace("&gt;", ">")
-        content4 = content3.replace(" ", "")
-        content5 = content4.replace("\n", "")
-
-        open(log_name, "w").close()
-
-        i = 1
-
-        write_log("The DITAMAP used is " + dita_map_location + "\n")
-
         for file, code in dictionary.items():
-            code1 = code.replace("&amp;", "&")
-            code2 = code1.replace("&lt;", "<")
-            code3 = code2.replace("&gt;", ">")
-            code4 = code3.replace(" ", "")
-            code5 = code4.replace("\n", "")
+            if file.startswith("api_"):
+                dart_file_list.append(file)
+                dart_proto_list.append(extract_dart_proto(code, content))
 
-            if content5.find(code5) == -1:
-                write_log("No. " + str(i) + " Mismatch found")
-                i = i + 1
-                write_log("\n")
-                write_log("-------------------------------------------------------------------------------")
-                write_log("-------------------------------------------------------------------------------")
-                write_log("For the DITA file: " + file)
-                write_log("This prototype in DITA cannot be located in the source code: \n " + code + "\n")
-                write_log("-------------------------------------------------------------------------------")
-                write_log("-------------------------------------------------------------------------------")
-                write_log("\n")
+        dart_dictionary = dict(zip(dita_file_list, dita_proto_list))
+
+    inject_dart_proto(dart_dictionary)
 
 
 if __name__ == '__main__':
