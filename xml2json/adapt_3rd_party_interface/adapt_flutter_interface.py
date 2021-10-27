@@ -1,6 +1,6 @@
 #!/usr/local/bin/python3
 # -*- coding: utf-8 -*-
-
+import json
 import os
 import re
 
@@ -20,21 +20,53 @@ def read_ditamap(filename):
 
 
 def extract_dart_proto(cpp_code, content):
-    # TODO extract dart proto from content via cpp_code
-    dart_code = cpp_code
+    #
+    #  C++ code: virtual int stopRecordingDeviceTest() = 0;
+    #  C++ core: stopRecordingDeviceTest
+    #  re: \s[A-Za-z]+( to extract stopRecordingDeviceTest
+    #
+    #  Flutter:
+    #
+    #  Future<void> joinChannelWithUserAccount(
+    #       String? token, String channelId, String userAccount,
+    #       [ChannelMediaOptions? options]);
+    #
+    #  Future<bool?> getRecordingDeviceMute();
+    #
 
-    content.find("")
+    dart_code = []
+
+    print(cpp_code)
+
+    cpp_core = re.search(r'\s[A-Za-z]+\(', cpp_code)
+
+    if cpp_core is not None:
+        text = cpp_core[0]
+        text = text[:-1]
+
+        print("The matched C++ proto " + text)
+        # Avoid Catastrophic Backtracking: https://www.regular-expressions.info/catastrophic.html
+        dart_proto_re = r'[A-Za-z]{1,100}[<]{0,1}[A-Za-z]{0,100}[\?]{0,1}[>]{0,1}' + re.escape(text) + r'\([A-Za-z_\s\n\?,\[\]]{0,100}\);'
+        print(dart_proto_re)
+        result = re.findall(dart_proto_re, content)
+
+        for code in result:
+            print(code)
+            dart_code.append(code)
+
+        # print(dart_code)
+
+    else:
+        dart_code = ["There are no corresponding names available"]
 
     return dart_code
 
 
 def inject_dart_proto(dart_dict):
-
     ## TODO Inject dart proto into file
-
     result = True
-
     return result
+
 
 def main():
 
@@ -74,10 +106,11 @@ def main():
     # Handle the DITA files
     for file in os.scandir(dita_location):
         if (file.path.endswith(".dita")) and not file.path.startswith(dita_location + "\enum_") and not file.path.startswith(dita_location + "\\rtc_") and file.is_file() and os.path.basename(file) in ditamap_content:
-            print(file.path)
+            #print(file.path)
             dita_file_list.append(file.path)
             with open(file.path, encoding='utf8') as f:
                 content = f.read()
+
                 # Use substring methods to get the proto from DITA
                 # Here, we assume that the DITA file contains a single codeblock for each programming language
                 after_codeblock_start_tag = re.split('<codeblock props="windows" outputclass="language-cpp">',
@@ -86,17 +119,18 @@ def main():
                     before_codeblock_end_tag = re.split('</codeblock>', after_codeblock_start_tag[1])
                     proto_text = before_codeblock_end_tag[0]
                 except IndexError:
-                    proto_text = "Error: No prototype"
+                    proto_text = "Error: No prototype for " + file.path
 
                 proto_text = proto_text.replace("&amp;", "&")
                 proto_text = proto_text.replace("&lt;", "<")
                 proto_text = proto_text.replace("&gt;", ">")
 
-                print(proto_text)
+                #print(proto_text)
 
                 dita_proto_list.append(proto_text)
 
     dictionary = dict(zip(dita_file_list, dita_proto_list))
+    print(dictionary)
 
     # Handle the interface files
     # For example,
@@ -107,22 +141,48 @@ def main():
     # Decomment all dart files
     for root, dirs, files in os.walk(code_location):
         for file in files:
-            if file.endswith(".dart"):
+            if file.endswith(".dart") and not file.endswith("_impl.dart") and not file.endswith("_base.dart"):
                 with open(os.path.join(root, file), encoding='utf8', mode='r') as f:
+                    print("Removing comments...")
                     text = removeComments(f.read())
                     with open(decomment_code_location + "/" + "concatenated.dart", encoding='utf8', mode='a') as f1:
+                        print("Writing to concatenated file...")
                         f1.write(text)
 
     with open(decomment_code_location + "/" + "concatenated.dart", encoding='utf8', mode='r') as f:
+        # Reading concatenated file ...
+        print("Reading concatenated file...")
         content = f.read()
         for file, code in dictionary.items():
-            if file.startswith("api_"):
+            name = os.path.basename(file)
+            print(name)
+            if name.startswith("api_"):
                 dart_file_list.append(file)
-                dart_proto_list.append(extract_dart_proto(code, content))
+                dart_protos = extract_dart_proto(code, content)
+                print(dart_protos)
 
-        dart_dictionary = dict(zip(dita_file_list, dita_proto_list))
+                if len(dart_protos) == 1:
+                    dart_proro = dart_protos[0]
+                    dart_proto_list.append(dart_proro)
 
-    inject_dart_proto(dart_dictionary)
+                elif len(dart_protos) > 1:
+                    for dart_proro in dart_protos:
+                        if "1(" in dart_proro and file.endswith("1.dita"):
+                            dart_file_list.append(file)
+                        elif "2(" in dart_proro and file.endswith("2.dita"):
+                            dart_file_list.append(file)
+                        elif "3(" in dart_proro and file.endswith("3.dita"):
+                            dart_file_list.append(file)
+                        elif "4(" in dart_proro and file.endswith("4.dita"):
+                            dart_file_list.append(file)
+
+        dart_dictionary = dict(zip(dart_file_list, dart_proto_list))
+
+    print(dart_dictionary)
+
+    with open("dart_dictionary.csv", encoding='utf8', mode='a') as f2:
+        print("Writing to concatenated file...")
+        f2.write(json.dumps(dart_dictionary))
 
 
 if __name__ == '__main__':
