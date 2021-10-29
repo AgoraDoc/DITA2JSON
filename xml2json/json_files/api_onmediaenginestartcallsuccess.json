@@ -1,7 +1,0 @@
-{
-    "id": "api_onmediaenginestartcallsuccess",
-    "name": "MEDIA_ENGINE_START_CALL_SUCCESS",
-    "description": "Occurs when the media engine call starts.",
-    "parameters": [],
-    "returns": ""
-}

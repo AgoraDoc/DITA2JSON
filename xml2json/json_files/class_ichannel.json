@@ -1,7 +1,0 @@
-{
-    "id": "class_ichannel",
-    "name": "AgoraRtcChannel",
-    "description": "Provides methods that enable real-time communications in an AgoraRtcChannel channel.Call createChannel to create an AgoraRtcChannel object.",
-    "parameters": [],
-    "returns": ""
-}

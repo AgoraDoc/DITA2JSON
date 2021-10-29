@@ -1,7 +1,0 @@
-{
-    "id": "api_onconnectioninterrupted",
-    "name": "CONNECTION_INTERRUPTED",
-    "description": "Occurs when the connection between the SDK and the server is interrupted.Deprecated:\n  Please use CONNECTION_STATE_CHANGED instead.\n       \n   \n   The SDK triggers this callback when it loses connection with the server for more than four seconds after the connection is established. After triggering this callback, the SDK tries to reconnect to the server. You can use this callback to implement pop-up reminders. The difference between this callback and CONNECTION_LOST is:\n       The SDK triggers the CONNECTION_INTERRUPTED callback when it loses connection with the server for more than four seconds after it successfully joins the channel.\n       The SDK triggers the CONNECTION_LOST callback when it loses connection with the server for more than 10 seconds, whether or not it joins the channel.\n   If the SDK fails to rejoin the channel 20 minutes after being disconnected from Agora's edge server, the SDK stops rejoining the channel.",
-    "parameters": [],
-    "returns": ""
-}

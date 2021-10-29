@@ -39,7 +39,7 @@ def extract_dart_proto(cpp_code, content):
 
     print(cpp_code)
 
-    cpp_core = re.search(r'\s[A-Za-z]+\(', cpp_code)
+    cpp_core = re.search(r'\s[A-Za-z]{0,50}\(', cpp_code)
 
     if cpp_core is not None:
         text = cpp_core[0]
@@ -63,10 +63,37 @@ def extract_dart_proto(cpp_code, content):
     return dart_code
 
 
-def inject_dart_proto(dart_dict):
-    ## TODO Inject dart proto into file
-    result = True
-    return result
+def extract_cpp_struct_dart_class(cpp_code, content):
+
+    dart_code = ""
+
+    print(cpp_code)
+
+    cpp_core = re.search(r'struct\s{0,10}[A-Za-z]{0,50}\s{0,10}\{', cpp_code)
+
+    if cpp_core is not None:
+        text = cpp_core[0]
+        text = text[:-1]
+        text.strip(" ")
+        text = text[6:]
+
+        print("The matched C++ struct proto " + text)
+        # Avoid Catastrophic Backtracking: https://www.regular-expressions.info/catastrophic.html
+        dart_proto_re = r'(class|mixin|abstract class)\s{0,10}' + re.escape(text) + r'\s{0,10}\{[A-Za-z_\s\n\?\[\]\.,;\{\}\(\)\<\>\=\$]{0,1000}\}'
+        print(dart_proto_re)
+        result = re.search(dart_proto_re, content)
+
+        if result is not None:
+            dart_code = result.string
+        else:
+            dart_code = "There are no corresponding names available"
+
+        # print(dart_code)
+
+    else:
+        dart_code = "There are no corresponding names available"
+
+    return dart_code
 
 
 def main():
@@ -184,6 +211,13 @@ def main():
                             dart_file_list.append(file)
                             dart_proto_list.append(dart_proro)
 
+            # elif name.startswith("class_"):
+            #    dart_struct = extract_cpp_struct_dart_class(code, content)
+            #    print(dart_struct)
+            #    dart_file_list.append(file)
+            #    dart_proto_list.append(dart_struct)
+
+
         dart_dictionary = dict(zip(dart_file_list, dart_proto_list))
 
     print(dart_dictionary)
@@ -196,8 +230,11 @@ def main():
     with open(decomment_code_location + "//" + "dart_dictionary.json", encoding='utf8', mode='r') as f3:
         dict111 = json.load(f3)
         for file, proto in dict111.items():
-            tree = ET.parse(file)
-            root = tree.getroot()
+            try:
+                tree = ET.parse(file)
+                root = tree.getroot()
+            except ET.ParseError as e:
+                print(e)
 
             for child in root.iter('*'):
                 if child.get("props") == "flutter" and child.tag == "codeblock":

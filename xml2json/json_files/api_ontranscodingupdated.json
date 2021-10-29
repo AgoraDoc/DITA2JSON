@@ -1,7 +1,0 @@
-{
-    "id": "api_ontranscodingupdated",
-    "name": "TRANSCODING_UPDATED",
-    "description": "Occurs when the publisher's transcoding is updated.When the LiveTranscoding class in the setLiveTranscoding method updates, the SDK triggers the TRANSCODING_UPDATED callback to report the update information.\n   If you call the setLiveTranscoding method to set the LiveTranscoding class for the first time, the SDK does not trigger this callback.",
-    "parameters": [],
-    "returns": ""
-}

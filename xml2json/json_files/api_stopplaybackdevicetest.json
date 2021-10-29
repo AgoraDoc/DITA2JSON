@@ -1,7 +1,0 @@
-{
-    "id": "api_stopplaybackdevicetest",
-    "name": "stopAudioPlaybackDeviceTest",
-    "description": "Stops the audio playback device test.",
-    "parameters": [],
-    "returns": "0: Success.\n       < 0: Failure."
-}

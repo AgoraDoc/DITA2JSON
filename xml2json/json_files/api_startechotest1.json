@@ -1,7 +1,0 @@
-{
-    "id": "api_startechotest1",
-    "name": "startEchoTest",
-    "description": "Starts an audio call test.Deprecated:\n                    This method is deprecated as of v2.4.0. Use startEchoTestWithInterval instead.\n                \n            \n            This method starts an audio call test to determine whether the audio devices (for example, headset and speaker) and the network connection are working properly. To conduct the test, the user speaks, and the recording is played back within 10 seconds. If the user can hear the recording within the interval, the audio devices and network connection are working properly.\n            \n                \n                    Call this method before joining a channel.\n                    After calling startEchoTest, you must call stopEchoTest to end the test. Otherwise, the app cannot perform the next echo test, and you cannot join the channel.\n                    In the live streaming channels, only a host can call this method.",
-    "parameters": [],
-    "returns": "0: Success.\n                < 0: Failure."
-}

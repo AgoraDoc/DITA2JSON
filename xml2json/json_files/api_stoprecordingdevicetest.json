@@ -1,7 +1,0 @@
-{
-    "id": "api_stoprecordingdevicetest",
-    "name": "stopAudioRecordingDeviceTest",
-    "description": "Stops the audio capture device test.This method stops the audio capturing device test. You must call this method to stop the test after calling the startAudioRecordingDeviceTest method.",
-    "parameters": [],
-    "returns": "0: Success.\n       < 0: Failure."
-}

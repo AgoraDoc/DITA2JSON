@@ -1,7 +1,0 @@
-{
-    "id": "api_stopaudiodeviceloopbacktest",
-    "name": "stopAudioDeviceLoopbackTest",
-    "description": "Stops the audio device loopback test.Ensure that you call this method to stop the loopback test after calling the startAudioDeviceLoopbackTest method.",
-    "parameters": [],
-    "returns": "0: Success.\n       < 0: Failure."
-}
