@@ -3,6 +3,7 @@
 import json
 import os
 import re
+import xml.etree.ElementTree as ET
 
 
 def removeComments(string):
@@ -46,7 +47,7 @@ def extract_dart_proto(cpp_code, content):
 
         print("The matched C++ proto " + text)
         # Avoid Catastrophic Backtracking: https://www.regular-expressions.info/catastrophic.html
-        dart_proto_re = r'[A-Za-z]{1,100}[<]{0,1}[A-Za-z]{0,100}[\?]{0,1}[>]{0,1}' + re.escape(text) + r'\([A-Za-z_\s\n\?,\[\]]{0,100}\);'
+        dart_proto_re = r'[A-Za-z]{1,100}[<]{0,1}[A-Za-z]{0,100}[\?]{0,1}[>]{0,1}' + re.escape(text) + r'[0-9]{0,1}\([A-Za-z_\s\n\?,\[\]]{0,100}\);'
         print(dart_proto_re)
         result = re.findall(dart_proto_re, content)
 
@@ -113,7 +114,7 @@ def main():
 
                 # Use substring methods to get the proto from DITA
                 # Here, we assume that the DITA file contains a single codeblock for each programming language
-                after_codeblock_start_tag = re.split('<codeblock props="windows" outputclass="language-cpp">',
+                after_codeblock_start_tag = re.split(r'<codeblock props="[a-zA-Z\s]{0,10}windows[a-zA-Z\s]{0,10}" outputclass="language-cpp">',
                                                      content)
                 try:
                     before_codeblock_end_tag = re.split('</codeblock>', after_codeblock_start_tag[1])
@@ -145,11 +146,11 @@ def main():
                 with open(os.path.join(root, file), encoding='utf8', mode='r') as f:
                     print("Removing comments...")
                     text = removeComments(f.read())
-                    with open(decomment_code_location + "/" + "concatenated.dart", encoding='utf8', mode='a') as f1:
+                    with open(decomment_code_location + "//" + "concatenated.dart", encoding='utf8', mode='a') as f1:
                         print("Writing to concatenated file...")
                         f1.write(text)
 
-    with open(decomment_code_location + "/" + "concatenated.dart", encoding='utf8', mode='r') as f:
+    with open(decomment_code_location + "//" + "concatenated.dart", encoding='utf8', mode='r') as f:
         # Reading concatenated file ...
         print("Reading concatenated file...")
         content = f.read()
@@ -157,32 +158,65 @@ def main():
             name = os.path.basename(file)
             print(name)
             if name.startswith("api_"):
-                dart_file_list.append(file)
                 dart_protos = extract_dart_proto(code, content)
                 print(dart_protos)
 
                 if len(dart_protos) == 1:
                     dart_proro = dart_protos[0]
+                    dart_file_list.append(file)
                     dart_proto_list.append(dart_proro)
 
                 elif len(dart_protos) > 1:
+
                     for dart_proro in dart_protos:
+
                         if "1(" in dart_proro and file.endswith("1.dita"):
                             dart_file_list.append(file)
+                            dart_proto_list.append(dart_proro)
                         elif "2(" in dart_proro and file.endswith("2.dita"):
                             dart_file_list.append(file)
+                            dart_proto_list.append(dart_proro)
                         elif "3(" in dart_proro and file.endswith("3.dita"):
                             dart_file_list.append(file)
+                            dart_proto_list.append(dart_proro)
                         elif "4(" in dart_proro and file.endswith("4.dita"):
                             dart_file_list.append(file)
+                            dart_proto_list.append(dart_proro)
 
         dart_dictionary = dict(zip(dart_file_list, dart_proto_list))
 
     print(dart_dictionary)
 
-    with open("dart_dictionary.csv", encoding='utf8', mode='a') as f2:
+    with open(decomment_code_location + "//" + "dart_dictionary.json", encoding='utf8', mode='a') as f2:
         print("Writing to concatenated file...")
         f2.write(json.dumps(dart_dictionary))
+
+
+    with open(decomment_code_location + "//" + "dart_dictionary.json", encoding='utf8', mode='r') as f3:
+        dict111 = json.load(f3)
+        for file, proto in dict111.items():
+            tree = ET.parse(file)
+            root = tree.getroot()
+
+            for child in root.iter('*'):
+                if child.get("props") == "flutter" and child.tag == "codeblock":
+                    child.text = proto
+
+            tree.write(file, encoding='utf-8')
+
+            header = """<?xml version="1.0" encoding="UTF-8"?>\n<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">\n"""
+
+            with open(file, "r", encoding='utf-8') as f:
+                text = header + f.read()
+
+            with open(file, "w", encoding='utf-8') as f:
+                f.write(text)
+
+
+    # Clean folder
+    for root, dirs, files in os.walk(decomment_code_location):
+        for file in files:
+            os.remove(os.path.join(root, file))
 
 
 if __name__ == '__main__':
