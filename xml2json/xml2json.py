@@ -20,14 +20,14 @@ working_dir = 'C:\\Users\\WL\\Documents\\GitHub\\doc_source\\en-US\\dita\\RTC'
 file_dir = ''
 
 # TODO: !!!!!!!!!!!!!!!!!!!!!!!!!  Set your PLATFORM TAG here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-platform_tag = "csharp"
+platform_tag = "cpp"
 
 # TODO: !!!!!!!!!!!!!!!!!!!!!!!!!  Set your JSON path here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-json_file = "csharp_interface_new.json"
+json_file = "cpp_interface_new.json"
 
 # TODO: !!!!!!!!!!!!!!!!!!!!!!!!!  Set your SDK here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-sdk_type = "rtc"
-remove_sdk_type = "rtc-ng"
+sdk_type = "rtc-ng"
+remove_sdk_type = "rtc"
 
 # Get path of ditamap files that contain refs
 # These variables are used globally
@@ -64,8 +64,8 @@ print(c_sharp_full_path)
 # TODO: !!!!!!!!!!!!!!!!!!!!!!!!!  Set your defined path here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 # defined_path = electron_full_path
 # defined_path = android_full_path
-# defined_path = cpp_full_path
-defined_path = c_sharp_full_path
+defined_path = cpp_full_path
+# defined_path = c_sharp_full_path
 
 # rust_full_path
 # cpp_full_path
@@ -432,7 +432,7 @@ def create_json_from_xml(working_dir, file_dir, android_path, cpp_path, rust_pat
                 print("Windows")
                 if href_text is not None and href_text != "" and not href_text.startswith("http"):
                     dir = path.join(working_dir, href_text).replace("../", "").replace("/", "\\")
-                elif href_text.startswith("http"):
+                elif href_text is not None and href_text.startswith("http"):
                     xref.text = href_text
                     dir = None
                     print(xref.text)
