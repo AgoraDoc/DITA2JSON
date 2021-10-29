@@ -47,7 +47,7 @@ def extract_dart_proto(cpp_code, content):
 
         print("The matched C++ proto " + text)
         # Avoid Catastrophic Backtracking: https://www.regular-expressions.info/catastrophic.html
-        dart_proto_re = r'[A-Za-z]{1,100}[<]{0,1}[A-Za-z]{0,100}[\?]{0,1}[>]{0,1}' + re.escape(text) + r'[0-9]{0,1}\([A-Za-z_\s\n\?,\[\]]{0,100}\);'
+        dart_proto_re = r'[A-Za-z]{1,100}[<]{0,1}[A-Za-z]{0,100}[\?]{0,1}[>]{0,1}' + re.escape(text) + r'[0-9\s]{0,1}\([A-Za-z_\s\n\?,\[\]]{0,100}\);'
         print(dart_proto_re)
         result = re.findall(dart_proto_re, content)
 
@@ -142,7 +142,7 @@ def main():
     # Decomment all dart files
     for root, dirs, files in os.walk(code_location):
         for file in files:
-            if file.endswith(".dart") and not file.endswith("_impl.dart") and not file.endswith("_base.dart"):
+            if file.endswith(".dart") and not file.endswith("_impl.dart"):
                 with open(os.path.join(root, file), encoding='utf8', mode='r') as f:
                     print("Removing comments...")
                     text = removeComments(f.read())
