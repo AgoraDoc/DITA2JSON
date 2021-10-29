@@ -111,9 +111,10 @@ def main():
             dita_file_list.append(file.path)
             with open(file.path, encoding='utf8') as f:
                 content = f.read()
-
                 # Use substring methods to get the proto from DITA
                 # Here, we assume that the DITA file contains a single codeblock for each programming language
+                # The ng-sdk prop is at the beginning (if exists)
+                # The current sdk is default. No plan to migrate the current sdk to DITA yet
                 after_codeblock_start_tag = re.split(r'<codeblock props="[a-zA-Z\s]{0,10}windows[a-zA-Z\s]{0,10}" outputclass="language-cpp">',
                                                      content)
                 try:
