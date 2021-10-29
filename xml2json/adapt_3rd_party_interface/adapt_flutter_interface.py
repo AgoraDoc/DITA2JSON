@@ -62,7 +62,7 @@ def extract_dart_proto(cpp_code, content):
 
     return dart_code
 
-
+# TODO: Classes and structs?
 def extract_cpp_struct_dart_class(cpp_code, content):
 
     dart_code = ""
