@@ -78,8 +78,9 @@ def extract_cpp_struct_dart_class(cpp_code, content):
         text = cpp_core[0]
         text = text[:-1]
         text.strip(" ")
-        text = text[6:]
-        text.strip(" ")
+        text = text[7:]
+        text = text[:-1]
+        print(text)
 
         print("The matched C++ struct proto " + text)
         # Avoid Catastrophic Backtracking: https://www.regular-expressions.info/catastrophic.html
@@ -92,16 +93,16 @@ def extract_cpp_struct_dart_class(cpp_code, content):
         #    this.fps,
         # });
 
-        dart_proto_re = re.escape(text) + r'\(\{[A-Za-z_\s\n\?\n,\.,]{0,100}\}\);'
-        aaa = re.compile(dart_proto_re)
-        result = re.search(aaa, content)
+        dart_proto_re = text + r"\([A-Za-z_\s\n\?\n,\.,]{0,1000}\);"
+        print(dart_proto_re)
+        result = re.search(dart_proto_re, content)
 
         if result is not None:
-            dart_code = result.string
+            dart_code = result.string[result.start():result.end()]
         else:
             dart_code = "There are no corresponding names available"
 
-        # print(dart_code)
+        print(dart_code)
 
     else:
         dart_code = "There are no corresponding names available"
@@ -109,6 +110,7 @@ def extract_cpp_struct_dart_class(cpp_code, content):
     return dart_code
 
 
+# TODO: IRIS has the same ENUM naming strategy. Prototypes are not required.
 def extract_cpp_enum_dart_class(cpp_code, content):
 
     return 0
@@ -177,7 +179,7 @@ def main():
                 dita_proto_list.append(proto_text)
 
     dictionary = dict(zip(dita_file_list, dita_proto_list))
-    print(dictionary)
+    #print(dictionary)
 
     # Handle the interface files
     # For example,
@@ -229,11 +231,11 @@ def main():
                             dart_file_list.append(file)
                             dart_proto_list.append(dart_proro)
 
-            #elif name.startswith("class_"):
-            #    dart_struct = extract_cpp_struct_dart_class(code, content)
-            #    print(dart_struct)
-            #    dart_file_list.append(file)
-            #    dart_proto_list.append(dart_struct)
+            elif name.startswith("class_"):
+                dart_struct = extract_cpp_struct_dart_class(code, content)
+                print(dart_struct)
+                dart_file_list.append(file)
+                dart_proto_list.append(dart_struct)
 
 
         dart_dictionary = dict(zip(dart_file_list, dart_proto_list))
