@@ -11,6 +11,8 @@ def removeComments(string):
                     string)  # remove all occurrences streamed comments (/*COMMENT */) from string
     string = re.sub(re.compile("//.*?\n"), "",
                     string)  # remove all occurrence single-line comments (//COMMENT\n ) from string
+    string = re.sub(re.compile("///*?\n"), "",
+                    string)  # remove all occurrence single-line comments (///COMMENT\n ) from string
     return string
 
 
@@ -62,6 +64,7 @@ def extract_dart_proto(cpp_code, content):
 
     return dart_code
 
+
 # TODO: Classes and structs?
 def extract_cpp_struct_dart_class(cpp_code, content):
 
@@ -76,12 +79,22 @@ def extract_cpp_struct_dart_class(cpp_code, content):
         text = text[:-1]
         text.strip(" ")
         text = text[6:]
+        text.strip(" ")
 
         print("The matched C++ struct proto " + text)
         # Avoid Catastrophic Backtracking: https://www.regular-expressions.info/catastrophic.html
-        dart_proto_re = r'(class|mixin|abstract class)\s{0,10}' + re.escape(text) + r'\s{0,10}\{[A-Za-z_\s\n\?\[\]\.,;\{\}\(\)\<\>\=\$]{0,1000}\}'
-        print(dart_proto_re)
-        result = re.search(dart_proto_re, content)
+        # dart_proto_re = r'(class|mixin|abstract class)\s{0,10}' + re.escape(text) + r'\s{0,10}\{[A-Za-z_\s\n\?\[\]\.,;\{\}\(\)\<\>\=\$@]{0,500}\}'
+        # dart_proto_re = r'class\s{0,10}' + re.escape(text) + r'\s{0,10}\{[A-Za-z_;\s\n\?\[\]\{\}\(\)<>=\$\n,@:\.]{0,5000}\}'
+        # Should use constructor instead
+        # VideoFormat({
+        #    this.width,
+        #    this.height,
+        #    this.fps,
+        # });
+
+        dart_proto_re = re.escape(text) + r'\(\{[A-Za-z_\s\n\?\n,\.,]{0,100}\}\);'
+        aaa = re.compile(dart_proto_re)
+        result = re.search(aaa, content)
 
         if result is not None:
             dart_code = result.string
@@ -94,6 +107,11 @@ def extract_cpp_struct_dart_class(cpp_code, content):
         dart_code = "There are no corresponding names available"
 
     return dart_code
+
+
+def extract_cpp_enum_dart_class(cpp_code, content):
+
+    return 0
 
 
 def main():
@@ -211,7 +229,7 @@ def main():
                             dart_file_list.append(file)
                             dart_proto_list.append(dart_proro)
 
-            # elif name.startswith("class_"):
+            #elif name.startswith("class_"):
             #    dart_struct = extract_cpp_struct_dart_class(code, content)
             #    print(dart_struct)
             #    dart_file_list.append(file)
@@ -220,12 +238,11 @@ def main():
 
         dart_dictionary = dict(zip(dart_file_list, dart_proto_list))
 
-    print(dart_dictionary)
+    # print(dart_dictionary)
 
     with open(decomment_code_location + "//" + "dart_dictionary.json", encoding='utf8', mode='a') as f2:
         print("Writing to concatenated file...")
         f2.write(json.dumps(dart_dictionary))
-
 
     with open(decomment_code_location + "//" + "dart_dictionary.json", encoding='utf8', mode='r') as f3:
         dict111 = json.load(f3)
