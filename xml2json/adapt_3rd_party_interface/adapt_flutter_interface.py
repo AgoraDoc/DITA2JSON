@@ -198,7 +198,7 @@ def main():
 
                     for dart_proro in dart_protos:
 
-                        if "1(" in dart_proro and file.endswith("1.dita"):
+                        if "2(" not in dart_proro and "3(" not in dart_proro and file.endswith("1.dita"):
                             dart_file_list.append(file)
                             dart_proto_list.append(dart_proro)
                         elif "2(" in dart_proro and file.endswith("2.dita"):
