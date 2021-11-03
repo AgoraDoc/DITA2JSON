@@ -93,7 +93,9 @@ def extract_cpp_struct_dart_class(cpp_code, content):
         #    this.fps,
         # });
 
-        dart_proto_re = text + r"\([A-Za-z_\s\n\?\n,\.,]{0,1000}\);"
+        # dart_proto_re = text + r"\([A-Za-z_\s\n\?\n,\.,]{0,1000}\);"
+        dart_proto_re = r'(class|mixin|abstract class)\s{0,10}' + re.escape(
+            text) + r'\s{0,10}\{[\s{0,10}\{[A-Za-z\s\n\?\[\]\.,;\{\}\(\)<>=$:]{0,1000}(?<=\n)\}(?!\))'
         print(dart_proto_re)
         result = re.search(dart_proto_re, content)
 
@@ -102,7 +104,7 @@ def extract_cpp_struct_dart_class(cpp_code, content):
         else:
             dart_code = "There are no corresponding names available"
 
-        print(dart_code)
+        # print(dart_code)
 
     else:
         dart_code = "There are no corresponding names available"
