@@ -13,6 +13,8 @@ def removeComments(string):
                     string)  # remove all occurrence single-line comments (//COMMENT\n ) from string
     string = re.sub(re.compile("///*?\n"), "",
                     string)  # remove all occurrence single-line comments (///COMMENT\n ) from string
+    string = re.sub(re.compile("\n\n"), "\n",
+                    string)  # remove all multiple empty lines
     return string
 
 
@@ -49,7 +51,7 @@ def extract_dart_proto(cpp_code, content):
 
         print("The matched C++ proto " + text)
         # Avoid Catastrophic Backtracking: https://www.regular-expressions.info/catastrophic.html
-        dart_proto_re = r'[A-Za-z]{1,100}[<]{0,1}[A-Za-z]{0,100}[\?]{0,1}[>]{0,1}' + re.escape(text) + r'[0-9\s]{0,1}\([A-Za-z_\s\n\?,\[\]]{0,100}\);'
+        dart_proto_re = r'[A-Za-z]{1,100}[<]{0,1}[A-Za-z]{0,100}[\?]{0,1}[>]{0,1}' + re.escape(text) + r'[0-9\s]{0,1}\([A-Za-z_\s\n\?,\[\]]{0,100}\);{0,1}'
         print(dart_proto_re)
         result = re.findall(dart_proto_re, content)
 
@@ -95,7 +97,7 @@ def extract_cpp_struct_dart_class(cpp_code, content):
 
         # dart_proto_re = text + r"\([A-Za-z_\s\n\?\n,\.,]{0,1000}\);"
         dart_proto_re = r'(class|mixin|abstract class)\s{0,10}' + re.escape(
-            text) + r'\s{0,10}\{[\s{0,10}\{[A-Za-z\s\n\?\[\]\.,;\{\}\(\)<>=$:]{0,1000}(?<=\n)\}(?!\))'
+            text) + r'\s{0,10}\{[\s{0,10}\{[A-Za-z_\s\n\?\[\]\.,;\{\}\(\)<>=$]{0,1000}(?<!\s\s)\}(?!\))'
         print(dart_proto_re)
         result = re.search(dart_proto_re, content)
 
