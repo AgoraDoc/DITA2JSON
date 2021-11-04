@@ -11,8 +11,6 @@ def removeComments(string):
                     string)  # remove all occurrences streamed comments (/*COMMENT */) from string
     string = re.sub(re.compile("//.*?\n"), "",
                     string)  # remove all occurrence single-line comments (//COMMENT\n ) from string
-    string = re.sub(re.compile("///*?\n"), "",
-                    string)  # remove all occurrence single-line comments (///COMMENT\n ) from string
     return string
 
 
