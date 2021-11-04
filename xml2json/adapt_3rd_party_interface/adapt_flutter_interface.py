@@ -11,6 +11,8 @@ def removeComments(string):
                     string)  # remove all occurrences streamed comments (/*COMMENT */) from string
     string = re.sub(re.compile("//.*?\n"), "",
                     string)  # remove all occurrence single-line comments (//COMMENT\n ) from string
+    string = re.sub(re.compile("///.*?\n"), "",
+                    string)  # remove all occurrence single-line comments (///COMMENT\n ) from string
     string = re.sub(re.compile("\n\n"), "\n",
                     string)  # remove all multiple empty lines
     return string
@@ -94,8 +96,11 @@ def extract_cpp_struct_dart_class(cpp_code, content):
         # });
 
         # dart_proto_re = text + r"\([A-Za-z_\s\n\?\n,\.,]{0,1000}\);"
+        # A greedy quantifier always attempts to repeat the sub-pattern as many times as possible before exploring shorter matches by backtracking.
+        # A lazy (also called non-greedy or reluctant) quantifier always attempts to repeat the sub-pattern as few times as possible, before exploring longer matches by expansion.
+        # Here we use lazy ones
         dart_proto_re = r'(class|mixin|abstract class)\s{0,10}' + re.escape(
-            text) + r'\s{0,10}\{[\s{0,10}\{[A-Za-z_\s\n\?\[\]\.,;\{\}\(\)<>=$]{0,1000}(?<!\s\s)\}(?!\))'
+            text) + r'\s{0,10}\{\s{0,10}[A-Za-z_0-9\s\n\?\[\]\.,;\{\}\(\)<>=$@:]{0,2000}?(?<!\s\s)\}(?!\))'
         print(dart_proto_re)
         result = re.search(dart_proto_re, content)
 
@@ -121,17 +126,19 @@ def extract_cpp_enum_dart_class(cpp_code, content):
 def main():
 
     # Code location
-    # code_location = "C:\\Users\\WL\\Documents\\rte_sdk\\interface\\cpp"
-    code_location = "C:\\Users\\WL\\Documents\\GitHub\\agora_rtc_flutter_ng\\agora_rtc_flutter\\lib\\src"
-    # DITA location
-    dita_location = "C:\\Users\\WL\\Documents\\GitHub\\doc_source\\dita\\RTC\\API"
+    # code_location = "C:\\Users\\WL\\Documents\\GitHub\\agora_rtc_flutter\\agora_rtc_flutter\\lib\\src"
+    code_location = "D:\\github_lucas\\agora_rtc_flutter\\agora_rtc_flutter\\lib\\src"
 
-    # dita_location = "C:\\Users\\WL\\Documents\\GitHub\\doc_source\\en-US\\dita\\RTC\\API"
+    # DITA location
+    # dita_location = "C:\\Users\\WL\\Documents\\GitHub\\doc_source\\dita\\RTC\\API"
+    dita_location = "D:\\github_lucas\\doc_source\\dita\\RTC\\API"
 
     # DITA map location
-    dita_map_location = "C:\\Users\\WL\\Documents\\GitHub\\doc_source\\dita\\RTC\\config\\keys-rtc-ng-api-flutter.ditamap"
+    # dita_map_location = "C:\\Users\\WL\\Documents\\GitHub\\doc_source\\dita\\RTC\\config\\keys-rtc-ng-api-flutter.ditamap"
+    dita_map_location = "D:\\github_lucas\\doc_source\\dita\\RTC\\config\\keys-rtc-ng-api-flutter.ditamap"
 
-    decomment_code_location = "C:\\Users\\WL\\Documents\\nocomment"
+    # decomment_code_location = "C:\\Users\\WL\\Documents\\nocomment"
+    decomment_code_location = "D:\\nocomment"
 
     # A list of DITA files
     dita_file_list = []
@@ -261,6 +268,10 @@ def main():
                 if child.get("props") == "flutter" and child.tag == "codeblock":
                     child.text = proto
 
+            # Must be Python 3.8 or higher. Otherwise the attribute order cannot be preserved!!!!
+            # https://docs.python.org/3/library/xml.etree.elementtree.html#xml.etree.ElementTree.ElementTree.write
+            # https://bugs.python.org/issue34160
+            # Python bug it is
             tree.write(file, encoding='utf-8')
 
             header = """<?xml version="1.0" encoding="UTF-8"?>\n<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "reference.dtd">\n"""
