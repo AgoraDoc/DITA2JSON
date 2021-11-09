@@ -30,6 +30,8 @@ def extract_dart_proto(cpp_code, content):
     #  C++ core: stopRecordingDeviceTest
     #  re: \s[A-Za-z]+( to extract stopRecordingDeviceTest
     #
+    # Special case: AGORA_API agora::rtc::IRtcEngine *AGORA_CALL createAgoraRtcEngine()
+    #
     #  Flutter:
     #
     #  Future<void> joinChannelWithUserAccount(
@@ -63,6 +65,7 @@ def extract_dart_proto(cpp_code, content):
 
     else:
         dart_code = ["There are no corresponding names available"]
+        print("There are no corresponding names available")
 
     return dart_code
 
@@ -126,19 +129,19 @@ def extract_cpp_enum_dart_class(cpp_code, content):
 def main():
 
     # Code location
-    # code_location = "C:\\Users\\WL\\Documents\\GitHub\\agora_rtc_flutter\\agora_rtc_flutter\\lib\\src"
-    code_location = "D:\\github_lucas\\agora_rtc_flutter\\agora_rtc_flutter\\lib\\src"
+    code_location = "C:\\Users\\WL\\Documents\\GitHub\\agora_rtc_flutter_ng\\agora_rtc_flutter\\lib\\src"
+    # code_location = "D:\\github_lucas\\agora_rtc_flutter\\agora_rtc_flutter\\lib\\src"
 
     # DITA location
-    # dita_location = "C:\\Users\\WL\\Documents\\GitHub\\doc_source\\dita\\RTC\\API"
-    dita_location = "D:\\github_lucas\\doc_source\\dita\\RTC\\API"
+    dita_location = "C:\\Users\\WL\\Documents\\GitHub\\doc_source\\dita\\RTC\\API"
+    # dita_location = "D:\\github_lucas\\doc_source\\dita\\RTC\\API"
 
     # DITA map location
-    # dita_map_location = "C:\\Users\\WL\\Documents\\GitHub\\doc_source\\dita\\RTC\\config\\keys-rtc-ng-api-flutter.ditamap"
-    dita_map_location = "D:\\github_lucas\\doc_source\\dita\\RTC\\config\\keys-rtc-ng-api-flutter.ditamap"
+    dita_map_location = "C:\\Users\\WL\\Documents\\GitHub\\doc_source\\dita\\RTC\\config\\keys-rtc-ng-api-flutter.ditamap"
+    # dita_map_location = "D:\\github_lucas\\doc_source\\dita\\RTC\\config\\keys-rtc-ng-api-flutter.ditamap"
 
-    # decomment_code_location = "C:\\Users\\WL\\Documents\\nocomment"
-    decomment_code_location = "D:\\nocomment"
+    decomment_code_location = "C:\\Users\\WL\\Documents\\nocomment"
+    # decomment_code_location = "D:\\nocomment"
 
     # A list of DITA files
     dita_file_list = []
@@ -230,6 +233,12 @@ def main():
                         if "2(" not in dart_proro and "3(" not in dart_proro and file.endswith("1.dita"):
                             dart_file_list.append(file)
                             dart_proto_list.append(dart_proro)
+                        elif dart_proro == "Future<void> enableDualStreamMode(bool enabled);":
+                            dart_file_list.append(file)
+                            dart_proto_list.append(dart_proro)
+                        elif dart_proro == "Future<int?> createDataStream(bool reliable, bool ordered);":
+                            dart_file_list.append(file)
+                            dart_proto_list.append(dart_proro)
                         elif "2(" in dart_proro and file.endswith("2.dita"):
                             dart_file_list.append(file)
                             dart_proto_list.append(dart_proro)
@@ -266,7 +275,15 @@ def main():
 
             for child in root.iter('*'):
                 if child.get("props") == "flutter" and child.tag == "codeblock":
-                    child.text = proto
+                    if proto != "There are no corresponding names available":
+                        child.text = proto
+
+                # Add a return_values section for flutter
+                if child.text is not None and "void" in child.text:
+                    for new_child in root.iter('*'):
+                        if new_child.get("id") == "return_values":
+                            new_child.set("props", "native electron unity")
+
 
             # Must be Python 3.8 or higher. Otherwise the attribute order cannot be preserved!!!!
             # https://docs.python.org/3/library/xml.etree.elementtree.html#xml.etree.ElementTree.ElementTree.write
