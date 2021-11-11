@@ -53,7 +53,7 @@ def extract_dart_proto(cpp_code, content):
 
         print("The matched C++ proto " + text)
         # Avoid Catastrophic Backtracking: https://www.regular-expressions.info/catastrophic.html
-        dart_proto_re = r'[A-Za-z]{1,100}[<]{0,1}[A-Za-z]{0,100}[\?]{0,1}[>]{0,1}' + re.escape(text) + r'[0-9\s]{0,1}\([A-Za-z_\s\n\?,\[\]]{0,100}\);{0,1}'
+        dart_proto_re = r'[A-Za-z]{1,100}[<]{0,1}[A-Za-z]{0,100}[\?]{0,1}[>]{0,1}' + re.escape(text) + r'[0-9\s]{0,1}\([0-9A-Za-z_\s\n\?,\[\]<>]{0,200}\);{0,1}'
         print(dart_proto_re)
         result = re.findall(dart_proto_re, content)
 
@@ -133,11 +133,11 @@ def main():
     # code_location = "D:\\github_lucas\\agora_rtc_flutter\\agora_rtc_flutter\\lib\\src"
 
     # DITA location
-    dita_location = "C:\\Users\\WL\\Documents\\GitHub\\doc_source\\dita\\RTC\\API"
+    dita_location = "C:\\Users\\WL\\Documents\\GitHub\\doc_source\\en-US\\dita\\RTC\\API"
     # dita_location = "D:\\github_lucas\\doc_source\\dita\\RTC\\API"
 
     # DITA map location
-    dita_map_location = "C:\\Users\\WL\\Documents\\GitHub\\doc_source\\dita\\RTC\\config\\keys-rtc-ng-api-flutter.ditamap"
+    dita_map_location = "C:\\Users\\WL\\Documents\\GitHub\\doc_source\\en-US\\dita\\RTC\\config\\keys-rtc-ng-api-flutter.ditamap"
     # dita_map_location = "D:\\github_lucas\\doc_source\\dita\\RTC\\config\\keys-rtc-ng-api-flutter.ditamap"
 
     decomment_code_location = "C:\\Users\\WL\\Documents\\nocomment"
@@ -237,6 +237,13 @@ def main():
                             dart_file_list.append(file)
                             dart_proto_list.append(dart_proro)
                         elif dart_proro == "Future<int?> createDataStream(bool reliable, bool ordered);":
+                            dart_file_list.append(file)
+                            dart_proto_list.append(dart_proro)
+                        # The filename ends with _ng
+                        elif dart_proro == "Future<void> joinChannel2(String? token, String channelId, uid_t uid,\n      [ChannelMediaOptions? options]);":
+                            dart_file_list.append(file)
+                            dart_proto_list.append(dart_proro)
+                        elif dart_proro == "Future<void> leaveChannel();":
                             dart_file_list.append(file)
                             dart_proto_list.append(dart_proro)
                         elif "2(" in dart_proro and file.endswith("2.dita"):
