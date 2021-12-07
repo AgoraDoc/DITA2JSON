@@ -20,15 +20,16 @@ working_dir = 'C:\\Users\\WL\\Documents\\GitHub\\doc_source\\en-US\\dita\\RTC'
 file_dir = ''
 
 # TODO: !!!!!!!!!!!!!!!!!!!!!!!!!  Set your PLATFORM TAG here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-platform_tag = "cpp"
+platform_tag = "flutter"
 
 # TODO: !!!!!!!!!!!!!!!!!!!!!!!!!  Set your JSON path here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-json_file = "cpp_interface_new.json"
+json_file = "flutter_interface_new.json"
 
 # TODO: !!!!!!!!!!!!!!!!!!!!!!!!!  Set your SDK here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-sdk_type = "rtc-ng"
-remove_sdk_type = "rtc"
-
+# sdk_type = "rtc-ng"
+# remove_sdk_type = "rtc"
+sdk_type = "rtc"
+remove_sdk_type = "rtc-ng"
 # Get path of ditamap files that contain refs
 # These variables are used globally
 # android_path, cpp_path, rust_full_path, electron_path
@@ -37,6 +38,7 @@ cpp_path = "config/keys-rtc-api-cpp.ditamap"
 rust_path = "config/keys-rtc-api-rust.ditamap"
 electron_path = "config/keys-rtc-api-electron.ditamap"
 c_sharp_path = "config/keys-rtc-api-unity.ditamap"
+flutter_sharp_path = "config/keys-rtc-api-flutter.ditamap"
 
 if sys.platform == 'darwin':
     print("macOS")
@@ -45,6 +47,7 @@ if sys.platform == 'darwin':
     rust_full_path = path.join(working_dir, rust_path)
     electron_full_path = path.join(working_dir, electron_path)
     c_sharp_path = path.join(working_dir, c_sharp_path)
+    flutter_full_path = path.join(working_dir, flutter_sharp_path)
     # Need to add electron??
 elif sys.platform == 'win32':
     print("Windows")
@@ -53,6 +56,7 @@ elif sys.platform == 'win32':
     rust_full_path = path.join(working_dir, rust_path.replace("/", "\\"))
     electron_full_path = path.join(working_dir, electron_path.replace("/", "\\"))
     c_sharp_full_path = path.join(working_dir, c_sharp_path.replace("/", "\\"))
+    flutter_full_path = path.join(working_dir, flutter_sharp_path.replace("/", "\\"))
     # Need to add electron??
 
 print(android_full_path)
@@ -64,8 +68,9 @@ print(c_sharp_full_path)
 # TODO: !!!!!!!!!!!!!!!!!!!!!!!!!  Set your defined path here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 # defined_path = electron_full_path
 # defined_path = android_full_path
-defined_path = cpp_full_path
+# defined_path = cpp_full_path
 # defined_path = c_sharp_full_path
+defined_path = flutter_full_path
 
 # rust_full_path
 # cpp_full_path
@@ -119,13 +124,17 @@ def create_json_from_xml(working_dir, file_dir, android_path, cpp_path, rust_pat
     # parent_map = {c: p for p in tree.iter() for c in p}
     parent_map = {c: p for p in tree.iter() for c in p}
     for child in root.iter('*'):
+
         if child.get("props") is not None:
-            if platform_tag not in child.get("props") or remove_sdk_type in child.get("props"):
+            if platform_tag not in child.get("props") or remove_sdk_type in child.get("props") or child.tag == "table":
                 print("------------------- Tag to remove ---------------------------")
                 print(child)
                 print(child.text)
                 print("--------------------Tag to remove ---------------------------")
                 parent_map[child].remove(child)
+
+
+
     #
     # ----------------------------------------------------------------------------
     # Implement all conrefs with the actual content
@@ -201,7 +210,10 @@ def create_json_from_xml(working_dir, file_dir, android_path, cpp_path, rust_pat
             # key
             key = conkeyref_array[0]
             # ref
-            ref = conkeyref_array[1]
+            if len(conkeyref_array) > 1:
+                ref = conkeyref_array[1]
+            else:
+                ref = ""
             # Assume that a conkeyref contains only two levels
             dita_file_tree = ET.parse(defined_path)
             dita_file_root = dita_file_tree.getroot()
@@ -261,7 +273,10 @@ def create_json_from_xml(working_dir, file_dir, android_path, cpp_path, rust_pat
             # key
             key = conkeyref_array[0]
             # ref
-            ref = conkeyref_array[1]
+            if len(conkeyref_array) > 1:
+                ref = conkeyref_array[1]
+            else:
+                ref = ""
             # Assume that a conkeyref contains only two levels
             dita_file_tree = ET.parse(defined_path)
             dita_file_root = dita_file_tree.getroot()
@@ -575,7 +590,8 @@ def create_json_from_xml(working_dir, file_dir, android_path, cpp_path, rust_pat
     short_desc = root.find('shortdesc')
     if short_desc is not None:
         for text in short_desc.itertext():
-            short_desc_text = short_desc_text + text
+            # Add "\n" to add a line break after short desc
+            short_desc_text = short_desc_text + text + "\n"
 
     if short_desc is None:
         # short_desc = "Empty"
