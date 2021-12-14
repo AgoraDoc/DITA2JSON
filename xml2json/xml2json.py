@@ -126,15 +126,25 @@ def create_json_from_xml(working_dir, file_dir, android_path, cpp_path, rust_pat
     for child in root.iter('*'):
 
         if child.get("props") is not None:
-            if platform_tag not in child.get("props") or remove_sdk_type in child.get("props") or child.tag == "table":
+            if platform_tag not in child.get("props") or remove_sdk_type in child.get("props"):
                 print("------------------- Tag to remove ---------------------------")
                 print(child)
                 print(child.text)
+                print(child.tag)
+                print(child.get("id"))
                 print("--------------------Tag to remove ---------------------------")
                 parent_map[child].remove(child)
 
-
-
+    # Remove all tables because we cannot afford to add tables to code
+    for child in root.iter('*'):
+        if child.tag == "table":
+            print("------------------- Tag to remove ---------------------------")
+            print(child)
+            print(child.text)
+            print(child.tag)
+            print(child.get("id"))
+            print("--------------------Tag to remove ---------------------------")
+            parent_map[child].remove(child)
     #
     # ----------------------------------------------------------------------------
     # Implement all conrefs with the actual content

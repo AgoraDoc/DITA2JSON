@@ -230,7 +230,7 @@ def main():
 
                     for dart_proro in dart_protos:
 
-                        if "2(" not in dart_proro and "3(" not in dart_proro and file.endswith("1.dita"):
+                        if "2(" not in dart_proro and "3(" not in dart_proro and file.endswith("1.dita") or file.endswith("1_ng.dita"):
                             dart_file_list.append(file)
                             dart_proto_list.append(dart_proro)
                         elif dart_proro == "Future<void> enableDualStreamMode(bool enabled);":
@@ -246,13 +246,13 @@ def main():
                         elif dart_proro == "Future<void> leaveChannel();":
                             dart_file_list.append(file)
                             dart_proto_list.append(dart_proro)
-                        elif "2(" in dart_proro and file.endswith("2.dita"):
+                        elif "2(" in dart_proro and file.endswith("2.dita") or file.endswith("2_ng.dita"):
                             dart_file_list.append(file)
                             dart_proto_list.append(dart_proro)
-                        elif "3(" in dart_proro and file.endswith("3.dita"):
+                        elif "3(" in dart_proro and file.endswith("3.dita") or file.endswith("3_ng.dita"):
                             dart_file_list.append(file)
                             dart_proto_list.append(dart_proro)
-                        elif "4(" in dart_proro and file.endswith("4.dita"):
+                        elif "4(" in dart_proro and file.endswith("4.dita") or file.endswith("4_ng.dita"):
                             dart_file_list.append(file)
                             dart_proto_list.append(dart_proro)
 
