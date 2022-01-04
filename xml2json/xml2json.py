@@ -126,7 +126,7 @@ def create_json_from_xml(working_dir, file_dir, android_path, cpp_path, rust_pat
     for child in root.iter('*'):
 
         if child.get("props") is not None:
-            if platform_tag not in child.get("props") or remove_sdk_type in child.get("props"):
+            if platform_tag not in child.get("props") and "native" not in child.get("props") or remove_sdk_type in child.get("props") or platform_tag not in child.get("props") and "native" in child.get("props") and platform_tag != "windows" and platform_tag != "macos"and platform_tag != "android"and platform_tag != "ios":
                 print("------------------- Tag to remove ---------------------------")
                 print(child)
                 print(child.text)
