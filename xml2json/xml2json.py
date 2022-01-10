@@ -712,7 +712,7 @@ def create_json_from_xml(working_dir, file_dir, android_path, cpp_path, rust_pat
     data = {}
 
     data['id'] = api_id
-    data['name'] = api_name
+    data['name'] = api_name.strip("\n ")
     data['description'] = api_desc
     data['parameters'] = json_array
     data['returns'] = return_values.strip("\n ")
