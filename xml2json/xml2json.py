@@ -9,27 +9,68 @@ import os
 
 import sys
 
+import argparse
+
+# ------------------------------------------------------
+# CLI for automation purposes
+# ------------------------------------------------------
+# python xml2json.py --working-dir C:\\Users\\WL\\Documents\\G
+# itHub\\doc_source\\en-US\\dita\\RTC --platform-tag=flutter --json-file=flutter_newer.json --sdk-type=sdk --remove-s
+# dk-type=sdk-ng --defined-path=flutter_full_path
+
+working_dir = ''
+platform_tag = ''
+json_file = ''
+sdk_type = ''
+remove_sdk_type = ''
+
+defined_path_text = ''
+
+parser = argparse.ArgumentParser(description="JSON generator")
+
+parser.add_argument("--working_dir", help="Your working dir, such as C:\\Users\\WL\\Documents\\GitHub\\doc_source\\en-US\\dita\\RTC", action="store")
+parser.add_argument("--platform_tag", help="Your platform tag, such as flutter", action="store")
+parser.add_argument("--json_file", help="Your json file name, such as flutter_interface_new.json", action="store")
+parser.add_argument("--sdk_type", help="Your SDK type: sdk or sdk-ng", action="store")
+parser.add_argument("--remove_sdk_type", help="Your remove SDK type: sdk or sdk-ng", action="store")
+parser.add_argument("--defined_path", help="Your defined path, such as android, flutter， electron_ng", action="store")
+
+args = vars(parser.parse_args())
+print(args)
+
+working_dir = args['working_dir']
+platform_tag = args['platform_tag']
+json_file = args['json_file']
+sdk_type = args['sdk_type']
+remove_sdk_type = args['remove_sdk_type']
+
+defined_path_text = args['defined_path']
+
+# ------------------------------------------------------
+# CLI for automation purposes
+# ------------------------------------------------------
+
 # ------------------------------------------------------
 # Parse the dita file to get information. Child's play.
 # ------------------------------------------------------
 
 # TODO: !!!!!!!!!!!!!!!!!!!!!!!!!  Set your working path here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-working_dir = 'C:\\Users\\WL\\Documents\\GitHub\\doc_source\\en-US\\dita\\RTC'
+# working_dir = 'C:\\Users\\WL\\Documents\\GitHub\\doc_source\\en-US\\dita\\RTC'
 
 # working_dir = 'C:\\Users\\WL\\Documents\\GitHub\\doc_source\\dita\\RTC'
-file_dir = ''
+# file_dir = ''
 
 # TODO: !!!!!!!!!!!!!!!!!!!!!!!!!  Set your PLATFORM TAG here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-platform_tag = "flutter"
+# platform_tag = "flutter"
 
 # TODO: !!!!!!!!!!!!!!!!!!!!!!!!!  Set your JSON path here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-json_file = "flutter_interface_new.json"
+# json_file = "flutter_interface_new.json"
 
 # TODO: !!!!!!!!!!!!!!!!!!!!!!!!!  Set your SDK here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 # sdk_type = "rtc-ng"
 # remove_sdk_type = "rtc"
-sdk_type = "rtc"
-remove_sdk_type = "rtc-ng"
+# sdk_type = "rtc"
+# remove_sdk_type = "rtc-ng"
 # Get path of ditamap files that contain refs
 # These variables are used globally
 # android_path, cpp_path, rust_full_path, electron_path
@@ -37,8 +78,14 @@ android_path = "config/keys-rtc-api-android.ditamap"
 cpp_path = "config/keys-rtc-api-cpp.ditamap"
 rust_path = "config/keys-rtc-api-rust.ditamap"
 electron_path = "config/keys-rtc-api-electron.ditamap"
-c_sharp_path = "config/keys-rtc-api-unity.ditamap"
-flutter_sharp_path = "config/keys-rtc-api-flutter.ditamap"
+unity_path = "config/keys-rtc-api-unity.ditamap"
+flutter_path = "config/keys-rtc-api-flutter.ditamap"
+rn_path = "config/keys-rtc-api-rn.ditamap"
+electron_ng_path = "config/keys-rtc-ng-api-electron.ditamap"
+c_sharp_ng_path = "config/keys-rtc-ng-api-unity.ditamap"
+flutter_ng_path = "config/keys-rtc-ng-api-flutter.ditamap"
+rn_ng_path = "config/keys-rtc-ng-api-rn.ditamap"
+unity_ng_path = "config/keys-rtc-ng-api-unity.ditamap"
 
 if sys.platform == 'darwin':
     print("macOS")
@@ -46,8 +93,15 @@ if sys.platform == 'darwin':
     cpp_full_path = path.join(working_dir, cpp_path)
     rust_full_path = path.join(working_dir, rust_path)
     electron_full_path = path.join(working_dir, electron_path)
-    c_sharp_path = path.join(working_dir, c_sharp_path)
-    flutter_full_path = path.join(working_dir, flutter_sharp_path)
+    unity_full_path = path.join(working_dir, unity_path)
+    flutter_full_path = path.join(working_dir, flutter_path)
+
+    rn_full_path = path.join(working_dir, rn_path)
+    electron_ng_full_path = path.join(working_dir, electron_ng_path)
+    c_sharp_ng_full_path = path.join(working_dir, c_sharp_ng_path)
+    flutter_ng_full_path = path.join(working_dir, flutter_ng_path)
+    rn_ng_full_path = path.join(working_dir, rn_ng_path)
+    unity_ng_full_path = path.join(working_dir, unity_ng_path)
     # Need to add electron??
 elif sys.platform == 'win32':
     print("Windows")
@@ -55,22 +109,40 @@ elif sys.platform == 'win32':
     cpp_full_path = path.join(working_dir, cpp_path.replace("/", "\\"))
     rust_full_path = path.join(working_dir, rust_path.replace("/", "\\"))
     electron_full_path = path.join(working_dir, electron_path.replace("/", "\\"))
-    c_sharp_full_path = path.join(working_dir, c_sharp_path.replace("/", "\\"))
-    flutter_full_path = path.join(working_dir, flutter_sharp_path.replace("/", "\\"))
+    unity_full_path = path.join(working_dir, unity_path.replace("/", "\\"))
+    flutter_full_path = path.join(working_dir, flutter_path.replace("/", "\\"))
+
+    rn_full_path = path.join(working_dir, rn_path.replace("/", "\\"))
+    electron_ng_full_path = path.join(working_dir, electron_ng_path.replace("/", "\\"))
+    c_sharp_ng_full_path = path.join(working_dir, c_sharp_ng_path.replace("/", "\\"))
+    flutter_ng_full_path = path.join(working_dir, flutter_ng_path.replace("/", "\\"))
+    rn_ng_full_path = path.join(working_dir, rn_ng_path.replace("/", "\\"))
+    unity_ng_full_path =  path.join(working_dir, unity_ng_path.replace("/", "\\"))
     # Need to add electron??
 
-print(android_full_path)
-print(cpp_full_path)
-print(rust_full_path)
-print(electron_full_path)
-print(c_sharp_full_path)
+# print(android_full_path)
+# print(cpp_full_path)
+# print(rust_full_path)
+# print(electron_full_path)
+# print(unity_full_path)
 
 # TODO: !!!!!!!!!!!!!!!!!!!!!!!!!  Set your defined path here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-# defined_path = electron_full_path
+
+if defined_path_text == "flutter":
+    defined_path = flutter_full_path
+    print("The defined path is " + flutter_full_path)
+elif defined_path_text == "electron":
+    defined_path = electron_full_path
+elif defined_path_text == "unity":
+    defined_path = unity_full_path
+elif defined_path_text == "rn":
+    defined_path = rn_full_path
+
+#
 # defined_path = android_full_path
 # defined_path = cpp_full_path
 # defined_path = c_sharp_full_path
-defined_path = flutter_full_path
+
 
 # rust_full_path
 # cpp_full_path
