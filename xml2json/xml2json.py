@@ -87,7 +87,7 @@ flutter_ng_path = "config/keys-rtc-ng-api-flutter.ditamap"
 rn_ng_path = "config/keys-rtc-ng-api-rn.ditamap"
 unity_ng_path = "config/keys-rtc-ng-api-unity.ditamap"
 
-if sys.platform == 'darwin':
+if sys.platform == 'darwin' or sys.platform == 'linux':
     print("macOS")
     android_full_path = path.join(working_dir, android_path)
     cpp_full_path = path.join(working_dir, cpp_path)
@@ -239,9 +239,10 @@ def create_json_from_xml(working_dir, file_dir, android_path, cpp_path, rust_pat
                 new_working_dir = path.normpath(working_dir)
                 # print(new_working_dir[0])
                 # print(conref[0].replace("../", ""))
-            if sys.platform == 'darwin':
+            if sys.platform == 'darwin' or sys.platform == 'linux':
                 print("macOS")
                 conref_path = path.join(new_working_dir, str(conref[0]).replace("../", ""))
+                
             elif sys.platform == 'win32':
                 print("Windows")
                 conref_path = path.join(new_working_dir, str(conref[0]).replace("../", "").replace("/", "\\"))
@@ -324,10 +325,11 @@ def create_json_from_xml(working_dir, file_dir, android_path, cpp_path, rust_pat
                     if d is child:
                         final_parent = parent
 
-            if sys.platform == 'darwin':
+            if sys.platform == 'darwin' or sys.platform == 'linux':
                 print("macOS")
                 if href_text is not None and href_text != "":
                     dir = path.join(working_dir, href_text).replace("../", "")
+                    dir = path.join("..", dir)
                 else:
                     dir = None
             elif sys.platform == 'win32':
@@ -391,10 +393,11 @@ def create_json_from_xml(working_dir, file_dir, android_path, cpp_path, rust_pat
                     if d is child:
                         final_parent = parent
 
-            if sys.platform == 'darwin':
+            if sys.platform == 'darwin' or sys.platform == 'linux':
                 print("macOS")
                 if href_text is not None and href_text != "":
                     dir = path.join(working_dir, href_text).replace("../", "")
+                    dir = path.join("..", dir)
                 else:
                     dir = None
             elif sys.platform == 'win32':
@@ -531,10 +534,11 @@ def create_json_from_xml(working_dir, file_dir, android_path, cpp_path, rust_pat
             print(href_text)
             print("----------------------href text--------------------")
 
-            if sys.platform == 'darwin':
+            if sys.platform == 'darwin' or sys.platform == 'linux':
                 print("macOS")
                 if href_text is not None and href_text != "" and not href_text.startswith("http"):
                     dir = path.join(working_dir, href_text).replace("../", "")
+                    dir = path.join("..", dir)
                 elif href_text.startswith("http"):
                     xref.text = href_text
                     dir = None
